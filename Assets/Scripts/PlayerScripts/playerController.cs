@@ -12,50 +12,41 @@ public class playerController : MonoBehaviour
 
     private Rigidbody2D rb2d;
 
-
+    private float distanceRayCast;
     private float movementDirection;
-    bool isJumping = false;
+    bool isJumping;
 
     private void Awake()
     {
       rb2d = GetComponent<Rigidbody2D>();
-      
+      distanceRayCast = 0.6f;
     }
 
+    private void Update()
+    {
+        movementDirection = Input.GetAxisRaw("Horizontal");
+    }
 
     private void FixedUpdate()
     {
-        isJumping = false;
-        float horizontalMovement = Input.GetAxisRaw("Horizontal");
-        if (horizontalMovement == 1)
-        {
-            rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
-        }
-        else if (horizontalMovement == -1)
-        {
-            rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
-        }
-        else
-            rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-        
-        
-        
-        if(Input.GetKeyDown("space") && !isJumping)
+        rb2d.velocity = new Vector2(speed * movementDirection, rb2d.velocity.y);
+           
+        if (Input.GetKey(KeyCode.Space) && !isJumping)
         {
             //Apply JumpForce
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
             isJumping = true;
+            rb2d.velocity = new Vector2 (rb2d.velocity.x, jumpForce);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Floor"))
         {
-            isJumping = false;
+            if(Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast))
+            {
+                isJumping = false;
+            }
         }
-        //We cancell the rest of force of jump
-        rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
     }
-
 }
