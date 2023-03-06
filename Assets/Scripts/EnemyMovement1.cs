@@ -8,31 +8,25 @@ public class EnemyMovement : MonoBehaviour
     private float enemyMovement;
 
     Rigidbody2D myRigidBody;
-    
+    SpriteRenderer sr;
+
     void Start()
     {
-        myRigidBody = GetComponent<Rigidbody2D>();  
+        myRigidBody = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
-
-  
-    void Update()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (IsFacingRight())
+        if(collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Wall"))
         {
             myRigidBody.velocity = new Vector2(enemyMovement, 0f);
+            sr.flipX = false;
         }
         else
         {
             myRigidBody.velocity = new Vector2(-enemyMovement, 0f);
+            sr.flipX = true;
         }
     }
-
-    private bool IsFacingRight()
-    {
-        return transform.localScale.x > Mathf.Epsilon;
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        transform.localScale = new Vector2(-(Mathf.Sign(myRigidBody.velocity.x)), transform.localScale.y);
-    }
 }
+

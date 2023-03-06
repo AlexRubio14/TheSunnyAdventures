@@ -35,8 +35,7 @@ public class EnemyMovement2 : MonoBehaviour
            
         }
         else if (transform.position.x > minX && sr.flipX == true)
-        {
-           
+        {  
             myRigidBody.velocity = new Vector2(-enemyMovement, 0f);
             if (transform.position.x < minX + 0.1)
             {
