@@ -17,6 +17,7 @@ public class mivi_playerController : MonoBehaviour
 
     private Rigidbody2D rb2d;
     private SpriteRenderer spr;
+    private Animator animation; 
 
     private float distanceRayCast;
 
@@ -37,6 +38,7 @@ public class mivi_playerController : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         spr = GetComponent<SpriteRenderer>();
+        animation = GetComponent<Animator>();
         distanceRayCast = 0.6f;
         doubleJump = 0;
 
@@ -46,6 +48,7 @@ public class mivi_playerController : MonoBehaviour
     private void Update()
     {
         movementDirection = Input.GetAxisRaw("Horizontal");
+            animation.SetBool("Run", true);
 
         if(Time.time >= nextAttackTime)
         {
@@ -106,13 +109,14 @@ public class mivi_playerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb2d.velocity = new Vector2(speed * movementDirection, rb2d.velocity.y);
-
+ 
         if (Input.GetKey(KeyCode.Space) && !isJumping)
         {
             //Apply JumpForce
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
             doubleJump++;
             isJumping = true;
+            animation.SetBool("Run", false);
         }
 
 
