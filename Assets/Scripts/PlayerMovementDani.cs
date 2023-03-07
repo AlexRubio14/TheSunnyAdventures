@@ -62,6 +62,4 @@ public class PlayerMovementDani : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
         }
     }
-
- 
 }

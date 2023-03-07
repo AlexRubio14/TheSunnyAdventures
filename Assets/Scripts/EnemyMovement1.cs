@@ -7,6 +7,9 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private float enemyMovement;
 
+    [SerializeField]
+    private LayerMask flipCollider;
+
     Rigidbody2D myRigidBody;
     SpriteRenderer sr;
 
@@ -15,17 +18,22 @@ public class EnemyMovement : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
     }
-    private void OnTriggerExit2D(Collider2D collision)
+
+    private void Update()
     {
-        if(collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Wall"))
+
+        if (Physics2D.Raycast(transform.position, Vector2.right, 0.6f, flipCollider))
+        {
+            sr.flipX = true;
+        }
+
+        if (sr.flipX == false)
         {
             myRigidBody.velocity = new Vector2(enemyMovement, 0f);
-            sr.flipX = false;
         }
         else
         {
             myRigidBody.velocity = new Vector2(-enemyMovement, 0f);
-            sr.flipX = true;
         }
     }
 }
