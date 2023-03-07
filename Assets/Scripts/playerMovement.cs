@@ -11,6 +11,8 @@ public class playerMovement : MonoBehaviour
 
     [SerializeField]
     private LayerMask floorLayer;
+    [SerializeField]
+    private LayerMask spikesLayer;
 
     private float horizontal;
     private Rigidbody2D rb2d;
@@ -31,10 +33,16 @@ public class playerMovement : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
+        if (Physics2D.Raycast(transform.position, Vector2.down, 0.6f, spikesLayer))
+        {
+            //player = dead;
+            Debug.Log("DEAD");
+        }
+        
+        
         if (Physics2D.Raycast(transform.position, Vector2.down, 0.6f, floorLayer))
         {
             Grounded = true;
-
         }
         else Grounded = false;
 
