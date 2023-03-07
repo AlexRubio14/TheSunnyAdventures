@@ -408,6 +408,7 @@ MonoBehaviour:
   flipCollider:
     serializedVersion: 2
     m_Bits: 128
+  rotate: 0
 --- !u!1 &537328601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,6 +1006,7 @@ MonoBehaviour:
   enemyMovement: 3
   maxX: 6
   minX: -3
+  rotate: 0
 --- !u!1 &1506704124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,6 +1041,7 @@ MonoBehaviour:
   enemyMovement: 3
   maxX: 4
   minX: -5
+  rotate: 0
 --- !u!50 &1506704126
 Rigidbody2D:
   serializedVersion: 4
@@ -1160,6 +1163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d168f34411b1348a2af1a4b01016a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipCollider:
+    serializedVersion: 2
+    m_Bits: 128
   speed: 5
   jumpForce: 10
   checkGround: {fileID: 1185635755}
@@ -1447,3 +1453,4 @@ MonoBehaviour:
   flipCollider:
     serializedVersion: 2
     m_Bits: 128
+  rotate: 0

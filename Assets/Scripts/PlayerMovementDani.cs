@@ -7,6 +7,9 @@ public class PlayerMovementDani : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerDash playerDash;
 
+    [SerializeField]
+    private LayerMask flipCollider;
+
     [Header("Movement")]
     [SerializeField]
     private float speed = 4f;
@@ -55,7 +58,7 @@ public class PlayerMovementDani : MonoBehaviour
     
     private void Jump()
     {
-        isGrounded = Physics2D.Raycast(checkGround.position, Vector2.down, raycastLength, groundLayer);
+        isGrounded = Physics2D.Raycast(checkGround.position, Vector2.down, raycastLength, groundLayer) || Physics2D.Raycast(checkGround.position, Vector2.down, raycastLength, flipCollider);
 
         if(Input.GetButtonDown("Jump") && isGrounded == true)
         {
