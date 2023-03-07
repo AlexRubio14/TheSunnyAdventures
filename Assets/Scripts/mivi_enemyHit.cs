@@ -7,6 +7,7 @@ public class mivi_enemyHit : MonoBehaviour
     [SerializeField]
     private int maxHelalth = 100;
 
+
     int currentHealth; 
 
     // Start is called before the first frame update

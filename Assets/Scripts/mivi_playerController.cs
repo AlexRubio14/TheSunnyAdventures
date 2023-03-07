@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class mivi_playerController : MonoBehaviour
 {
+    
+    private Animator anim;
+
+    private Rigidbody2D rb2d;
+    private float distanceRayCast;
+
     //Movement
     [SerializeField]
     private float speed;
@@ -15,95 +21,68 @@ public class mivi_playerController : MonoBehaviour
     bool isJumping;
     int doubleJump;
 
-    private Rigidbody2D rb2d;
+    //Rotation
     private SpriteRenderer spr;
-    private Animator animation; 
+    public bool fliped = false;
 
-    private float distanceRayCast;
-
-    private float delayGetBackAttack = 100f;
-    private bool getBackAttack; 
-
-
-    public Transform pointAttack;
+    //ATTACK
+    public GameObject pointAttack;
     public LayerMask enemyLayer;
 
     public float attackRange = 0.5f;
     public int attackDamage = 40;
 
-    public float attackRate = 2f; //two times for second 
-    float nextAttackTime = 0f; 
-
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         spr = GetComponent<SpriteRenderer>();
-        animation = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         distanceRayCast = 0.6f;
         doubleJump = 0;
-
-        getBackAttack = false;
     }
 
     private void Update()
     {
+        //MOVEMENT 
         movementDirection = Input.GetAxisRaw("Horizontal");
-            animation.SetBool("Run", true);
+        flip();
 
-        if(Time.time >= nextAttackTime)
-        {
-            if (Input.GetKeyDown(KeyCode.LeftControl))
-            {
-                Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
-                
-            }
-        }
-        GetBackAttack();
+        //MOVEMENT ANIMATION 
+        if (movementDirection > .1f || movementDirection < -.1f)
+            anim.SetBool("Run", true);
+        else
+            anim.SetBool("Run", false);
+        //ATTACK 
+
+        //ATTACK ANIMATION
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+            anim.SetBool("Attack", true); 
+    }
+
+    public void endAttack() //setup in attack animation
+    {
+        anim.SetBool("Attack", false); 
     }
 
     void Attack()
     {
         //Detect enemies in range of attack 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(pointAttack.position, attackRange, enemyLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(pointAttack.transform.position, attackRange, enemyLayer);
 
         //Damage them
         foreach(Collider2D enemy in hitEnemies)
         {
-            Debug.Log("We hit " + enemy.name);
+            Debug.Log("We hit an enemy");
             enemy.GetComponent<mivi_enemyHit>().TakeDamage(attackDamage);
-        }
-
-        getBackAttack = true;
-    }
-
-    void GetBackAttack()
-    {
-        if (getBackAttack)
-        {
-            if (spr.flipX == true)
-            {
-                rb2d.AddForce(new Vector2(-1, 0));
-            }
-            else
-            {
-                rb2d.AddForce(new Vector2(1, 0));
-            }
-            delayGetBackAttack--;
-        }
-        if (delayGetBackAttack <= 0)
-        {
-            delayGetBackAttack = 0;
-            getBackAttack = false;
         }
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (pointAttack== null) 
+        if (pointAttack == null) 
             return;
 
-        Gizmos.DrawWireSphere(pointAttack.position, attackRange);
+        Gizmos.DrawWireSphere(pointAttack.transform.position, attackRange);
     }
 
     private void FixedUpdate()
@@ -116,10 +95,7 @@ public class mivi_playerController : MonoBehaviour
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
             doubleJump++;
             isJumping = true;
-            animation.SetBool("Run", false);
         }
-
-
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -132,5 +108,20 @@ public class mivi_playerController : MonoBehaviour
                 isJumping = false;
             }
         }
+    }
+
+    private void flip()
+    {
+        if (!fliped && movementDirection < 0)
+        {
+            fliped = true;
+            spr.flipX = true;
+        }
+        else if (fliped && movementDirection > 0)
+        {
+            fliped = false;
+            spr.flipX = false;
+        }
+
     }
 }

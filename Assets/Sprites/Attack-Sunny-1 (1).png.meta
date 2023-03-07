@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1992bfd2f75b2214da64979414aca913
+guid: 66b48cfb4c72b764a8479b22faf0c7bc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -104,64 +104,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sunny_attack_64 1_0
+      name: Attack-Sunny-1 (1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.355, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e86b97b9e9db1fd43bc18f8bbce3e2e8
-      internalID: 1993759924
+      spriteID: 95ca024245790e24689700f8b9a9f491
+      internalID: 169388612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sunny_attack_64 1_1
+      name: Attack-Sunny-1 (1)_1
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.355, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 494550ed235d3b84ca2cc6743f21230a
-      internalID: 1596761241
+      spriteID: e43a381f8a02d064b99892b4803ed530
+      internalID: 1612692017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sunny_attack_64 1_2
+      name: Attack-Sunny-1 (1)_2
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 96
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.355, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff6182b90e2f7d14a8704138f0e2531a
-      internalID: 1238084822
+      spriteID: 85dd5a14466ef1646abddf479d6af4f1
+      internalID: 1996436635
       vertices: []
       indices: 
       edges: []
@@ -177,9 +177,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      sunny_attack_64 1_0: 1993759924
-      sunny_attack_64 1_2: 1238084822
-      sunny_attack_64 1_1: 1596761241
+      Attack-Sunny-1 (1)_1: 1612692017
+      Attack-Sunny-1 (1)_2: 1996436635
+      Attack-Sunny-1 (1)_0: 169388612
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
