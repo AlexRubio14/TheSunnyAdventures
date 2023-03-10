@@ -8,6 +8,7 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private float speed;
     private float movementDirection;
+    public float direction => movementDirection;
 
     //Jump
     [SerializeField]
@@ -17,33 +18,33 @@ public class playerController : MonoBehaviour
     //Rotation
     public bool fliped = false;
     private SpriteRenderer sp;
-    
-    private Rigidbody2D rb2d;
 
+    //Dash
+    private PlayerDash playerDash;
+    private Rigidbody2D rb2d;
     private float distanceRayCast;
     
     private void Awake()
     {
       rb2d = GetComponent<Rigidbody2D>();
       sp = GetComponent<SpriteRenderer>();
+      playerDash = GetComponent<PlayerDash>();
       distanceRayCast = 0.6f;
     }
 
     private void Update()
     {
         movementDirection = Input.GetAxisRaw("Horizontal");
-        flip();
-    }
-
-    private void FixedUpdate()
-    {
-        rb2d.velocity = new Vector2(speed * movementDirection, rb2d.velocity.y);
-        
-        if (Input.GetKey(KeyCode.Space) && !isJumping)
+        if (!playerDash.IsDashing)
         {
-            //Apply JumpForce
-            rb2d.velocity = new Vector2 (rb2d.velocity.x, jumpForce);
-            isJumping = true;
+            flip();
+            Move();
+            playerDash.WaitCD();
+            Jump();
+        }
+        else
+        {
+            playerDash.Dash();
         }
     }
 
@@ -71,5 +72,19 @@ public class playerController : MonoBehaviour
             sp.flipX = false;
         }
 
+    }
+
+    private void Move()
+    {
+        rb2d.velocity = new Vector2(speed * movementDirection, rb2d.velocity.y);
+    }
+    private void Jump()
+    {
+        if (Input.GetKey(KeyCode.Space) && !isJumping)
+        {
+            //Apply JumpForce
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+            isJumping = true;
+        }
     }
 }

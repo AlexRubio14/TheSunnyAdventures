@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerDash : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private PlayerMovementDani player;
+    private playerController player;
     private float baseGravity;
+    private float timeWaited;
 
     [Header("Dash")]
     [SerializeField]
@@ -22,31 +23,39 @@ public class PlayerDash : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent <Rigidbody2D>();
-        player = GetComponent<PlayerMovementDani>();
+        player = GetComponent<playerController>();
         baseGravity = rb.gravityScale;
 
     }
-    void Update()
+
+    public void WaitCD()
+    {
+        if (!canDash)
+        {
+            timeWaited += Time.deltaTime;
+            if(timeWaited >= dashingTime)
+            {
+                isDashing = false;
+                rb.gravityScale = baseGravity;
+                if (timeWaited >= timeCanDash)
+                {
+                    canDash = true;
+                    timeWaited = 0;
+                }
+            }
+        }
+    }
+    public void Dash()
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            StartCoroutine(Dash());
-        }
-    }
-
-    private IEnumerator Dash()
-    {
-        if (player.Direction != 0 && canDash == true)
-        {
-            isDashing = true;
-            canDash = false;
-            rb.gravityScale = 0f;
-            rb.velocity = new Vector2(player.Direction * dashForce, 0f);
-            yield return new WaitForSeconds(dashingTime);
-            isDashing = false;
-            rb.gravityScale = baseGravity;
-            yield return new WaitForSeconds(timeCanDash);
-            canDash = true;
+            if (player.direction != 0 && canDash == true)
+            {
+                isDashing = true;
+                canDash = false;
+                rb.gravityScale = 0f;
+                rb.velocity = new Vector2(player.direction * dashForce, 0f);
+            }
         }
     }
 }
