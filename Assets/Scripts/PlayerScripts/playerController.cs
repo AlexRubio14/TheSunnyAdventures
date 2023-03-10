@@ -32,6 +32,10 @@ public class playerController : MonoBehaviour
     public GameObject pointAttack;
     public LayerMask enemyLayer;
 
+    //Death
+    [SerializeField]
+    private LayerMask spikesLayer;
+
     public float attackRange = 0.5f;
     public int attackDamage = 40;
 
@@ -58,10 +62,18 @@ public class playerController : MonoBehaviour
         { 
             playerDash.Dash();
         }
+      
         if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
             anim.SetBool("Attack", true);
+        }
+       
+        if (Physics2D.Raycast(transform.position, Vector2.down, 0.6f, spikesLayer))
+        {
+            //player = dead;
+            Debug.Log("DEAD");
+        }
     }
-
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -93,9 +105,8 @@ public class playerController : MonoBehaviour
     {
         //MOVEMENT ANIMATION
             rb2d.velocity = new Vector2(speed * movementDirection, rb2d.velocity.y);
-        
-        
     }
+
     private void Jump()
     {
         if (Input.GetKey(KeyCode.Space) && !isJumping)
