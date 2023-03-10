@@ -4,28 +4,31 @@ using UnityEngine;
 
 public class EnemyMovementM : MonoBehaviour
 {
+    //Movement
     [SerializeField]
     private float enemyMovement;
-
+    
+    //Health
     [SerializeField]
-    private LayerMask flipCollider;
+    private int maxHealth = 100;
+    int currentHealth;
 
-
+    //Rotation
     [SerializeField]
     private bool rotate = false;
-
+    [SerializeField]
+    private LayerMask flipCollider;
     private Vector2 directionRayCast;
 
-
-
     Rigidbody2D rb2d;
-
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
 
-        directionRayCast = Vector2.right; 
+        directionRayCast = Vector2.right;
+
+        currentHealth = maxHealth;
     }
 
     private void Update()
@@ -64,5 +67,25 @@ public class EnemyMovementM : MonoBehaviour
             enemyMovement = 3;
         }
     }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth < 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        //Disable the enemy
+        GetComponent<BoxCollider2D>().enabled = false;
+        this.enabled = false;
+        Destroy(gameObject);
+
+        Debug.Log("Enemy died!");
+    } 
 
 }

@@ -13,8 +13,7 @@ public class mivi_playerController : MonoBehaviour
     //Movement
     [SerializeField]
     private float speed;
-    private float movementDirection;
-   
+    private float movementDirection; 
 
     //Jump
     [SerializeField]
@@ -40,7 +39,6 @@ public class mivi_playerController : MonoBehaviour
         spr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         distanceRayCast = 0.6f;
-        doubleJump = 0;
         //capsuleCollider.size.y
     }
 
