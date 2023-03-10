@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Enemy
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - Floor
   - Water
   - UI
-  - 
-  - 
+  - Floor
+  - FlipCollider
   - 
   - 
   - 
