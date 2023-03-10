@@ -47,8 +47,6 @@ public class PlayerDash : MonoBehaviour
     }
     public void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
             if (player.direction != 0 && canDash == true)
             {
                 isDashing = true;
@@ -56,6 +54,5 @@ public class PlayerDash : MonoBehaviour
                 rb.gravityScale = 0f;
                 rb.velocity = new Vector2(player.direction * dashForce, 0f);
             }
-        }
     }
 }

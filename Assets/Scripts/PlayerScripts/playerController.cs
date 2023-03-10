@@ -35,15 +35,15 @@ public class playerController : MonoBehaviour
     private void Update()
     {
         movementDirection = Input.GetAxisRaw("Horizontal");
+        playerDash.WaitCD();
         if (!playerDash.IsDashing)
         {
             flip();
             Move();
-            playerDash.WaitCD();
             Jump();
         }
-        else
-        {
+        if (Input.GetKeyDown(KeyCode.C))
+        { 
             playerDash.Dash();
         }
     }
