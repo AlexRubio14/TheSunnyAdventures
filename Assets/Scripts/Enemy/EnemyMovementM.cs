@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovementT : MonoBehaviour
+public class EnemyMovementM : MonoBehaviour
 {
     [SerializeField]
     private float enemyMovement;
@@ -10,10 +10,13 @@ public class EnemyMovementT : MonoBehaviour
     [SerializeField]
     private LayerMask flipCollider;
 
+
     [SerializeField]
     private bool rotate = false;
 
     private Vector2 directionRayCast;
+
+
 
     Rigidbody2D rb2d;
 
@@ -21,7 +24,8 @@ public class EnemyMovementT : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        directionRayCast = Vector2.right;
+
+        directionRayCast = Vector2.right; 
     }
 
     private void Update()
@@ -32,7 +36,7 @@ public class EnemyMovementT : MonoBehaviour
             if (Physics2D.Raycast(transform.position, Vector2.right, 0.6f, flipCollider) || !Physics2D.Raycast(transform.position + (Vector3.right * 0.5f), Vector2.down, 0.6f, flipCollider))
             {
                 transform.eulerAngles = new Vector2(0, 180);
-                rotate = true;
+                rotate= true;
             }
         }
         else
@@ -41,8 +45,24 @@ public class EnemyMovementT : MonoBehaviour
             if (Physics2D.Raycast(transform.position, Vector2.left, 0.6f, flipCollider) || !Physics2D.Raycast(transform.position + (Vector3.left * 0.5f), Vector2.down, 0.6f, flipCollider))
             {
                 transform.eulerAngles = new Vector2(0, 0);
-                rotate = false;
+                rotate= false;
             }
         }
     }
+     private void OnTriggerEnter2D(Collider2D collision)
+     {
+         if(collision.gameObject.CompareTag("Player"))
+         {
+             enemyMovement = 0;
+         }
+      
+     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            enemyMovement = 3;
+        }
+    }
+
 }
