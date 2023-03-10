@@ -14,6 +14,7 @@ public class mivi_playerController : MonoBehaviour
     [SerializeField]
     private float speed;
     private float movementDirection;
+   
 
     //Jump
     [SerializeField]
@@ -32,6 +33,7 @@ public class mivi_playerController : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 40;
 
+    //private CapsuleCollider2D capsuleCollider;
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -39,6 +41,7 @@ public class mivi_playerController : MonoBehaviour
         anim = GetComponent<Animator>();
         distanceRayCast = 0.6f;
         doubleJump = 0;
+        //capsuleCollider.size.y
     }
 
     private void Update()
@@ -102,7 +105,6 @@ public class mivi_playerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
-            doubleJump = 0;
             if (Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast))
             {
                 isJumping = false;
@@ -112,16 +114,18 @@ public class mivi_playerController : MonoBehaviour
 
     private void flip()
     {
-        if (!fliped && movementDirection < 0)
+        
+        if (!fliped && movementDirection < 0) //mira a derecha
         {
             fliped = true;
             spr.flipX = true;
+            pointAttack.transform.localPosition = new Vector2(-pointAttack.transform.localPosition.x, pointAttack.transform.localPosition.y);
         }
-        else if (fliped && movementDirection > 0)
+        else if (fliped && movementDirection > 0) //mira a izquierda
         {
             fliped = false;
             spr.flipX = false;
+            pointAttack.transform.localPosition = new Vector2(-pointAttack.transform.localPosition.x, pointAttack.transform.localPosition.y);
         }
-
     }
 }
