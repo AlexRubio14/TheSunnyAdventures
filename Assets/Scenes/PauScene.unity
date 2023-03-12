@@ -233,10 +233,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 349940942}
-  - component: {fileID: 349940938}
   - component: {fileID: 349940941}
   - component: {fileID: 349940940}
   - component: {fileID: 349940943}
+  - component: {fileID: 349940944}
   m_Layer: 0
   m_Name: sunny
   m_TagString: Untagged
@@ -244,27 +244,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &349940938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 349940937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 505bc57a3baba39478ad1356f545f606, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 420
-  floorLayer:
-    m_Bits: 8
-  spikesLayer:
-    m_Bits: 64
-  horizontal: 0
-  rb2d: {fileID: 0}
-  Grounded: 0
 --- !u!50 &349940940
 Rigidbody2D:
   serializedVersion: 4
@@ -379,6 +358,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.875, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &349940944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349940937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de9f68dd8a98f54781dde01243b6268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 100
+  jumpForce: 400
+  fliped: 0
+  pointAttack: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  spikesLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  attackRange: 0.5
+  attackDamage: 40
 --- !u!1 &492291627
 GameObject:
   m_ObjectHideFlags: 0
