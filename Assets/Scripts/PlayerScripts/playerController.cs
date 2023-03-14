@@ -36,8 +36,16 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private LayerMask spikesLayer;
 
+    [SerializeField]
+    private LayerMask floorLayer;
+
     public float attackRange = 0.5f;
     public int attackDamage = 40;
+
+    
+    private float gravityScale;
+    private float gravityMaxFallSpeed = 5;
+
 
     private void Awake()
     {
@@ -50,6 +58,8 @@ public class playerController : MonoBehaviour
 
     private void Update()
     {
+        Debug.DrawRay(transform.position, Vector2.down, Color.red);
+
         movementDirection = Input.GetAxisRaw("Horizontal");
         playerDash.WaitCD();
         if (!playerDash.IsDashing)
@@ -73,18 +83,23 @@ public class playerController : MonoBehaviour
             //player = dead;
             Debug.Log("DEAD");
         }
+
+        if (Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast, floorLayer))
+        {
+            isJumping = false;
+        }
+
+        if (rb2d.velocity.y < 0)
+        {
+            float speed = Mathf.Max(gravityScale, gravityMaxFallSpeed);
+            SetGravity(speed);
+        } else
+        {
+            SetGravity(1);
+        }
+
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Floor"))
-        {
-            if (Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast))
-            {
-                isJumping = false;
-            }
-        }
-    }
 
     private void flip()
     {
@@ -109,10 +124,15 @@ public class playerController : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKey(KeyCode.Space) && !isJumping)
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             //Apply JumpForce
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+            isJumping = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Space) && !isJumping)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
             isJumping = true;
         }
     }
@@ -128,5 +148,10 @@ public class playerController : MonoBehaviour
             Debug.Log("We hit an enemy");
             enemy.GetComponent<mivi_enemyHit>().TakeDamage(attackDamage);
         }
+    }
+
+    public void SetGravity(float gravity)
+    {
+        rb2d.gravityScale = gravity;
     }
 }

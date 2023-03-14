@@ -55,4 +55,6 @@ public class PlayerDash : MonoBehaviour
                 rb.velocity = new Vector2(player.direction * dashForce, 0f);
             }
     }
+
+    
 }
