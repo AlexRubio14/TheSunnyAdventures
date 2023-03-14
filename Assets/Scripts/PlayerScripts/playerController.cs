@@ -73,6 +73,23 @@ public class playerController : MonoBehaviour
             //player = dead;
             Debug.Log("DEAD");
         }
+
+        //MOVEMENT ANIMATION 
+        if (movementDirection > .1f || movementDirection < -.1f)
+            anim.SetBool("Run", true);
+        else
+            anim.SetBool("Run", false);
+        //ATTACK 
+
+        //ATTACK ANIMATION
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+            anim.SetBool("Attack", true);
+
+    }
+
+    public void endAttack() //setup in attack animation
+    {
+        anim.SetBool("Attack", false);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -92,11 +109,13 @@ public class playerController : MonoBehaviour
         {
             fliped = true;
             sp.flipX = true;
+            pointAttack.transform.localPosition = new Vector2(-pointAttack.transform.localPosition.x, pointAttack.transform.localPosition.y);
         }
         else if(fliped && movementDirection > 0)
         {
             fliped = false;
             sp.flipX = false;
+            pointAttack.transform.localPosition = new Vector2(-pointAttack.transform.localPosition.x, pointAttack.transform.localPosition.y);
         }
 
     }
@@ -115,6 +134,14 @@ public class playerController : MonoBehaviour
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
             isJumping = true;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (pointAttack == null)
+            return;
+
+        Gizmos.DrawWireSphere(pointAttack.transform.position, attackRange);
     }
 
     void Attack()
