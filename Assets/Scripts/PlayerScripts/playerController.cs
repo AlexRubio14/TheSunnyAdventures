@@ -54,6 +54,8 @@ public class playerController : MonoBehaviour
       playerDash = GetComponent<PlayerDash>();
       anim = GetComponent<Animator>();
       distanceRayCast = 0.6f;
+     
+
     }
 
     private void Update()
@@ -62,7 +64,7 @@ public class playerController : MonoBehaviour
 
         movementDirection = Input.GetAxisRaw("Horizontal");
         playerDash.WaitCD();
-        if (!playerDash.IsDashing)
+        if (!playerDash.GetIsDashing())
         {
             flip();
             Move();
@@ -96,6 +98,10 @@ public class playerController : MonoBehaviour
         } else
         {
             SetGravity(1);
+        }
+        if (playerDash.GetIsDashing())
+        {
+            SetGravity(0);
         }
 
     }

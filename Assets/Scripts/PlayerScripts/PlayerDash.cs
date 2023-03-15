@@ -18,7 +18,7 @@ public class PlayerDash : MonoBehaviour
     private float timeCanDash = 1f; // <- Cooldown
     private bool isDashing;
     private bool canDash = true;
-    public bool IsDashing => isDashing;
+    //public bool IsDashing => isDashing;
 
     private void Awake()
     {
@@ -56,5 +56,13 @@ public class PlayerDash : MonoBehaviour
             }
     }
 
-    
+    public bool GetIsDashing()
+    {
+        return isDashing;
+    }
+
+    public void SetIsDashing(bool isDashing)
+    {
+        this.isDashing = isDashing;
+    }
 }
