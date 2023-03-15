@@ -17,7 +17,7 @@ public class playerController : MonoBehaviour
     //Jump
     [SerializeField]
     private float jumpForce;
-    bool isJumping;
+    public bool isJumping;
 
     //Rotation
     public bool fliped = false;
@@ -43,8 +43,6 @@ public class playerController : MonoBehaviour
     public int attackDamage = 40;
 
     
-    private float gravityScale;
-    private float gravityMaxFallSpeed = 5;
 
 
     private void Awake()
@@ -91,17 +89,10 @@ public class playerController : MonoBehaviour
             isJumping = false;
         }
 
-        if (rb2d.velocity.y < 0)
-        {
-            float speed = Mathf.Max(gravityScale, gravityMaxFallSpeed);
-            SetGravity(speed);
-        } else
-        {
-            SetGravity(1);
-        }
+
         if (playerDash.GetIsDashing())
         {
-            SetGravity(0);
+            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         }
 
     }
@@ -156,8 +147,4 @@ public class playerController : MonoBehaviour
         }
     }
 
-    public void SetGravity(float gravity)
-    {
-        rb2d.gravityScale = gravity;
-    }
 }

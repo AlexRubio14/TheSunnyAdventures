@@ -9,6 +9,7 @@ public class PlayerDash : MonoBehaviour
     private float baseGravity;
     private float timeWaited;
 
+
     [Header("Dash")]
     [SerializeField]
     private float dashingTime = 0.2f;
@@ -25,7 +26,7 @@ public class PlayerDash : MonoBehaviour
         rb = GetComponent <Rigidbody2D>();
         player = GetComponent<playerController>();
         baseGravity = rb.gravityScale;
-
+        
     }
 
     public void WaitCD()
@@ -37,7 +38,7 @@ public class PlayerDash : MonoBehaviour
             {
                 isDashing = false;
                 rb.gravityScale = baseGravity;
-                if (timeWaited >= timeCanDash)
+                if (timeWaited >= timeCanDash && !player.isJumping)
                 {
                     canDash = true;
                     timeWaited = 0;
