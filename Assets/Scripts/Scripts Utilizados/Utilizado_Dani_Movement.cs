@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovementDani : MonoBehaviour
 {
+    /*
     private Rigidbody2D rb;
     private PlayerDash playerDash;
 
@@ -65,4 +66,5 @@ public class PlayerMovementDani : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
         }
     }
+    */
 }

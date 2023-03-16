@@ -17,7 +17,7 @@ public class playerController : MonoBehaviour
     //Jump
     [SerializeField]
     private float jumpForce;
-    bool isJumping;
+    public bool isJumping;
 
     //Rotation
     public bool fliped = false;
@@ -36,8 +36,14 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private LayerMask spikesLayer;
 
+    [SerializeField]
+    private LayerMask floorLayer;
+
     public float attackRange = 0.5f;
     public int attackDamage = 40;
+
+    
+
 
     private void Awake()
     {
@@ -46,13 +52,17 @@ public class playerController : MonoBehaviour
       playerDash = GetComponent<PlayerDash>();
       anim = GetComponent<Animator>();
       distanceRayCast = 0.6f;
+     
+
     }
 
     private void Update()
     {
+        Debug.DrawRay(transform.position, Vector2.down, Color.red);
+
         movementDirection = Input.GetAxisRaw("Horizontal");
         playerDash.WaitCD();
-        if (!playerDash.IsDashing)
+        if (!playerDash.GetIsDashing())
         {
             flip();
             Move();
@@ -74,34 +84,19 @@ public class playerController : MonoBehaviour
             Debug.Log("DEAD");
         }
 
-        //MOVEMENT ANIMATION 
-        if (movementDirection > .1f || movementDirection < -.1f)
-            anim.SetBool("Run", true);
-        else
-            anim.SetBool("Run", false);
-        //ATTACK 
-
-        //ATTACK ANIMATION
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-            anim.SetBool("Attack", true);
-
-    }
-
-    public void endAttack() //setup in attack animation
-    {
-        anim.SetBool("Attack", false);
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Floor"))
+        if (Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast, floorLayer))
         {
-            if (Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast))
-            {
-                isJumping = false;
-            }
+            isJumping = false;
         }
+
+
+        if (playerDash.GetIsDashing())
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+        }
+
     }
+
 
     private void flip()
     {
@@ -128,10 +123,15 @@ public class playerController : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKey(KeyCode.Space) && !isJumping)
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             //Apply JumpForce
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+            isJumping = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Space) && !isJumping)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
             isJumping = true;
         }
     }
@@ -156,4 +156,5 @@ public class playerController : MonoBehaviour
             enemy.GetComponent<mivi_enemyHit>().TakeDamage(attackDamage);
         }
     }
+
 }
