@@ -72,7 +72,12 @@ public class playerController : MonoBehaviour
         { 
             playerDash.Dash();
         }
-      
+        //MOVEMENT ANIMATION 
+        if (movementDirection > .1f || movementDirection < -.1f)
+            anim.SetBool("Run", true);
+        else
+            anim.SetBool("Run", false);
+        //ATTACK ANIMATION
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             anim.SetBool("Attack", true);
@@ -155,6 +160,10 @@ public class playerController : MonoBehaviour
             Debug.Log("We hit an enemy");
             enemy.GetComponent<mivi_enemyHit>().TakeDamage(attackDamage);
         }
+    }
+    public void endAttack() //setup in attack animation
+    {
+        anim.SetBool("Attack", false);
     }
 
 }

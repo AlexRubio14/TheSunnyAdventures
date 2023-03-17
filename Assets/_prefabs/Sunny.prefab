@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 5
+  isJumping: 0
   fliped: 0
   pointAttack: {fileID: 4073127029335469569}
   enemyLayer:
@@ -144,6 +145,9 @@ MonoBehaviour:
   spikesLayer:
     serializedVersion: 2
     m_Bits: 256
+  floorLayer:
+    serializedVersion: 2
+    m_Bits: 64
   attackRange: 0.5
   attackDamage: 40
 --- !u!114 &9152766392956456384
