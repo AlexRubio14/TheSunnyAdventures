@@ -60,12 +60,6 @@ public class playerController : MonoBehaviour
     {
         Debug.DrawRay(transform.position, Vector2.down, Color.red);
 
-        //MOVEMENT ANIMATION 
-        if (movementDirection > .1f || movementDirection < -.1f)
-            anim.SetBool("Run", true);
-        else
-            anim.SetBool("Run", false);
-
         movementDirection = Input.GetAxisRaw("Horizontal");
         playerDash.WaitCD();
 
@@ -80,11 +74,13 @@ public class playerController : MonoBehaviour
         { 
             playerDash.Dash();
         }
+
         //MOVEMENT ANIMATION 
         if (movementDirection > .1f || movementDirection < -.1f)
             anim.SetBool("Run", true);
         else
             anim.SetBool("Run", false);
+
         //ATTACK ANIMATION
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
@@ -145,7 +141,6 @@ public class playerController : MonoBehaviour
             isJumping = true;
         }
     }
-
     private void OnDrawGizmosSelected()
     {
         if (pointAttack == null)
@@ -166,12 +161,6 @@ public class playerController : MonoBehaviour
             enemy.GetComponent<mivi_enemyHit>().TakeDamage(attackDamage);
         }
     }
-    public void endAttack() //setup in attack animation
-    {
-        anim.SetBool("Attack", false);
-    }
-
-
     public void endAttack() //setup in attack animation
     {
         anim.SetBool("Attack", false);
