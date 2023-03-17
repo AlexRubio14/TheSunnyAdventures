@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 9152766392956456251}
   - component: {fileID: 9152766392956456391}
   - component: {fileID: 9152766392956456384}
-  - component: {fileID: -8747809671448202508}
+  - component: {fileID: -3540917643391987682}
   - component: {fileID: 9152766392956456385}
   - component: {fileID: 9152766392956456390}
   - component: {fileID: 9152766392956456389}
@@ -207,7 +207,7 @@ MonoBehaviour:
     m_Bits: 256
   floorLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   attackRange: 0.5
   attackDamage: 40
 --- !u!114 &9152766392956456384
@@ -225,7 +225,7 @@ MonoBehaviour:
   fireBall: {fileID: 7851971908248623886, guid: 99ad1e914abc7a8479c18c292a35f98a, type: 3}
   offset: 2
   timeToThrow: 0.5
---- !u!114 &-8747809671448202508
+--- !u!114 &-3540917643391987682
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9152766392956456250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2890ca3a464c18c498fa8e42ba9ab7d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 56cba85a85051264fb77e17fa70f5837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &9152766392956456385
