@@ -7,6 +7,8 @@ TagManager:
   - Floor
   - Enemy
   - Wall
+  - Spikes
+  - FireBall
   layers:
   - Default
   - TransparentFX
