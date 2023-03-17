@@ -60,14 +60,22 @@ public class playerController : MonoBehaviour
     {
         Debug.DrawRay(transform.position, Vector2.down, Color.red);
 
+        //MOVEMENT ANIMATION 
+        if (movementDirection > .1f || movementDirection < -.1f)
+            anim.SetBool("Run", true);
+        else
+            anim.SetBool("Run", false);
+
         movementDirection = Input.GetAxisRaw("Horizontal");
         playerDash.WaitCD();
+
         if (!playerDash.GetIsDashing())
         {
             flip();
             Move();
             Jump();
         }
+
         if (Input.GetKeyDown(KeyCode.C))
         { 
             playerDash.Dash();
@@ -77,17 +85,13 @@ public class playerController : MonoBehaviour
         {
             anim.SetBool("Attack", true);
         }
-       
-        if (Physics2D.Raycast(transform.position, Vector2.down, 0.6f, spikesLayer))
-        {
-            //player = dead;
-            Debug.Log("DEAD");
-        }
 
         if (Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast, floorLayer))
         {
             isJumping = false;
         }
+        else
+            isJumping = true;
 
 
         if (playerDash.GetIsDashing())
@@ -155,6 +159,11 @@ public class playerController : MonoBehaviour
             Debug.Log("We hit an enemy");
             enemy.GetComponent<mivi_enemyHit>().TakeDamage(attackDamage);
         }
+    }
+
+    public void endAttack() //setup in attack animation
+    {
+        anim.SetBool("Attack", false);
     }
 
 }
