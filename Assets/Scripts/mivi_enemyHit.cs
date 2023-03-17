@@ -22,7 +22,7 @@ public class mivi_enemyHit : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             Die();
         }

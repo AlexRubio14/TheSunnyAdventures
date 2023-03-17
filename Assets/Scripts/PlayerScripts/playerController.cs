@@ -82,17 +82,14 @@ public class playerController : MonoBehaviour
         {
             anim.SetBool("Attack", true);
         }
-       
-        if (Physics2D.Raycast(transform.position, Vector2.down, 0.6f, spikesLayer))
-        {
-            //player = dead;
-            Debug.Log("DEAD");
-        }
 
         if (Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast, floorLayer))
         {
             isJumping = false;
+
         }
+        else
+            isJumping = true;
 
 
         if (playerDash.GetIsDashing())
@@ -165,5 +162,6 @@ public class playerController : MonoBehaviour
     {
         anim.SetBool("Attack", false);
     }
+
 
 }

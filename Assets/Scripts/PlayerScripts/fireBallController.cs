@@ -43,8 +43,10 @@ public class fireBallController : MonoBehaviour
             playerController player = collision.GetComponent<playerController>();  // Cambiar cuando me pasen el enemy
             player.die();
             */
+
             Destroy(gameObject);
-            
+            collision.GetComponent<EnemyMovementT>().Die();
+            collision.GetComponent<JumpBossMovement>().Die();
         }
         if (collision.CompareTag("Floor"))
             Destroy(gameObject);

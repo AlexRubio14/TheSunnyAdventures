@@ -78,4 +78,9 @@ public class JumpBossMovement : MonoBehaviour
         isGrounded = false;
 
     }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
 }
