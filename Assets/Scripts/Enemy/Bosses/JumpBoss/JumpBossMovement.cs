@@ -18,13 +18,10 @@ public class JumpBossMovement : MonoBehaviour
     private float enemyMovement;
 
     [SerializeField]
-    private LayerMask flipCollider;
-    [SerializeField]
     private LayerMask floorLayer;
 
     [SerializeField]
     private bool rotate = false;
-
 
     Rigidbody2D rb2d;
 
@@ -51,25 +48,31 @@ public class JumpBossMovement : MonoBehaviour
         if (rotate == false)
         {
             rb2d.velocity = new Vector2(enemyMovement, rb2d.velocity.y);
-            if (Physics2D.Raycast(transform.position, Vector2.right, 0.6f, flipCollider))
-            {
-                transform.eulerAngles = new Vector2(0, 180);
-                rotate = true;
-                Debug.Log("aaaaaaa");
-            }
+         
         }
         else
         {
             rb2d.velocity = new Vector2(-enemyMovement, rb2d.velocity.y);
-            if (Physics2D.Raycast(transform.position, Vector2.left, 0.6f, flipCollider))
-            {
-                transform.eulerAngles = new Vector2(0, 0);
-                rotate = false;
-                Debug.Log("aaaaaaa");
-            }
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.CompareTag("Wall"))
+        {
+            if(rotate == false)
+            {
+                transform.eulerAngles = new Vector2(0, 180);
+                rotate = true;
+            }
+            else
+            {
+                transform.eulerAngles = new Vector2(0, 0);
+                rotate = false;
+            }
+
+        }
+    }
 
     private void Jump()
     {

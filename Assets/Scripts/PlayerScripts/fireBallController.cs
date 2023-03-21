@@ -11,11 +11,13 @@ public class fireBallController : MonoBehaviour
 
     public Vector2 direction;
     EnemyMovementT enemyMovementT;
+    JumpBossMovement jumpBossMovement;
 
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         enemyMovementT = GetComponent<EnemyMovementT>();
+        jumpBossMovement = GetComponent<JumpBossMovement>();
     }
 
     // Start is called before the first frame update
@@ -37,7 +39,7 @@ public class fireBallController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Si el shuriken choca contra el player, se rompe y el enemy muere
-        if (collision.CompareTag("Enemy"))
+        if (collision.TryGetComponent<JumpBossMovement> (out JumpBossMovement bossBehaviour))
         {
             //collision.GetComponent<testPlayerController>().die();
 
@@ -46,13 +48,17 @@ public class fireBallController : MonoBehaviour
             player.die();
             */
             //Destroy(gameObject);
-            collision.GetComponent<EnemyMovementT>().Die();
+            bossBehaviour.Die();
+            Destroy(gameObject);
+        }
+        if(collision.TryGetComponent<EnemyMovementT> (out EnemyMovementT enemyTBehaviour))
+        {
+            enemyTBehaviour.Die();
             Destroy(gameObject);
 
         }
-            
-
-        if (collision.CompareTag("Floor"))
+        if(collision.CompareTag("Floor") || collision.CompareTag("Wall"))
             Destroy(gameObject);
+
     }
 }
