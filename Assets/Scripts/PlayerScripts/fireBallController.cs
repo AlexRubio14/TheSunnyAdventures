@@ -11,11 +11,15 @@ public class fireBallController : MonoBehaviour
 
     public Vector2 direction;
     EnemyMovementT enemyMovementT;
+    EnemyMovementV enemyMovementV;
+    EnemyMovementM enemyMovementM;
 
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         enemyMovementT = GetComponent<EnemyMovementT>();
+        enemyMovementV = GetComponent<EnemyMovementV>();
+        enemyMovementM = GetComponent<EnemyMovementM>();
     }
 
     // Start is called before the first frame update
@@ -47,6 +51,8 @@ public class fireBallController : MonoBehaviour
             */
             //Destroy(gameObject);
             collision.GetComponent<EnemyMovementT>().Die();
+            collision.GetComponent<EnemyMovementV>().Die();
+            collision.GetComponent<EnemyMovementM>().Die();
             Destroy(gameObject);
 
         }

@@ -78,14 +78,9 @@ public class EnemyMovementM : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
-        //Disable the enemy
-        GetComponent<BoxCollider2D>().enabled = false;
-        this.enabled = false;
         Destroy(gameObject);
-
-        Debug.Log("Enemy died!");
     } 
 
 }
