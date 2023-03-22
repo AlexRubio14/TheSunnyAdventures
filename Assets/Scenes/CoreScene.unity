@@ -5323,7 +5323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallDelay: 2
-  destroyDelay: 1
+  destroyDelay: 3
 --- !u!50 &459311378
 Rigidbody2D:
   serializedVersion: 4
