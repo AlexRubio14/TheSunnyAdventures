@@ -18,6 +18,13 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private float jumpForce;
     public bool isJumping;
+    //CoyoteJump
+    [SerializeField]
+    private float maxCoyote;
+    private float timerCoyote;
+
+   
+    
 
     //Rotation
     public bool fliped = false;
@@ -87,17 +94,25 @@ public class playerController : MonoBehaviour
             anim.SetBool("Attack", true);
         }
 
-        if (Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast, floorLayer))
+        if (!Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast, floorLayer))
+        {
+            timerCoyote += Time.deltaTime;
+        }
+
+
+            if (Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast, floorLayer))
         {
             isJumping = false;
-
+            timerCoyote = 0;
         }
+
         else if (!Input.GetKey(KeyCode.Space) || rb2d.velocity.y < 0)
         {
-            
+
             isJumping = true;
             rb2d.velocity = new Vector2(rb2d.velocity.x, -jumpForce);
         }
+
         else
             isJumping = true;
 
@@ -135,7 +150,7 @@ public class playerController : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
+        if (Input.GetKeyDown(KeyCode.Space) && (!isJumping || timerCoyote <= maxCoyote))
         {
             //Apply JumpForce
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
