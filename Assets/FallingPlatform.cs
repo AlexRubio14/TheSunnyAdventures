@@ -5,10 +5,11 @@ using UnityEngine;
 public class FallingPlatform : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    private BoxCollider2D boxCollider2D;
+    [SerializeField]
+    private Collider2D Collider2D;
 
     [SerializeField]
-    private float fallDelay = 3f;
+    private float fallDelay = 0.75f;
     [SerializeField]
     private float destroyDelay = 3f;
     float timeWasted;
@@ -18,20 +19,20 @@ public class FallingPlatform : MonoBehaviour
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        boxCollider2D = GetComponent<BoxCollider2D>();  
+        spriteRenderer = GetComponent<SpriteRenderer>();     
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+  
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             colisionActivada = true;
-        }      
+        }
     }
 
     private void Update()
     {
-        if (colisionActivada == true && empiezaContador == false)
+        if (colisionActivada && !empiezaContador)
         {
             timeWasted += Time.deltaTime;
    
@@ -42,10 +43,10 @@ public class FallingPlatform : MonoBehaviour
                 colisionActivada = false;
                 empiezaContador = true;
                 spriteRenderer.enabled = false;
-                boxCollider2D.enabled = false;
+                Collider2D.enabled = false;
             }
         }
-        if(colisionActivada == false && empiezaContador == true)
+        if(!colisionActivada && empiezaContador)
         {
             timeWaited += Time.deltaTime;
      
@@ -55,7 +56,7 @@ public class FallingPlatform : MonoBehaviour
                 timeWaited = 0;
                 empiezaContador = false;
                 spriteRenderer.enabled = true;
-                boxCollider2D.enabled = true;
+                Collider2D.enabled = true;
             }
         }
     }
