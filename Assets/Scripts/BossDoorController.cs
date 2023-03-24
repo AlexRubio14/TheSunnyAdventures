@@ -11,7 +11,7 @@ public class BossDoorController : MonoBehaviour
 
     private void Awake()
     {
-       SunnyDeathController = GetComponent<SunnyDeathController>();
+       SunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
        enter = false;
     }
 
@@ -35,5 +35,10 @@ public class BossDoorController : MonoBehaviour
     public bool GetEnter()
     {
         return enter;
+    }
+
+    public void SetEnter(bool value)
+    {
+        enter = value;
     }
 }

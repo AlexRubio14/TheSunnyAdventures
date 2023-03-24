@@ -32,23 +32,22 @@ public class JumpBossMovement : MonoBehaviour
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        doorController = GetComponent<BossDoorController>();
+        doorController = GameObject.FindGameObjectWithTag("Door").GetComponent<BossDoorController>();
         jumpBossMovement = GetComponent<JumpBossMovement>();
-        sunnyDeathController = GetComponent<SunnyDeathController>();
+        sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
 
         isGrounded = true;
     }
 
     private void Update()
     {
-        Behaviour();
-       //if(doorController.GetEnter() == true)
-       // {
-       //     Behaviour();
-       // }
-        if(sunnyDeathController.GetAlive() == false)
+        if (doorController.GetEnter())
         {
-            jumpBossMovement.enabled = false;
+            Behaviour();
+        }
+        if (sunnyDeathController.GetAlive() == false)
+        {
+            doorController.SetEnter(false);
         }
     }
 

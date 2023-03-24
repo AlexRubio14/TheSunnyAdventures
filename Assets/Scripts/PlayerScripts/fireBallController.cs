@@ -31,8 +31,6 @@ public class fireBallController : MonoBehaviour
         Destroy(gameObject, 5);
     }
 
-    // Update is called once per frame
-
     //Movimiento del shuriken, Vector * alfa * deltatime (Para que los shuriken vayan a la misma velocidad en todos los pc)
     void Update()
     {
@@ -45,17 +43,7 @@ public class fireBallController : MonoBehaviour
         //Si el shuriken choca contra el player, se rompe y el enemy muere
         if (collision.TryGetComponent<JumpBossMovement> (out JumpBossMovement bossBehaviour))
         {
-            //collision.GetComponent<testPlayerController>().die();
-
-            /*
-            playerController player = collision.GetComponent<playerController>();  // Cambiar cuando me pasen el enemy
-            player.die();
-            */
-            //Destroy(gameObject);
             bossBehaviour.Die();
-       
-            
-            collision.GetComponent<EnemyMovementM>().Die();
             Destroy(gameObject);
         }
 
@@ -79,6 +67,5 @@ public class fireBallController : MonoBehaviour
         }
         if(collision.CompareTag("Floor") || collision.CompareTag("Wall"))
             Destroy(gameObject);
-
     }
 }
