@@ -52,12 +52,26 @@ public class fireBallController : MonoBehaviour
             player.die();
             */
             //Destroy(gameObject);
-            collision.GetComponent<EnemyMovementT>().Die();
-            collision.GetComponent<EnemyMovementV>().Die();
+            bossBehaviour.Die();
+       
+            
             collision.GetComponent<EnemyMovementM>().Die();
             Destroy(gameObject);
         }
-        if(collision.TryGetComponent<EnemyMovementT> (out EnemyMovementT enemyTBehaviour))
+
+        if(collision.TryGetComponent<EnemyMovementV>(out EnemyMovementV enemyVBehaviour))
+        {
+            enemyVBehaviour.Die();
+            Destroy(gameObject);
+        }
+
+        if (collision.TryGetComponent<EnemyMovementM>(out EnemyMovementM enemyMBehaviour))
+        {
+            enemyMBehaviour.Die();
+            Destroy(gameObject);
+        }
+
+        if (collision.TryGetComponent<EnemyMovementT> (out EnemyMovementT enemyTBehaviour))
         {
             enemyTBehaviour.Die();
             Destroy(gameObject);

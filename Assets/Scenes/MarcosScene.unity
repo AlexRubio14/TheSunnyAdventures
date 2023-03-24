@@ -511,11 +511,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5388753755929336639, guid: 6c945676f5f741740ab97e69b741f586, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.54
+      value: 22.099617
       objectReference: {fileID: 0}
     - target: {fileID: 5388753755929336639, guid: 6c945676f5f741740ab97e69b741f586, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.62
+      value: 6.4860573
       objectReference: {fileID: 0}
     - target: {fileID: 5388753755929336639, guid: 6c945676f5f741740ab97e69b741f586, type: 3}
       propertyPath: m_LocalPosition.z
@@ -683,11 +683,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 57.16
+      value: 29.62
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 34.58
+      value: 23.77
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4900,7 +4900,7 @@ GameObject:
   - component: {fileID: 1238032458}
   - component: {fileID: 1238032457}
   - component: {fileID: 1238032456}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}

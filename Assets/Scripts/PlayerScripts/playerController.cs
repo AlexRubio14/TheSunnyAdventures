@@ -94,6 +94,7 @@ public class playerController : MonoBehaviour
         }
         else if (!Input.GetKey(KeyCode.Space) || rb2d.velocity.y < 0)
         {
+            
             isJumping = true;
             rb2d.velocity = new Vector2(rb2d.velocity.x, -jumpForce);
         }
