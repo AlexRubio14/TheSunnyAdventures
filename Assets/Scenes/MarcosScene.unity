@@ -726,11 +726,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 54.37
+      value: 60.26
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 33.71
+      value: 32.67
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8791,9 +8791,9 @@ GameObject:
   - component: {fileID: 1724869953}
   - component: {fileID: 1724869952}
   - component: {fileID: 1724869951}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8818,7 +8818,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1724869952
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8861,9 +8861,6 @@ MonoBehaviour:
   minJumpForce: 5
   jumpForce: 8.872973
   enemyMovement: 5
-  flipCollider:
-    serializedVersion: 2
-    m_Bits: 128
   floorLayer:
     serializedVersion: 2
     m_Bits: 64
