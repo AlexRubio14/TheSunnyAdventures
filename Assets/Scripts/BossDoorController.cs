@@ -6,9 +6,34 @@ public class BossDoorController : MonoBehaviour
 {
 
     public GameObject door;
+    SunnyDeathController SunnyDeathController;
+    bool enter;
+
+    private void Awake()
+    {
+       SunnyDeathController = GetComponent<SunnyDeathController>();
+       enter = false;
+    }
+
+    private void Update()
+    {
+        if (SunnyDeathController.GetAlive() == false)
+        {
+            door.SetActive(false);
+        }
+    }
+    
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+        {
             door.SetActive(true);
+            enter = true;
+        }
+    }
+
+    public bool GetEnter()
+    {
+        return enter;
     }
 }

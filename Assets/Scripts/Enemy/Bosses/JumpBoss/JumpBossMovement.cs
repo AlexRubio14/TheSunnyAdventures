@@ -25,34 +25,30 @@ public class JumpBossMovement : MonoBehaviour
 
     Rigidbody2D rb2d;
 
+    BossDoorController doorController;
+    JumpBossMovement jumpBossMovement;
+    SunnyDeathController sunnyDeathController;
 
-    void Start()
+    private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        doorController = GetComponent<BossDoorController>();
+        jumpBossMovement = GetComponent<JumpBossMovement>();
+        sunnyDeathController = GetComponent<SunnyDeathController>();
 
         isGrounded = true;
     }
 
     private void Update()
     {
-        if (isGrounded)
+        Behaviour();
+       //if(doorController.GetEnter() == true)
+       // {
+       //     Behaviour();
+       // }
+        if(sunnyDeathController.GetAlive() == false)
         {
-            Jump();
-        }
-        else if (Physics2D.Raycast(transform.position, Vector2.down, 0.6f, floorLayer))
-        {
-            isGrounded = true;
-        }
-        
-        
-        if (rotate == false)
-        {
-            rb2d.velocity = new Vector2(enemyMovement, rb2d.velocity.y);
-         
-        }
-        else
-        {
-            rb2d.velocity = new Vector2(-enemyMovement, rb2d.velocity.y);
+            jumpBossMovement.enabled = false;
         }
     }
 
@@ -86,4 +82,28 @@ public class JumpBossMovement : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    private void Behaviour()
+    {
+        if (isGrounded)
+        {
+            Jump();
+        }
+        else if (Physics2D.Raycast(transform.position, Vector2.down, 0.6f, floorLayer))
+        {
+            isGrounded = true;
+        }
+
+
+        if (rotate == false)
+        {
+            rb2d.velocity = new Vector2(enemyMovement, rb2d.velocity.y);
+
+        }
+        else
+        {
+            rb2d.velocity = new Vector2(-enemyMovement, rb2d.velocity.y);
+        }
+    }
+
 }

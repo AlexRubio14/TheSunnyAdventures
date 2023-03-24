@@ -9,12 +9,18 @@ public class SunnyDeathController : MonoBehaviour
         isAlive = value;
         StartCoroutine("TimeToRespawn");
     }
-  
 
+    public bool GetAlive()
+    {
+        return isAlive;
+    }
+
+    [SerializeField] private Transform respawnPoint;
     playerController playerController;
     EnemyMovementT enemyMovementT;
     SpriteRenderer sp;
     Transform position;
+
 
     [SerializeField]
     private float timeToRespawn;
@@ -25,7 +31,6 @@ public class SunnyDeathController : MonoBehaviour
         playerController = GetComponent<playerController>();
         sp = GetComponent<SpriteRenderer>();
         position = GetComponent<Transform>();
-        timeToRespawn = 5;
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -36,7 +41,7 @@ public class SunnyDeathController : MonoBehaviour
             setAlive(false);
             sp.enabled = false;
             playerController.enabled = false;
-            
+
         }
     }
     IEnumerator TimeToRespawn() 
@@ -47,4 +52,6 @@ public class SunnyDeathController : MonoBehaviour
         sp.enabled = true;
         playerController.enabled = true;
     }
+
+   
 }
