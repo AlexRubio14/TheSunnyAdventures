@@ -103,7 +103,6 @@ GameObject:
   - component: {fileID: 9152766392956456384}
   - component: {fileID: -3540917643391987682}
   - component: {fileID: 9152766392956456385}
-  - component: {fileID: 9152766392956456390}
   - component: {fileID: 9152766392956456389}
   - component: {fileID: 2303659723972991898}
   m_Layer: 0
@@ -197,6 +196,7 @@ MonoBehaviour:
   speed: 5
   jumpForce: 5
   isJumping: 0
+  maxCoyote: 0
   fliped: 0
   pointAttack: {fileID: 4073127029335469569}
   enemyLayer:
@@ -252,32 +252,6 @@ MonoBehaviour:
   dashingTime: 0.2
   dashForce: 20
   timeCanDash: 1
---- !u!61 &9152766392956456390
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9152766392956456250}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &9152766392956456389
 Rigidbody2D:
   serializedVersion: 4

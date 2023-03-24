@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
-
     // Animation
     private Animator anim;
 
@@ -14,17 +13,28 @@ public class playerController : MonoBehaviour
     private float movementDirection;
     public float direction => movementDirection;
 
+    //Raycast
+    [SerializeField]
+    private float rightRaycast;
+    [SerializeField]
+    private float leftRaycast;
     //Jump
     [SerializeField]
     private float jumpForce;
+    [SerializeField]
+    private float fallSpeed;
+    [SerializeField]
+    private float maxTimerFall;
+    [SerializeField]
+    private float timerFall;
+    [SerializeField]
+    private float maxJumpTimer;
+    private float minJumpTimer;
     public bool isJumping;
     //CoyoteJump
     [SerializeField]
     private float maxCoyote;
     private float timerCoyote;
-
-   
-    
 
     //Rotation
     public bool fliped = false;
@@ -54,18 +64,18 @@ public class playerController : MonoBehaviour
 
     private void Awake()
     {
-      rb2d = GetComponent<Rigidbody2D>();
-      sp = GetComponent<SpriteRenderer>();
-      playerDash = GetComponent<PlayerDash>();
-      anim = GetComponent<Animator>();
-      distanceRayCast = 0.6f;
-     
+        rb2d = GetComponent<Rigidbody2D>();
+        sp = GetComponent<SpriteRenderer>();
+        playerDash = GetComponent<PlayerDash>();
+        anim = GetComponent<Animator>();
+        distanceRayCast = 0.6f;
 
     }
 
     private void Update()
     {
-        Debug.DrawRay(transform.position, Vector2.down, Color.red);
+        Debug.DrawRay(transform.position + (Vector3.right * rightRaycast), Vector2.down * distanceRayCast, Color.red);
+        Debug.DrawRay(transform.position + (Vector3.left * leftRaycast), Vector2.down * distanceRayCast, Color.red);
 
         movementDirection = Input.GetAxisRaw("Horizontal");
         playerDash.WaitCD();
@@ -94,29 +104,6 @@ public class playerController : MonoBehaviour
             anim.SetBool("Attack", true);
         }
 
-        if (!Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast, floorLayer))
-        {
-            timerCoyote += Time.deltaTime;
-        }
-
-
-            if (Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast, floorLayer))
-        {
-            isJumping = false;
-            timerCoyote = 0;
-        }
-
-        else if (!Input.GetKey(KeyCode.Space) || rb2d.velocity.y < 0)
-        {
-
-            isJumping = true;
-            rb2d.velocity = new Vector2(rb2d.velocity.x, -jumpForce);
-        }
-
-        else
-            isJumping = true;
-
-
         if (playerDash.GetIsDashing())
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
@@ -124,7 +111,7 @@ public class playerController : MonoBehaviour
 
     }
 
-
+    #region FLIP
     private void flip()
     {
         if(!fliped && movementDirection < 0)
@@ -132,15 +119,25 @@ public class playerController : MonoBehaviour
             fliped = true;
             sp.flipX = true;
             pointAttack.transform.localPosition = new Vector2(-pointAttack.transform.localPosition.x, pointAttack.transform.localPosition.y);
+
+            float aux = leftRaycast;
+            leftRaycast = rightRaycast;
+            rightRaycast = aux;
         }
         else if(fliped && movementDirection > 0)
         {
             fliped = false;
             sp.flipX = false;
             pointAttack.transform.localPosition = new Vector2(-pointAttack.transform.localPosition.x, pointAttack.transform.localPosition.y);
+
+            float aux = leftRaycast;
+            leftRaycast = rightRaycast;
+            rightRaycast = aux;
         }
 
     }
+
+    #endregion
 
     private void Move()
     {
@@ -148,8 +145,33 @@ public class playerController : MonoBehaviour
             rb2d.velocity = new Vector2(speed * movementDirection, rb2d.velocity.y);
     }
 
+    #region JUMP
     private void Jump()
     {
+        if (!Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) && !Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
+        {
+            timerCoyote += Time.deltaTime;
+            timerFall += Time.deltaTime;
+            minJumpTimer *= Time.deltaTime;
+            fallSpeed += Time.deltaTime * 5;
+        }
+
+        if (Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) || Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
+        {
+            isJumping = false;
+            timerCoyote = 0;
+            timerFall = 0;
+            fallSpeed = 0;
+            minJumpTimer = 0;
+        }
+        else if (Input.GetKeyUp(KeyCode.Space) || timerFall > maxTimerFall)
+        {
+            isJumping = true;
+            rb2d.velocity = new Vector2(rb2d.velocity.x, -fallSpeed);
+        }
+        else
+            isJumping = true;
+
         if (Input.GetKeyDown(KeyCode.Space) && (!isJumping || timerCoyote <= maxCoyote))
         {
             //Apply JumpForce
@@ -157,6 +179,9 @@ public class playerController : MonoBehaviour
             isJumping = true;
         }
     }
+
+    #endregion 
+
     private void OnDrawGizmosSelected()
     {
         if (pointAttack == null)
@@ -165,6 +190,7 @@ public class playerController : MonoBehaviour
         Gizmos.DrawWireSphere(pointAttack.transform.position, attackRange);
     }
 
+    #region ATTACK
     void Attack()
     {
         //Detect enemies in range of attack 
@@ -181,5 +207,7 @@ public class playerController : MonoBehaviour
     {
         anim.SetBool("Attack", false);
     }
+
+    #endregion
 
 }
