@@ -1,68 +1,152 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mivi_playerController : MonoBehaviour
+public class playerController : MonoBehaviour
 {
-    
-    private Animator anim;
 
-    private Rigidbody2D rb2d;
-    private float distanceRayCast;
+    // Animation
+    private Animator anim;
 
     //Movement
     [SerializeField]
     private float speed;
-    private float movementDirection; 
+    private float movementDirection;
+    public float direction => movementDirection;
 
     //Jump
     [SerializeField]
     private float jumpForce;
-    bool isJumping;
-    int doubleJump;
+    public bool isJumping;
 
     //Rotation
-    private SpriteRenderer spr;
     public bool fliped = false;
+    private SpriteRenderer sp;
 
-    //ATTACK
+    //Dash
+    private PlayerDash playerDash;
+    private Rigidbody2D rb2d;
+    private float distanceRayCast;
+
+    //Attack
     public GameObject pointAttack;
     public LayerMask enemyLayer;
+
+    //Death
+    [SerializeField]
+    private LayerMask spikesLayer;
+
+    [SerializeField]
+    private LayerMask floorLayer;
 
     public float attackRange = 0.5f;
     public int attackDamage = 40;
 
-    //private CapsuleCollider2D capsuleCollider;
+
+
+
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        spr = GetComponent<SpriteRenderer>();
+        sp = GetComponent<SpriteRenderer>();
+        playerDash = GetComponent<PlayerDash>();
         anim = GetComponent<Animator>();
         distanceRayCast = 0.6f;
-        //capsuleCollider.size.y
+
+
     }
 
     private void Update()
     {
-        //MOVEMENT 
+        Debug.DrawRay(transform.position, Vector2.down, Color.red);
+
         movementDirection = Input.GetAxisRaw("Horizontal");
-        flip();
+        playerDash.WaitCD();
+
+        if (!playerDash.GetIsDashing())
+        {
+            flip();
+            Move();
+            Jump();
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            playerDash.Dash();
+        }
 
         //MOVEMENT ANIMATION 
         if (movementDirection > .1f || movementDirection < -.1f)
             anim.SetBool("Run", true);
         else
             anim.SetBool("Run", false);
-        //ATTACK 
 
         //ATTACK ANIMATION
         if (Input.GetKeyDown(KeyCode.LeftControl))
-            anim.SetBool("Attack", true); 
+        {
+            anim.SetBool("Attack", true);
+        }
+
+        if (Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast, floorLayer))
+        {
+            isJumping = false;
+
+        }
+        else
+            isJumping = true;
+
+
+        if (playerDash.GetIsDashing())
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+        }
+
     }
 
-    public void endAttack() //setup in attack animation
+
+    private void flip()
     {
-        anim.SetBool("Attack", false); 
+        if (!fliped && movementDirection < 0)
+        {
+            fliped = true;
+            sp.flipX = true;
+            pointAttack.transform.localPosition = new Vector2(-pointAttack.transform.localPosition.x, pointAttack.transform.localPosition.y);
+        }
+        else if (fliped && movementDirection > 0)
+        {
+            fliped = false;
+            sp.flipX = false;
+            pointAttack.transform.localPosition = new Vector2(-pointAttack.transform.localPosition.x, pointAttack.transform.localPosition.y);
+        }
+
+    }
+
+    private void Move()
+    {
+        //MOVEMENT ANIMATION
+        rb2d.velocity = new Vector2(speed * movementDirection, rb2d.velocity.y);
+    }
+
+    private void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
+        {
+            //Apply JumpForce
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+            isJumping = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Space) && !isJumping)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+            isJumping = true;
+        }
+    }
+    private void OnDrawGizmosSelected()
+    {
+        if (pointAttack == null)
+            return;
+
+        Gizmos.DrawWireSphere(pointAttack.transform.position, attackRange);
     }
 
     void Attack()
@@ -71,59 +155,16 @@ public class mivi_playerController : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(pointAttack.transform.position, attackRange, enemyLayer);
 
         //Damage them
-        foreach(Collider2D enemy in hitEnemies)
+        foreach (Collider2D enemy in hitEnemies)
         {
             Debug.Log("We hit an enemy");
             enemy.GetComponent<mivi_enemyHit>().TakeDamage(attackDamage);
         }
     }
-
-    private void OnDrawGizmosSelected()
+    public void endAttack() //setup in attack animation
     {
-        if (pointAttack == null) 
-            return;
-
-        Gizmos.DrawWireSphere(pointAttack.transform.position, attackRange);
+        anim.SetBool("Attack", false);
     }
 
-    private void FixedUpdate()
-    {
-        rb2d.velocity = new Vector2(speed * movementDirection, rb2d.velocity.y);
- 
-        if (Input.GetKey(KeyCode.Space) && !isJumping)
-        {
-            //Apply JumpForce
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-            doubleJump++;
-            isJumping = true;
-        }
-    }
+}*/
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Floor"))
-        {
-            if (Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast))
-            {
-                isJumping = false;
-            }
-        }
-    }
-
-    private void flip()
-    {
-        
-        if (!fliped && movementDirection < 0) //mira a derecha
-        {
-            fliped = true;
-            spr.flipX = true;
-            pointAttack.transform.localPosition = new Vector2(-pointAttack.transform.localPosition.x, pointAttack.transform.localPosition.y);
-        }
-        else if (fliped && movementDirection > 0) //mira a izquierda
-        {
-            fliped = false;
-            spr.flipX = false;
-            pointAttack.transform.localPosition = new Vector2(-pointAttack.transform.localPosition.x, pointAttack.transform.localPosition.y);
-        }
-    }
-}

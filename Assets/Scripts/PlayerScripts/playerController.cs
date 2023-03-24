@@ -42,6 +42,7 @@ public class playerController : MonoBehaviour
     //Death
     [SerializeField]
     private LayerMask spikesLayer;
+    
 
     [SerializeField]
     private LayerMask floorLayer;
@@ -115,7 +116,7 @@ public class playerController : MonoBehaviour
 
         else
             isJumping = true;
-
+       
 
         if (playerDash.GetIsDashing())
         {
