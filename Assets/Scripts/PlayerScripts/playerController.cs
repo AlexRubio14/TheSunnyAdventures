@@ -23,9 +23,6 @@ public class playerController : MonoBehaviour
     private float maxCoyote;
     private float timerCoyote;
 
-   
-    
-
     //Rotation
     public bool fliped = false;
     private SpriteRenderer sp;
@@ -42,6 +39,7 @@ public class playerController : MonoBehaviour
     //Death
     [SerializeField]
     private LayerMask spikesLayer;
+    public Transform m_respawnPoint;
 
     [SerializeField]
     private LayerMask floorLayer;
@@ -59,8 +57,6 @@ public class playerController : MonoBehaviour
       playerDash = GetComponent<PlayerDash>();
       anim = GetComponent<Animator>();
       distanceRayCast = 0.6f;
-     
-
     }
 
     private void Update()
@@ -122,6 +118,7 @@ public class playerController : MonoBehaviour
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         }
 
+        
     }
 
 
@@ -182,4 +179,8 @@ public class playerController : MonoBehaviour
         anim.SetBool("Attack", false);
     }
 
+    public void SetRespawnPoint(Transform respawnPoint)
+    {
+        m_respawnPoint = respawnPoint;
+    }
 }
