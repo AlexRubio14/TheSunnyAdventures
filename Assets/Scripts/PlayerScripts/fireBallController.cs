@@ -12,11 +12,15 @@ public class fireBallController : MonoBehaviour
     public Vector2 direction;
     EnemyMovementT enemyMovementT;
     JumpBossMovement jumpBossMovement;
+    EnemyMovementV enemyMovementV;
+    EnemyMovementM enemyMovementM;
 
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         enemyMovementT = GetComponent<EnemyMovementT>();
+        enemyMovementV = GetComponent<EnemyMovementV>();
+        enemyMovementM = GetComponent<EnemyMovementM>();
         jumpBossMovement = GetComponent<JumpBossMovement>();
     }
 
@@ -48,7 +52,9 @@ public class fireBallController : MonoBehaviour
             player.die();
             */
             //Destroy(gameObject);
-            bossBehaviour.Die();
+            collision.GetComponent<EnemyMovementT>().Die();
+            collision.GetComponent<EnemyMovementV>().Die();
+            collision.GetComponent<EnemyMovementM>().Die();
             Destroy(gameObject);
         }
         if(collision.TryGetComponent<EnemyMovementT> (out EnemyMovementT enemyTBehaviour))
