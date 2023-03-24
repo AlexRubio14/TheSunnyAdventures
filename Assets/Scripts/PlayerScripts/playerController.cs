@@ -59,7 +59,11 @@ public class playerController : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 40;
 
-    
+
+    [SerializeField]
+    private float fallMultiplier = 2.5f;
+    [SerializeField]
+    private float lowJumpMultiplier = 2f;
 
 
     private void Awake()
@@ -148,36 +152,22 @@ public class playerController : MonoBehaviour
     #region JUMP
     private void Jump()
     {
-        if (!Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) && !Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
-        {
-            timerCoyote += Time.deltaTime;
-            timerFall += Time.deltaTime;
-            minJumpTimer *= Time.deltaTime;
-            fallSpeed += Time.deltaTime * 5;
-        }
-
-        if (Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) || Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
-        {
-            isJumping = false;
-            timerCoyote = 0;
-            timerFall = 0;
-            fallSpeed = 0;
-            minJumpTimer = 0;
-        }
-        else if (Input.GetKeyUp(KeyCode.Space) || timerFall > maxTimerFall)
-        {
-            isJumping = true;
-            rb2d.velocity = new Vector2(rb2d.velocity.x, -fallSpeed);
-        }
-        else
-            isJumping = true;
-
-        if (Input.GetKeyDown(KeyCode.Space) && (!isJumping || timerCoyote <= maxCoyote))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             //Apply JumpForce
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-            isJumping = true;
         }
+
+        if (rb2d.velocity.y < 0)
+        {
+            rb2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb2d.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        {
+            rb2d.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+
+
     }
 
     #endregion 
