@@ -29,6 +29,7 @@ public class BossDoorController : MonoBehaviour
         {
             door.SetActive(true);
             enter = true;
+
         }
     }
 

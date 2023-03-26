@@ -15,7 +15,7 @@ public class EnemiesManager : MonoBehaviour
     EnemyMovementT[] enemyT;
     EnemyMovementM[] enemyM;
     EnemyMovementV[] enemyV;
-    SunnyDeathController sunnyDeathController;
+    JumpBossMovement JumpBossMovement;
     public static EnemiesManager Instance;
 
     private void Awake()
@@ -33,8 +33,7 @@ public class EnemiesManager : MonoBehaviour
         enemyT = FindObjectsOfType<EnemyMovementT>();
         enemyM = FindObjectsOfType<EnemyMovementM>();
         enemyV = FindObjectsOfType<EnemyMovementV>();
-
-        sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
+        JumpBossMovement = FindObjectOfType<JumpBossMovement>();
     }
     
 
@@ -76,5 +75,9 @@ public class EnemiesManager : MonoBehaviour
             item.gameObject.SetActive(true);
             //item.Restart();
         }
+
+        JumpBossMovement.Restart();
     }
+
+
 }

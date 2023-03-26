@@ -34,7 +34,9 @@ public class SunnyDeathController : MonoBehaviour
             StartCoroutine(TimeToRespawn(false));
             sp.enabled = false;
             playerController.enabled = false;
+            transform.position = playerController.m_respawnPoint.position;
             EnemiesManager.Instance.DisableEenemies();
+            
 
         }
     }
@@ -43,7 +45,7 @@ public class SunnyDeathController : MonoBehaviour
         isAlive = alive;
         yield return new WaitForSeconds(timeToRespawn);
         isAlive = !alive;
-        transform.position = playerController.m_respawnPoint.position;
+        
         sp.enabled = true;
         playerController.enabled = true;
         EnemiesManager.Instance.EnableEenemies();

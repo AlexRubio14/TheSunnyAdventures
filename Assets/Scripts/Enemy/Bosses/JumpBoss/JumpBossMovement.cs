@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JumpBossMovement : MonoBehaviour
 {
@@ -25,16 +26,19 @@ public class JumpBossMovement : MonoBehaviour
 
     Rigidbody2D rb2d;
 
+    [SerializeField]
+    Transform respawnPoint;
     BossDoorController doorController;
-    JumpBossMovement jumpBossMovement;
     SunnyDeathController sunnyDeathController;
+    SpriteRenderer sp;
+
 
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         doorController = GameObject.FindGameObjectWithTag("Door").GetComponent<BossDoorController>();
-        jumpBossMovement = GetComponent<JumpBossMovement>();
         sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
+        sp = GetComponent<SpriteRenderer>();
 
         isGrounded = true;
     }
@@ -47,6 +51,7 @@ public class JumpBossMovement : MonoBehaviour
         }
         if (sunnyDeathController.GetAlive() == false)
         {
+            sp.enabled = false;
             doorController.SetEnter(false);
         }
     }
@@ -65,7 +70,11 @@ public class JumpBossMovement : MonoBehaviour
                 transform.eulerAngles = new Vector2(0, 0);
                 rotate = false;
             }
+        }
 
+        if(collision.collider.CompareTag("FireBall"))
+        {
+            Die();
         }
     }
 
@@ -74,12 +83,19 @@ public class JumpBossMovement : MonoBehaviour
         jumpForce = Random.Range(minJumpForce, maxJumpForce);
         rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
         isGrounded = false;
-
     }
 
     public void Die()
     {
         Destroy(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void Restart()
+    {
+        rotate = false;
+        transform.position = respawnPoint.position;
+        sp.enabled = true;
     }
 
     private void Behaviour()
@@ -104,5 +120,4 @@ public class JumpBossMovement : MonoBehaviour
             rb2d.velocity = new Vector2(-enemyMovement, rb2d.velocity.y);
         }
     }
-
 }

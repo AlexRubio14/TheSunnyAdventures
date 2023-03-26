@@ -35,37 +35,20 @@ public class fireBallController : MonoBehaviour
     void Update()
     {
         rb2d.position += direction * velocity * Time.deltaTime;
-
-
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Si el shuriken choca contra el player, se rompe y el enemy muere
-        if (collision.TryGetComponent<JumpBossMovement> (out JumpBossMovement bossBehaviour))
+        if (collision.TryGetComponent<JumpBossMovement>(out JumpBossMovement bossBehaviour))
         {
             bossBehaviour.Die();
             Destroy(gameObject);
         }
 
-        if(collision.TryGetComponent<EnemyMovementV>(out EnemyMovementV enemyVBehaviour))
+        if (collision.CompareTag("Floor") || collision.CompareTag("Wall"))
         {
-            enemyVBehaviour.Die();
             Destroy(gameObject);
         }
-
-        if (collision.TryGetComponent<EnemyMovementM>(out EnemyMovementM enemyMBehaviour))
-        {
-            enemyMBehaviour.Die();
-            Destroy(gameObject);
-        }
-
-        if (collision.TryGetComponent<EnemyMovementT> (out EnemyMovementT enemyTBehaviour))
-        {
-            enemyTBehaviour.Die();
-            Destroy(gameObject);
-
-        }
-        if(collision.CompareTag("Floor") || collision.CompareTag("Wall"))
-            Destroy(gameObject);
     }
 }
