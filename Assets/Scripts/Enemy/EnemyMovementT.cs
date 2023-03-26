@@ -19,9 +19,6 @@ public class EnemyMovementT : MonoBehaviour
     Rigidbody2D rb2d;
     SunnyDeathController sunnyDeathController;
 
-    
-
-
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
