@@ -13,18 +13,40 @@ public class EnemyMovementT : MonoBehaviour
     [SerializeField]
     private bool rotate = false;
 
-    private Vector2 directionRayCast;
 
+    [SerializeField]
+    Transform respawnPoint;
     Rigidbody2D rb2d;
+    SunnyDeathController sunnyDeathController;
+
+    
 
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        directionRayCast = Vector2.right;
+        sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
     }
 
     private void Update()
+    {
+        if(sunnyDeathController.GetAlive())
+        {
+            Behaviour();
+        }
+    }
+    public void Die()
+    {
+        rotate = false;
+        gameObject.SetActive(false);
+    }
+
+    public void Restart()
+    {
+        transform.position = respawnPoint.position;
+    }
+
+    private void Behaviour()
     {
         if (rotate == false)
         {
@@ -45,9 +67,14 @@ public class EnemyMovementT : MonoBehaviour
             }
         }
     }
-    public void Die()
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if(collision.CompareTag("FireBall"))
+        {
+            Destroy(collision.gameObject);
+            Die();
+        }
     }
     
 }

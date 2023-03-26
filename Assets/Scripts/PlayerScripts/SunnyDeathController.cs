@@ -5,10 +5,6 @@ using UnityEngine;
 public class SunnyDeathController : MonoBehaviour
 {
     private bool isAlive;
-    void setAlive(bool value) { 
-        isAlive = value;
-        StartCoroutine("TimeToRespawn");
-    }
 
     public bool GetAlive()
     {
@@ -17,9 +13,7 @@ public class SunnyDeathController : MonoBehaviour
 
     [SerializeField] private Transform respawnPoint;
     playerController playerController;
-    EnemyMovementT enemyMovementT;
     SpriteRenderer sp;
-    Transform position;
 
 
     [SerializeField]
@@ -30,27 +24,29 @@ public class SunnyDeathController : MonoBehaviour
         isAlive = true;
         playerController = GetComponent<playerController>();
         sp = GetComponent<SpriteRenderer>();
-        position = GetComponent<Transform>();
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //We have to add if sunny touches the projectil of the mage
-        if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Spikes"))
+        if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Spikes") /* || collision.collider.CompareTag("MageBall")*/)
         {
-            setAlive(false);
+            StartCoroutine(TimeToRespawn(false));
             sp.enabled = false;
             playerController.enabled = false;
+            EnemiesManager.Instance.DisableEenemies();
 
         }
     }
-    IEnumerator TimeToRespawn() 
+    IEnumerator TimeToRespawn(bool alive) 
     {
+        isAlive = alive;
         yield return new WaitForSeconds(timeToRespawn);
-        isAlive = true;
+        isAlive = !alive;
         transform.position = playerController.m_respawnPoint.position;
         sp.enabled = true;
         playerController.enabled = true;
+        EnemiesManager.Instance.EnableEenemies();
     }
 
    
