@@ -21,6 +21,12 @@ public class EnemyMovementM : MonoBehaviour
     private Vector2 directionRayCast;
 
     Rigidbody2D rb2d;
+    SpriteRenderer sp;
+
+    private void Awake()
+    {
+        sp = GetComponent<SpriteRenderer>();
+    }
 
     void Start()
     {
@@ -81,6 +87,6 @@ public class EnemyMovementM : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
-    } 
+    }
 
 }

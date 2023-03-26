@@ -16,15 +16,47 @@ public class EnemyMovementV : MonoBehaviour
     [SerializeField]
     private bool rotate = false;
 
+    [SerializeField]
+    Transform respawnPoint;
     Rigidbody2D myRigidBody;
+    SunnyDeathController sunnyDeathController;
 
-    void Start()
+    private void Awake()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
+        sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
     }
 
     // Update is called once per frame
-    void Update()
+
+    private void Update()
+    {
+        if (sunnyDeathController.GetAlive())
+        {
+            Behaviour();
+        }
+    }
+
+    public void Die()
+    {
+        rotate = false;
+        gameObject.SetActive(false);
+    }
+
+    public void Restart()
+    {
+        transform.position = respawnPoint.position;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("FireBall"))
+        {
+            Destroy(collision.gameObject);
+            Die();
+        }
+    }
+
+    private void Behaviour()
     {
         if (transform.position.x < maxX && rotate == false)
         {
@@ -34,7 +66,6 @@ public class EnemyMovementV : MonoBehaviour
                 transform.eulerAngles = new Vector2(0, 180);
                 rotate = true;
             }
-
         }
         else if (transform.position.x > minX && rotate == true)
         {
@@ -44,14 +75,6 @@ public class EnemyMovementV : MonoBehaviour
                 transform.eulerAngles = new Vector2(0, 0);
                 rotate = false;
             }
-
         }
     }
-
-    public void Die()
-    {
-        Destroy(gameObject);
-    }
-
-
 }

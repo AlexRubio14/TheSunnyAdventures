@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TitleScreen.unity
     guid: c38f6f32ba5251c468655b4311b7f582
+  - enabled: 1
+    path: Assets/Scenes/MarcosScene.unity
+    guid: 72086f548da2aff4291b71a2c366f4ef
   - enabled: 0
     path: Assets/Scenes/MivisScene.unity
     guid: c92249a52e9b11e4e9dfff6e62c202df
