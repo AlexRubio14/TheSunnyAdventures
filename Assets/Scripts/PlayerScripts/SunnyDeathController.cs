@@ -13,6 +13,7 @@ public class SunnyDeathController : MonoBehaviour
 
     [SerializeField] private Transform respawnPoint;
     playerController playerController;
+    fireBallThrowController fireBallThrowController;
     SpriteRenderer sp;
 
 
@@ -24,6 +25,7 @@ public class SunnyDeathController : MonoBehaviour
         isAlive = true;
         playerController = GetComponent<playerController>();
         sp = GetComponent<SpriteRenderer>();
+        fireBallThrowController = gameObject.GetComponent<fireBallThrowController>();
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -34,6 +36,7 @@ public class SunnyDeathController : MonoBehaviour
             StartCoroutine(TimeToRespawn(false));
             sp.enabled = false;
             playerController.enabled = false;
+            fireBallThrowController.enabled = false;
             transform.position = playerController.m_respawnPoint.position;
             EnemiesManager.Instance.DisableEenemies();
             
@@ -48,6 +51,7 @@ public class SunnyDeathController : MonoBehaviour
         
         sp.enabled = true;
         playerController.enabled = true;
+        fireBallThrowController.enabled = true;
         EnemiesManager.Instance.EnableEenemies();
     }
 

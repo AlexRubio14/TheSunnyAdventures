@@ -12,7 +12,6 @@ public class TitlesScreen : MonoBehaviour
 
     public void ExitGame()
     {
-        Debug.Log("Salir...");
         Application.Quit();
     }
 }
