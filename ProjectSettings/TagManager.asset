@@ -11,6 +11,7 @@ TagManager:
   - FireBall
   - Checpoint1
   - Door
+  - Candelabro
   layers:
   - Default
   - TransparentFX
