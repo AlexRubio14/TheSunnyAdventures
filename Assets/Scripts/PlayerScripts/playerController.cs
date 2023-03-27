@@ -216,4 +216,9 @@ public class playerController : MonoBehaviour
     {
         m_respawnPoint = respawnPoint;
     }
+
+    public void SetFlip(bool flip)
+    {
+        sp.flipX = flip;
+    }
 }

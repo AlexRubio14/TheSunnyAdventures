@@ -48,7 +48,8 @@ public class SunnyDeathController : MonoBehaviour
         isAlive = alive;
         yield return new WaitForSeconds(timeToRespawn);
         isAlive = !alive;
-        
+        playerController.SetFlip(false);
+        playerController.fliped = false;
         sp.enabled = true;
         playerController.enabled = true;
         fireBallThrowController.enabled = true;

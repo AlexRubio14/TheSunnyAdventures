@@ -40,13 +40,12 @@ public class FallingPlatform : MonoBehaviour
             {
               
                 timeWasted = 0;
-                colisionActivada = false;
                 empiezaContador = true;
                 spriteRenderer.enabled = false;
                 Collider2D.enabled = false;
             }
         }
-        if(!colisionActivada && empiezaContador)
+        if(colisionActivada && empiezaContador)
         {
             timeWaited += Time.deltaTime;
      
@@ -57,6 +56,7 @@ public class FallingPlatform : MonoBehaviour
                 empiezaContador = false;
                 spriteRenderer.enabled = true;
                 Collider2D.enabled = true;
+                colisionActivada = false;
             }
         }
     }
