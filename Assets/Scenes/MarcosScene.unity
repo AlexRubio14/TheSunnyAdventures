@@ -785,9 +785,21 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2303659723972991898, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456250, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_Name
       value: Sunny
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456251, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456384, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_RootOrder

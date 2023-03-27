@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
-
     // Animation
     private Animator anim;
 
@@ -14,9 +13,18 @@ public class playerController : MonoBehaviour
     private float movementDirection;
     public float direction => movementDirection;
 
+    //Raycast
+    [SerializeField]
+    private float rightRaycast;
+    [SerializeField]
+    private float leftRaycast;
     //Jump
     [SerializeField]
     private float jumpForce;
+    [SerializeField]
+    private float fallMultiplier = 2.5f;
+    [SerializeField]
+    private float lowJumpMultiplier = 2f;
     public bool isJumping;
     //CoyoteJump
     [SerializeField]
@@ -47,11 +55,15 @@ public class playerController : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 40;
 
-    
-
 
     private void Awake()
     {
+        rb2d = GetComponent<Rigidbody2D>();
+        sp = GetComponent<SpriteRenderer>();
+        playerDash = GetComponent<PlayerDash>();
+        anim = GetComponent<Animator>();
+        distanceRayCast = 0.6f;
+
       rb2d = GetComponent<Rigidbody2D>();
       sp = GetComponent<SpriteRenderer>();
       playerDash = GetComponent<PlayerDash>();
@@ -61,7 +73,8 @@ public class playerController : MonoBehaviour
 
     private void Update()
     {
-        Debug.DrawRay(transform.position, Vector2.down, Color.red);
+        Debug.DrawRay(transform.position + (Vector3.right * rightRaycast), Vector2.down * distanceRayCast, Color.red);
+        Debug.DrawRay(transform.position + (Vector3.left * leftRaycast), Vector2.down * distanceRayCast, Color.red);
 
         movementDirection = Input.GetAxisRaw("Horizontal");
         playerDash.WaitCD();
@@ -121,7 +134,7 @@ public class playerController : MonoBehaviour
         
     }
 
-
+    #region FLIP
     private void flip()
     {
         if(!fliped && movementDirection < 0)
@@ -129,15 +142,25 @@ public class playerController : MonoBehaviour
             fliped = true;
             sp.flipX = true;
             pointAttack.transform.localPosition = new Vector2(-pointAttack.transform.localPosition.x, pointAttack.transform.localPosition.y);
+
+            float aux = leftRaycast;
+            leftRaycast = rightRaycast;
+            rightRaycast = aux;
         }
         else if(fliped && movementDirection > 0)
         {
             fliped = false;
             sp.flipX = false;
             pointAttack.transform.localPosition = new Vector2(-pointAttack.transform.localPosition.x, pointAttack.transform.localPosition.y);
+
+            float aux = leftRaycast;
+            leftRaycast = rightRaycast;
+            rightRaycast = aux;
         }
 
     }
+
+    #endregion
 
     private void Move()
     {
@@ -145,15 +168,33 @@ public class playerController : MonoBehaviour
             rb2d.velocity = new Vector2(speed * movementDirection, rb2d.velocity.y);
     }
 
+    #region JUMP
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && (!isJumping || timerCoyote <= maxCoyote))
+        if (Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) && Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
+            isJumping = false;
+
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             //Apply JumpForce
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-            isJumping = true;
+            isJumping = true;   
         }
+
+        if (rb2d.velocity.y < 0)
+        {
+            rb2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb2d.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        {
+            rb2d.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+
+
     }
+
+    #endregion 
+
     private void OnDrawGizmosSelected()
     {
         if (pointAttack == null)
@@ -162,6 +203,7 @@ public class playerController : MonoBehaviour
         Gizmos.DrawWireSphere(pointAttack.transform.position, attackRange);
     }
 
+    #region ATTACK
     void Attack()
     {
         //Detect enemies in range of attack 
@@ -178,6 +220,8 @@ public class playerController : MonoBehaviour
     {
         anim.SetBool("Attack", false);
     }
+
+    #endregion
 
     public void SetRespawnPoint(Transform respawnPoint)
     {
