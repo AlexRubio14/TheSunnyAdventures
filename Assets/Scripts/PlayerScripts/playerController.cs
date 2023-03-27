@@ -14,11 +14,10 @@ public class playerController : MonoBehaviour
     public float direction => movementDirection;
 
     //Raycast
-    [SerializeField]
     private float rightRaycast;
-    [SerializeField]
     private float leftRaycast;
-   
+    private float distanceRayCast;
+
     //Jump
     [SerializeField]
     private float jumpForce;
@@ -27,11 +26,6 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private float lowJumpMultiplier = 2f;
     public bool isJumping;
-   
-    //CoyoteJump
-    [SerializeField]
-    private float maxCoyote;
-    private float timerCoyote;
 
     //Rotation
     public bool fliped = false;
@@ -40,7 +34,6 @@ public class playerController : MonoBehaviour
     //Dash
     private PlayerDash playerDash;
     private Rigidbody2D rb2d;
-    private float distanceRayCast;
 
     //Attack
     public GameObject pointAttack;
@@ -59,17 +52,20 @@ public class playerController : MonoBehaviour
 
     private void Awake()
     {
-      rb2d = GetComponent<Rigidbody2D>();
-      sp = GetComponent<SpriteRenderer>();
-      playerDash = GetComponent<PlayerDash>();
-      anim = GetComponent<Animator>();
-      distanceRayCast = 0.6f;
+        rb2d = GetComponent<Rigidbody2D>();
+        sp = GetComponent<SpriteRenderer>();
+        playerDash = GetComponent<PlayerDash>();
+        anim = GetComponent<Animator>();
+        distanceRayCast = 0.6f;
+        rightRaycast = 0.12f;
+        leftRaycast = 0.25f;
+        isJumping = false;
     }
 
     private void Update()
     {
-        Debug.DrawRay(transform.position + (Vector3.right * rightRaycast), Vector2.down * distanceRayCast, Color.red);
-        Debug.DrawRay(transform.position + (Vector3.left * leftRaycast), Vector2.down * distanceRayCast, Color.red);
+        Debug.DrawLine(transform.position + (Vector3.right * rightRaycast), transform.position + (Vector3.right * rightRaycast) + (Vector3.down * distanceRayCast), Color.red);
+        Debug.DrawLine(transform.position + (Vector3.left * leftRaycast), transform.position + (Vector3.left * leftRaycast) + (Vector3.down * distanceRayCast), Color.red);
 
         movementDirection = Input.GetAxisRaw("Horizontal");
         playerDash.WaitCD();
@@ -80,6 +76,7 @@ public class playerController : MonoBehaviour
             Move();
             Jump();
         }
+        
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         { 
@@ -102,27 +99,6 @@ public class playerController : MonoBehaviour
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         }
-
-        //if (!Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast, floorLayer))
-        //{
-        //    timerCoyote += Time.deltaTime;
-        //}
-
-        //if (Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast, floorLayer))
-        //{
-        //    isJumping = false;
-        //    timerCoyote = 0;
-        //}
-
-        //else if (!Input.GetKey(KeyCode.Space) || rb2d.velocity.y < 0)
-        //{
-
-        //    isJumping = true;
-        //    rb2d.velocity = new Vector2(rb2d.velocity.x, -jumpForce);
-        //}
-
-        //else
-        //    isJumping = true;
     }
 
     #region FLIP
@@ -159,18 +135,32 @@ public class playerController : MonoBehaviour
             rb2d.velocity = new Vector2(speed * movementDirection, rb2d.velocity.y);
     }
 
+
     #region JUMP
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            if (Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) ||
+                Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
+            {
+                isJumping = false;
+            }
+        }
+    }
+
     private void Jump()
     {
-        if (Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) && Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
-            isJumping = false;
-
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             //Apply JumpForce
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-            isJumping = true;   
+            isJumping = true;
         }
+
+        if (isJumping)
+            Debug.Log("aaaaaaa");
 
         if (rb2d.velocity.y < 0)
         {
@@ -180,6 +170,8 @@ public class playerController : MonoBehaviour
         {
             rb2d.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+
+
     }
 
     #endregion 
