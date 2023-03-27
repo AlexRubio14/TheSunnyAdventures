@@ -159,9 +159,6 @@ public class playerController : MonoBehaviour
             isJumping = true;
         }
 
-        if (isJumping)
-            Debug.Log("aaaaaaa");
-
         if (rb2d.velocity.y < 0)
         {
             rb2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
