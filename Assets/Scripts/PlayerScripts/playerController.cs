@@ -27,11 +27,6 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private float lowJumpMultiplier = 2f;
     public bool isJumping;
-   
-    //CoyoteJump
-    [SerializeField]
-    private float maxCoyote;
-    private float timerCoyote;
 
     //Rotation
     public bool fliped = false;
@@ -59,17 +54,24 @@ public class playerController : MonoBehaviour
 
     private void Awake()
     {
-      rb2d = GetComponent<Rigidbody2D>();
-      sp = GetComponent<SpriteRenderer>();
-      playerDash = GetComponent<PlayerDash>();
-      anim = GetComponent<Animator>();
-      distanceRayCast = 0.6f;
+        rb2d = GetComponent<Rigidbody2D>();
+        sp = GetComponent<SpriteRenderer>();
+        playerDash = GetComponent<PlayerDash>();
+        anim = GetComponent<Animator>();
+        distanceRayCast = 0.6f;
+        isJumping = false;
     }
 
     private void Update()
     {
         Debug.DrawRay(transform.position + (Vector3.right * rightRaycast), Vector2.down * distanceRayCast, Color.red);
         Debug.DrawRay(transform.position + (Vector3.left * leftRaycast), Vector2.down * distanceRayCast, Color.red);
+
+        isJumping = true;
+        if (Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) || Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
+        {
+            isJumping = false;
+        }
 
         movementDirection = Input.GetAxisRaw("Horizontal");
         playerDash.WaitCD();
@@ -102,27 +104,6 @@ public class playerController : MonoBehaviour
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         }
-
-        //if (!Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast, floorLayer))
-        //{
-        //    timerCoyote += Time.deltaTime;
-        //}
-
-        //if (Physics2D.Raycast(transform.position, Vector2.down, distanceRayCast, floorLayer))
-        //{
-        //    isJumping = false;
-        //    timerCoyote = 0;
-        //}
-
-        //else if (!Input.GetKey(KeyCode.Space) || rb2d.velocity.y < 0)
-        //{
-
-        //    isJumping = true;
-        //    rb2d.velocity = new Vector2(rb2d.velocity.x, -jumpForce);
-        //}
-
-        //else
-        //    isJumping = true;
     }
 
     #region FLIP
@@ -162,14 +143,10 @@ public class playerController : MonoBehaviour
     #region JUMP
     private void Jump()
     {
-        if (Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) && Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
-            isJumping = false;
-
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             //Apply JumpForce
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-            isJumping = true;   
         }
 
         if (rb2d.velocity.y < 0)
