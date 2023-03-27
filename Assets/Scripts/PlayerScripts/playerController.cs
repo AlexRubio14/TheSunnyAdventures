@@ -22,14 +22,9 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private float jumpForce;
     [SerializeField]
-    private float fallSpeed;
+    private float fallMultiplier = 2.5f;
     [SerializeField]
-    private float maxTimerFall;
-    [SerializeField]
-    private float timerFall;
-    [SerializeField]
-    private float maxJumpTimer;
-    private float minJumpTimer;
+    private float lowJumpMultiplier = 2f;
     public bool isJumping;
     //CoyoteJump
     [SerializeField]
@@ -58,12 +53,6 @@ public class playerController : MonoBehaviour
 
     public float attackRange = 0.5f;
     public int attackDamage = 40;
-
-
-    [SerializeField]
-    private float fallMultiplier = 2.5f;
-    [SerializeField]
-    private float lowJumpMultiplier = 2f;
 
 
     private void Awake()
@@ -152,10 +141,14 @@ public class playerController : MonoBehaviour
     #region JUMP
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) && Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
+            isJumping = false;
+
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             //Apply JumpForce
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+            isJumping = true;   
         }
 
         if (rb2d.velocity.y < 0)
