@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMovement: 3
-  maxX: 36
-  minX: 28
+  maxX: 35
+  minX: 25
   rotate: 0
   respawnPoint: {fileID: 5884191155579841890}
 --- !u!50 &1146088198204494094
