@@ -37,10 +37,4 @@ public class mivi_enemyHit : MonoBehaviour
 
         Debug.Log("Enemy died!");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
