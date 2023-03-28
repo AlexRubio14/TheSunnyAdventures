@@ -78,7 +78,7 @@ public class playerController : MonoBehaviour
         }
         
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Z))
         { 
             playerDash.Dash();
         }
