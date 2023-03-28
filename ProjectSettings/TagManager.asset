@@ -12,6 +12,7 @@ TagManager:
   - Checpoint1
   - Door
   - Candelabro
+  - AttackPoint
   layers:
   - Default
   - TransparentFX

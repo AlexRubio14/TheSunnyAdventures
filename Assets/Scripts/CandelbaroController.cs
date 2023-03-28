@@ -5,45 +5,25 @@ using static UnityEditor.Progress;
 
 public class CandelbaroController : MonoBehaviour
 {
-    //[SerializeField]
-    //GameObject[] platform;
-
-    //[SerializeField]
-    //private bool lighten;
-
-    //private void Awake()
-    //{
-        
-    //}
-
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("FireBall"))
-    //    {
-    //        Destroy(collision.gameObject);
-    //        lighten = !lighten;
-            
-    //        foreach (GameObject elem in platform)
-    //        {
-    //            elem.SetActive(true);
-    //        }
-    //    }
-    //}
-
     [SerializeField]
     GameObject[] platform;
+
+    playerController playerController; 
 
     [SerializeField]
     private bool lighten;
 
+    private void Awake()
+    {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>();
+    }
    
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (lighten)
         {
-            if (collision.gameObject.CompareTag("Player"))
+            if (collision.gameObject.CompareTag("Player") && playerController.GetAnimAttack())
             {
                 lighten = false;
                 foreach (GameObject elem in platform)
@@ -66,4 +46,5 @@ public class CandelbaroController : MonoBehaviour
             }
         }
     }
+
 }
