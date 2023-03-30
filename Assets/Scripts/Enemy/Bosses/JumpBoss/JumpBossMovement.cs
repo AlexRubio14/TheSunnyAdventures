@@ -52,7 +52,7 @@ public class JumpBossMovement : MonoBehaviour
         if (sunnyDeathController.GetAlive() == false)
         {
             sp.enabled = false;
-            doorController.SetEnter(false);
+            doorController.SetEnter(false);       
         }
     }
 
@@ -96,6 +96,7 @@ public class JumpBossMovement : MonoBehaviour
         rotate = false;
         transform.position = respawnPoint.position;
         sp.enabled = true;
+        sp.flipX = true;
     }
 
     private void Behaviour()
@@ -104,7 +105,7 @@ public class JumpBossMovement : MonoBehaviour
         {
             Jump();
         }
-        else if (Physics2D.Raycast(transform.position, Vector2.down, 0.6f, floorLayer))
+        else if (Physics2D.Raycast(transform.position, Vector2.down, 2.2f, floorLayer))
         {
             isGrounded = true;
         }
