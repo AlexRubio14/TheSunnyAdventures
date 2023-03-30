@@ -92,7 +92,7 @@ public class playerController : MonoBehaviour
         //ATTACK ANIMATION
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            anim.SetBool("Attack", true);
+            anim.SetBool("Attack", true); 
         }
 
         if (playerDash.GetIsDashing())
@@ -210,4 +210,17 @@ public class playerController : MonoBehaviour
     {
         sp.flipX = flip;
     }
+
+
+
+    public bool GetAnimAttack()
+    {
+        return anim.GetBool("Attack");
+    }
+
+
+
+
+
+
 }
