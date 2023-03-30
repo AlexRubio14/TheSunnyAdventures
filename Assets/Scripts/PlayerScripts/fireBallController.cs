@@ -31,7 +31,6 @@ public class fireBallController : MonoBehaviour
         Destroy(gameObject, 5);
     }
 
-    //Movimiento del shuriken, Vector * alfa * deltatime (Para que los shuriken vayan a la misma velocidad en todos los pc)
     void Update()
     {
         rb2d.position += direction * velocity * Time.deltaTime;
@@ -39,7 +38,6 @@ public class fireBallController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Si el shuriken choca contra el player, se rompe y el enemy muere
         if (collision.TryGetComponent<JumpBossMovement>(out JumpBossMovement bossBehaviour))
         {
             bossBehaviour.Die();

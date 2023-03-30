@@ -5,7 +5,7 @@ using UnityEngine;
 public class SunnyDeathController : MonoBehaviour
 {
     private bool isAlive;
-
+    Rigidbody2D rb2d;
     public bool GetAlive()
     {
         return isAlive;
@@ -26,6 +26,7 @@ public class SunnyDeathController : MonoBehaviour
         playerController = GetComponent<playerController>();
         sp = GetComponent<SpriteRenderer>();
         fireBallThrowController = gameObject.GetComponent<fireBallThrowController>();
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -33,6 +34,7 @@ public class SunnyDeathController : MonoBehaviour
         //We have to add if sunny touches the projectil of the mage
         if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Spikes") /* || collision.collider.CompareTag("MageBall")*/)
         {
+            rb2d.velocity = new Vector2(0, 0);
             StartCoroutine(TimeToRespawn(false));
             sp.enabled = false;
             playerController.enabled = false;
