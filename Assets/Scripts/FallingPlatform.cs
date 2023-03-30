@@ -14,8 +14,8 @@ public class FallingPlatform : MonoBehaviour
     private float destroyDelay = 3f;
     float timeWasted;
     float timeWaited;
-    bool colisionActivada = false;
-    bool empiezaContador = false;
+    bool collisionActivated = false;
+    bool startCont = false;
 
     private void Start()
     {
@@ -26,13 +26,13 @@ public class FallingPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            colisionActivada = true;
+            collisionActivated = true;
         }
     }
 
     private void Update()
     {
-        if (colisionActivada && !empiezaContador)
+        if (collisionActivated && !startCont)
         {
             timeWasted += Time.deltaTime;
    
@@ -40,12 +40,12 @@ public class FallingPlatform : MonoBehaviour
             {
               
                 timeWasted = 0;
-                empiezaContador = true;
+                startCont = true;
                 spriteRenderer.enabled = false;
                 Collider2D.enabled = false;
             }
         }
-        if(colisionActivada && empiezaContador)
+        if(collisionActivated && startCont)
         {
             timeWaited += Time.deltaTime;
      
@@ -53,10 +53,10 @@ public class FallingPlatform : MonoBehaviour
             {
            
                 timeWaited = 0;
-                empiezaContador = false;
+                startCont = false;
                 spriteRenderer.enabled = true;
                 Collider2D.enabled = true;
-                colisionActivada = false;
+                collisionActivated = false;
             }
         }
     }
