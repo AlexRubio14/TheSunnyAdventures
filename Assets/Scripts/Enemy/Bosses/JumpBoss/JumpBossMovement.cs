@@ -22,7 +22,7 @@ public class JumpBossMovement : MonoBehaviour
     private LayerMask floorLayer;
 
     [SerializeField]
-    private bool rotate = false;
+    private bool rotate;
 
     Rigidbody2D rb2d;
 
@@ -39,6 +39,7 @@ public class JumpBossMovement : MonoBehaviour
         doorController = GameObject.FindGameObjectWithTag("Door").GetComponent<BossDoorController>();
         sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
         sp = GetComponent<SpriteRenderer>();
+        rotate = true;
 
         isGrounded = true;
     }
@@ -52,7 +53,7 @@ public class JumpBossMovement : MonoBehaviour
         if (sunnyDeathController.GetAlive() == false)
         {
             sp.enabled = false;
-            doorController.SetEnter(false);
+            doorController.SetEnter(false);       
         }
     }
 
@@ -62,13 +63,15 @@ public class JumpBossMovement : MonoBehaviour
         {
             if(rotate == false)
             {
-                transform.eulerAngles = new Vector2(0, 180);
+                //transform.eulerAngles = new Vector2(0, 180);
                 rotate = true;
+                sp.flipX = true;
             }
             else
             {
-                transform.eulerAngles = new Vector2(0, 0);
+                //transform.eulerAngles = new Vector2(0, 0);
                 rotate = false;
+                sp.flipX = false;
             }
         }
 
@@ -93,9 +96,10 @@ public class JumpBossMovement : MonoBehaviour
 
     public void Restart()
     {
-        rotate = false;
+        rotate = true;
         transform.position = respawnPoint.position;
         sp.enabled = true;
+        sp.flipX = true;
     }
 
     private void Behaviour()
@@ -104,15 +108,16 @@ public class JumpBossMovement : MonoBehaviour
         {
             Jump();
         }
-        else if (Physics2D.Raycast(transform.position, Vector2.down, 0.6f, floorLayer))
+        else if (Physics2D.Raycast(transform.position, Vector2.down, 2.2f, floorLayer))
         {
             isGrounded = true;
         }
 
 
-        if (rotate == false)
+        if (rotate == true)
         {
             rb2d.velocity = new Vector2(enemyMovement, rb2d.velocity.y);
+            
 
         }
         else
