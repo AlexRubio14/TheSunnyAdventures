@@ -194,9 +194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de9f68dd8a98f54781dde01243b6268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 9
   jumpForce: 8
-  fallMultiplier: 3.5
+  fallMultiplier: 5
   lowJumpMultiplier: 2
   fliped: 0
   pointAttack: {fileID: 4073127029335469569}
