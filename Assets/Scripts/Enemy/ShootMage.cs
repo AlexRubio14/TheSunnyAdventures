@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fireBallThrowController : MonoBehaviour
+public class ShootMage : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
@@ -14,11 +14,11 @@ public class fireBallThrowController : MonoBehaviour
 
     private float timeWaited = 0;
 
-    private playerController playerController;
+    private EnemyMovementM mage;
 
     private void Awake()
     {
-        playerController = GetComponent<playerController>();
+        mage = GetComponent<EnemyMovementM>();
     }
 
     // Update is called once per frame
@@ -33,21 +33,21 @@ public class fireBallThrowController : MonoBehaviour
 
     void ThrowShuriken()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        if (mage.GetEnemyMovement() == 0)
         {
             fireBallController currentFireBall;
             Vector3 posToSpawn = transform.position - transform.position;
             posToSpawn = posToSpawn.normalized * offset + transform.position;
             currentFireBall = Instantiate(fireBall, posToSpawn, Quaternion.identity).GetComponent<fireBallController>();
             timeWaited = 0;
-            if(!playerController.fliped)
-            {
+            //if (!enemy.fliped)
+            //{
                 currentFireBall.direction = Vector2.right;
-            }
-            else
-            {
-                currentFireBall.direction = -Vector2.right;
-            }
+            //}
+            //else
+            //{
+            //    currentFireBall.direction = -Vector2.right;
+            //}
         }
     }
 }

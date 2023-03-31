@@ -4,68 +4,81 @@ using UnityEngine;
 
 public class EnemyMovementM : MonoBehaviour
 {
-    //Movement
     [SerializeField]
     private float enemyMovement;
-    
-    //Health
-    [SerializeField]
-    private int maxHealth = 100;
-    int currentHealth;
 
-    //Rotation
+    [SerializeField]
+    private LayerMask floor;
+
     [SerializeField]
     private bool rotate = false;
+
     [SerializeField]
-    private LayerMask flipCollider;
-    private Vector2 directionRayCast;
-
+    Transform respawnPoint;
     Rigidbody2D rb2d;
-    SpriteRenderer sp;
+    SunnyDeathController sunnyDeathController;
 
-    private void Awake()
-    {
-        sp = GetComponent<SpriteRenderer>();
-    }
 
-    void Start()
+    void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
+    }
 
-        directionRayCast = Vector2.right;
-
-        currentHealth = maxHealth;
+    public void Die()
+    {
+        rotate = false;
+        gameObject.SetActive(false);
+    }
+    public void Restart()
+    {
+        transform.position = respawnPoint.position;
     }
 
     private void Update()
     {
+        if (sunnyDeathController.GetAlive())
+        {
+            Behaviour();
+        }
+    }
+
+    private void Behaviour()
+    {
         if (rotate == false)
         {
             rb2d.velocity = new Vector2(enemyMovement, rb2d.velocity.y);
-            if (Physics2D.Raycast(transform.position, Vector2.right, 0.6f, flipCollider) || !Physics2D.Raycast(transform.position + (Vector3.right * 0.5f), Vector2.down, 0.6f, flipCollider))
+            if (Physics2D.Raycast(transform.position, Vector2.right, 0.6f, floor) || !Physics2D.Raycast(transform.position + (Vector3.right * 0.5f), Vector2.down, 0.6f, floor))
             {
-                transform.eulerAngles = new Vector2(0, 180);
-                rotate= true;
+                transform.eulerAngles = new Vector2(0, 0);
+                rotate = true;
             }
         }
         else
         {
             rb2d.velocity = new Vector2(-enemyMovement, rb2d.velocity.y);
-            if (Physics2D.Raycast(transform.position, Vector2.left, 0.6f, flipCollider) || !Physics2D.Raycast(transform.position + (Vector3.left * 0.5f), Vector2.down, 0.6f, flipCollider))
+            if (Physics2D.Raycast(transform.position, Vector2.left, 0.6f, floor) || !Physics2D.Raycast(transform.position + (Vector3.left * 0.5f), Vector2.down, 0.6f, floor))
             {
-                transform.eulerAngles = new Vector2(0, 0);
-                rotate= false;
+                transform.eulerAngles = new Vector2(0, 180);
+                rotate = false;
             }
         }
     }
-     private void OnTriggerEnter2D(Collider2D collision)
-     {
-         if(collision.gameObject.CompareTag("Player"))
-         {
-             enemyMovement = 0;
-         }
-      
-     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            enemyMovement = 0;
+        }
+
+        if (collision.CompareTag("FireBall"))
+        {
+            Destroy(collision.gameObject);
+            Die();
+        }
+
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -74,19 +87,8 @@ public class EnemyMovementM : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public float GetEnemyMovement()
     {
-        currentHealth -= damage;
-
-        if (currentHealth < 0)
-        {
-            Die();
-        }
+        return enemyMovement;
     }
-
-    public void Die()
-    {
-        Destroy(gameObject);
-    }
-
 }
