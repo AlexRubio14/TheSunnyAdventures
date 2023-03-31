@@ -256,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashingTime: 0.2
   dashForce: 20
-  timeCanDash: 0.1
+  timeCanDash: 0.2
 --- !u!50 &9152766392956456389
 Rigidbody2D:
   serializedVersion: 4

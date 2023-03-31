@@ -25,7 +25,8 @@ public class playerController : MonoBehaviour
     private float fallMultiplier = 2.5f;
     [SerializeField]
     private float lowJumpMultiplier = 2f;
-    public bool isJumping;
+    private bool isJumping;
+    private bool isGrounded;
 
     //Rotation
     public bool fliped = false;
@@ -146,6 +147,11 @@ public class playerController : MonoBehaviour
                 Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
             {
                 isJumping = false;
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
             }
         }
     }
@@ -218,7 +224,10 @@ public class playerController : MonoBehaviour
         return anim.GetBool("Attack");
     }
 
-
+    public bool GetIsGrounded()
+    {
+        return isGrounded;
+    }
 
 
 

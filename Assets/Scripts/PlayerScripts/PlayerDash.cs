@@ -38,7 +38,7 @@ public class PlayerDash : MonoBehaviour
             {
                 isDashing = false;
                 rb.gravityScale = baseGravity;
-                if (timeWaited >= timeCanDash && !player.isJumping)
+                if (timeWaited >= timeCanDash && player.GetIsGrounded())
                 {
                     canDash = true;
                     timeWaited = 0;

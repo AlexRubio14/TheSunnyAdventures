@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
+
 
 public class CandelabroController : MonoBehaviour
 {
     [SerializeField]
     GameObject[] platform;
+
+    [SerializeField]
+    GameObject text;
 
     playerController playerController; 
 
@@ -20,7 +23,6 @@ public class CandelabroController : MonoBehaviour
     private void Awake()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>();
-       
     }
 
    
@@ -40,7 +42,8 @@ public class CandelabroController : MonoBehaviour
                 {
                     elem.gameObject.SetActive(true);
                 }
-            
+                text.gameObject.SetActive(false);
+
                 
             }
         }
