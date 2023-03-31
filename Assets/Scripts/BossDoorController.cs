@@ -7,12 +7,14 @@ public class BossDoorController : MonoBehaviour
 
     public GameObject door;
     SunnyDeathController SunnyDeathController;
+    [SerializeField]
+    GameObject jumpBoss;
     bool enter;
 
     private void Awake()
     {
-       SunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
-       enter = false;
+       SunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();  
+        enter = false; 
     }
 
     private void Update()
@@ -27,9 +29,9 @@ public class BossDoorController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            door.SetActive(true);
-            enter = true;
-
+           door.SetActive(true);
+           enter = true;
+           jumpBoss.SetActive(true);
         }
     }
 

@@ -40,7 +40,6 @@ public class JumpBossMovement : MonoBehaviour
         sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
         sp = GetComponent<SpriteRenderer>();
         rotate = true;
-
         isGrounded = true;
     }
 
@@ -52,8 +51,9 @@ public class JumpBossMovement : MonoBehaviour
         }
         if (sunnyDeathController.GetAlive() == false)
         {
-            sp.enabled = false;
-            doorController.SetEnter(false);       
+            doorController.SetEnter(false);
+            Restart();
+            gameObject.SetActive(false);
         }
     }
 
@@ -96,8 +96,8 @@ public class JumpBossMovement : MonoBehaviour
 
     public void Restart()
     {
-        rotate = true;
         transform.position = respawnPoint.position;
+        rotate = true;
         sp.enabled = true;
         sp.flipX = true;
     }
