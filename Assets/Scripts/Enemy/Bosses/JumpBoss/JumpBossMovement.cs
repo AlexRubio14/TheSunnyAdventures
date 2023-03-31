@@ -39,7 +39,7 @@ public class JumpBossMovement : MonoBehaviour
         doorController = GameObject.FindGameObjectWithTag("Door").GetComponent<BossDoorController>();
         sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
         sp = GetComponent<SpriteRenderer>();
-        rotate = true;
+        rotate = false;
         isGrounded = true;
     }
 
@@ -97,9 +97,9 @@ public class JumpBossMovement : MonoBehaviour
     public void Restart()
     {
         transform.position = respawnPoint.position;
-        rotate = true;
+        rotate = false;
         sp.enabled = true;
-        sp.flipX = true;
+        sp.flipX = false;
     }
 
     private void Behaviour()
