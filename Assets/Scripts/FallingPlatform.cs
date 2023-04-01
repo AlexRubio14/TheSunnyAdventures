@@ -6,7 +6,7 @@ public class FallingPlatform : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     [SerializeField]
-    private Collider2D Collider2D;
+    private Collider2D coll;
 
     [SerializeField]
     private float fallDelay = 0.75f;
@@ -20,8 +20,7 @@ public class FallingPlatform : MonoBehaviour
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>(); 
-        sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
   
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,7 +43,7 @@ public class FallingPlatform : MonoBehaviour
                 timeWasted = 0;
                 startCont = true;
                 spriteRenderer.enabled = false;
-                Collider2D.enabled = false;
+                coll.enabled = false;
             }
         }
         if(collisionActivated && startCont)
@@ -57,9 +56,18 @@ public class FallingPlatform : MonoBehaviour
                 timeWaited = 0;
                 startCont = false;
                 spriteRenderer.enabled = true;
-                Collider2D.enabled = true;
+                coll.enabled = true;
                 collisionActivated = false;
             }
         }
+    }
+
+    public void Restart()
+    {
+        timeWaited = 0;
+        startCont = false;
+        spriteRenderer.enabled = true;
+        coll.enabled = true;
+        collisionActivated = false;
     }
 }

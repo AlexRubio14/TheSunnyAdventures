@@ -15,7 +15,7 @@ public class EnemiesManager : MonoBehaviour
     EnemyMovementT[] enemyT;
     EnemyMovementM[] enemyM;
     EnemyMovementV[] enemyV;
-    JumpBossMovement jumpBossMovement;
+    FallingPlatform[] fallingPlatforms;
     public static EnemiesManager Instance;
 
     private void Awake()
@@ -33,7 +33,7 @@ public class EnemiesManager : MonoBehaviour
         enemyT = FindObjectsOfType<EnemyMovementT>();
         enemyM = FindObjectsOfType<EnemyMovementM>();
         enemyV = FindObjectsOfType<EnemyMovementV>();
-        jumpBossMovement = FindObjectOfType<JumpBossMovement>();
+        fallingPlatforms = FindObjectsOfType<FallingPlatform>();
     }
     
 
@@ -73,9 +73,12 @@ public class EnemiesManager : MonoBehaviour
         foreach (EnemyMovementM item in enemyM)
         {
             item.gameObject.SetActive(true);
-            //item.Restart();
         }
-        //jumpBossMovement.Restart();
+        foreach (FallingPlatform item in fallingPlatforms)
+        {
+            item.Restart();
+        }
+
     }
 
 

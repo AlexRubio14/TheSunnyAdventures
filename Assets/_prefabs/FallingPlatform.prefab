@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67cd714dc7a8a34a8b291c52a2daa54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Collider2D: {fileID: 6188843610487546256}
+  coll: {fileID: 6188843610487546256}
   fallDelay: 0.75
   destroyDelay: 3
 --- !u!61 &6188843610487546261
