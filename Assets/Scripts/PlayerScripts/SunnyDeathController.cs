@@ -6,10 +6,6 @@ public class SunnyDeathController : MonoBehaviour
 {
     private bool isAlive;
     Rigidbody2D rb2d;
-    public bool GetAlive()
-    {
-        return isAlive;
-    }
 
     [SerializeField] private Transform respawnPoint;
     playerController playerController;
@@ -41,8 +37,6 @@ public class SunnyDeathController : MonoBehaviour
             fireBallThrowController.enabled = false;
             transform.position = playerController.m_respawnPoint.position;
             EnemiesManager.Instance.DisableEenemies();
-            
-
         }
     }
     IEnumerator TimeToRespawn(bool alive) 
@@ -58,5 +52,9 @@ public class SunnyDeathController : MonoBehaviour
         EnemiesManager.Instance.EnableEenemies();
     }
 
-   
+    public bool GetAlive()
+    {
+        return isAlive;
+    }
+
 }

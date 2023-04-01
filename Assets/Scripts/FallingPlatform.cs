@@ -16,10 +16,12 @@ public class FallingPlatform : MonoBehaviour
     float timeWaited;
     bool collisionActivated = false;
     bool startCont = false;
+    SunnyDeathController sunnyDeathController;
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();     
+        spriteRenderer = GetComponent<SpriteRenderer>(); 
+        sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
     }
   
     private void OnTriggerEnter2D(Collider2D collision)
