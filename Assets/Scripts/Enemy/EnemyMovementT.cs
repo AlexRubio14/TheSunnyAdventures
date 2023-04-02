@@ -8,28 +8,47 @@ public class EnemyMovementT : MonoBehaviour
     private float enemyMovement;
 
     [SerializeField]
-    private LayerMask flipCollider;
+    private LayerMask floor;
 
     [SerializeField]
     private bool rotate = false;
 
-    private Vector2 directionRayCast;
 
+    [SerializeField]
+    Transform respawnPoint;
     Rigidbody2D rb2d;
+    SunnyDeathController sunnyDeathController;
 
-
-    void Start()
+    void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        directionRayCast = Vector2.right;
+        sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
     }
 
     private void Update()
     {
+        if(sunnyDeathController.GetAlive())
+        {
+            Behaviour();
+        }
+    }
+    public void Die()
+    {
+        rotate = false;
+        gameObject.SetActive(false);
+    }
+
+    public void Restart()
+    {
+        transform.position = respawnPoint.position;
+    }
+
+    private void Behaviour()
+    {
         if (rotate == false)
         {
             rb2d.velocity = new Vector2(enemyMovement, rb2d.velocity.y);
-            if (Physics2D.Raycast(transform.position, Vector2.right, 0.6f, flipCollider) || !Physics2D.Raycast(transform.position + (Vector3.right * 0.5f), Vector2.down, 0.6f, flipCollider))
+            if (Physics2D.Raycast(transform.position, Vector2.right, 0.6f, floor) || !Physics2D.Raycast(transform.position + (Vector3.right * 0.5f), Vector2.down, 0.6f, floor))
             {
                 transform.eulerAngles = new Vector2(0, 180);
                 rotate = true;
@@ -38,11 +57,21 @@ public class EnemyMovementT : MonoBehaviour
         else
         {
             rb2d.velocity = new Vector2(-enemyMovement, rb2d.velocity.y);
-            if (Physics2D.Raycast(transform.position, Vector2.left, 0.6f, flipCollider) || !Physics2D.Raycast(transform.position + (Vector3.left * 0.5f), Vector2.down, 0.6f, flipCollider))
+            if (Physics2D.Raycast(transform.position, Vector2.left, 0.6f, floor) || !Physics2D.Raycast(transform.position + (Vector3.left * 0.5f), Vector2.down, 0.6f, floor))
             {
                 transform.eulerAngles = new Vector2(0, 0);
                 rotate = false;
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("FireBall"))
+        {
+            Destroy(collision.gameObject);
+            Die();
+        }
+    }
+    
 }

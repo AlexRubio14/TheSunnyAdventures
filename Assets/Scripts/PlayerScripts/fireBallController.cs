@@ -10,10 +10,18 @@ public class fireBallController : MonoBehaviour
     private Rigidbody2D rb2d;
 
     public Vector2 direction;
+    EnemyMovementT enemyMovementT;
+    JumpBossMovement jumpBossMovement;
+    EnemyMovementV enemyMovementV;
+    EnemyMovementM enemyMovementM;
 
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        enemyMovementT = GetComponent<EnemyMovementT>();
+        enemyMovementV = GetComponent<EnemyMovementV>();
+        enemyMovementM = GetComponent<EnemyMovementM>();
+        jumpBossMovement = GetComponent<JumpBossMovement>();
     }
 
     // Start is called before the first frame update
@@ -23,30 +31,22 @@ public class fireBallController : MonoBehaviour
         Destroy(gameObject, 5);
     }
 
-    // Update is called once per frame
-
-    //Movimiento del shuriken, Vector * alfa * deltatime (Para que los shuriken vayan a la misma velocidad en todos los pc)
     void Update()
     {
         rb2d.position += direction * velocity * Time.deltaTime;
-
-
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Si el shuriken choca contra el player, se rompe y el player muere
-        if (collision.CompareTag("Enemy"))
+        if (collision.TryGetComponent<JumpBossMovement>(out JumpBossMovement bossBehaviour))
         {
-            //collision.GetComponent<testPlayerController>().die();
-            
-            /*
-            playerController player = collision.GetComponent<playerController>();  // Cambiar cuando me pasen el enemy
-            player.die();
-            */
+            bossBehaviour.Die();
             Destroy(gameObject);
-            
         }
-        if (collision.CompareTag("Floor"))
+
+        if (collision.CompareTag("Floor") || collision.CompareTag("Wall"))
+        {
             Destroy(gameObject);
+        }
     }
 }

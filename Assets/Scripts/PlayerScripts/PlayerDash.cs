@@ -9,6 +9,7 @@ public class PlayerDash : MonoBehaviour
     private float baseGravity;
     private float timeWaited;
 
+
     [Header("Dash")]
     [SerializeField]
     private float dashingTime = 0.2f;
@@ -18,14 +19,14 @@ public class PlayerDash : MonoBehaviour
     private float timeCanDash = 1f; // <- Cooldown
     private bool isDashing;
     private bool canDash = true;
-    public bool IsDashing => isDashing;
+    //public bool IsDashing => isDashing;
 
     private void Awake()
     {
         rb = GetComponent <Rigidbody2D>();
         player = GetComponent<playerController>();
         baseGravity = rb.gravityScale;
-
+        
     }
 
     public void WaitCD()
@@ -37,7 +38,7 @@ public class PlayerDash : MonoBehaviour
             {
                 isDashing = false;
                 rb.gravityScale = baseGravity;
-                if (timeWaited >= timeCanDash)
+                if (timeWaited >= timeCanDash && player.GetIsGrounded())
                 {
                     canDash = true;
                     timeWaited = 0;
@@ -54,5 +55,15 @@ public class PlayerDash : MonoBehaviour
                 rb.gravityScale = 0f;
                 rb.velocity = new Vector2(player.direction * dashForce, 0f);
             }
+    }
+
+    public bool GetIsDashing()
+    {
+        return isDashing;
+    }
+
+    public void SetIsDashing(bool isDashing)
+    {
+        this.isDashing = isDashing;
     }
 }

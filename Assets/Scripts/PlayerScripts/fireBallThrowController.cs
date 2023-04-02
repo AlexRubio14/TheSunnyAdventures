@@ -33,13 +33,13 @@ public class fireBallThrowController : MonoBehaviour
 
     void ThrowShuriken()
     {
-        if(Input.GetKeyDown(KeyCode.F))
+        if(Input.GetKeyDown(KeyCode.X))
         {
             fireBallController currentFireBall;
-          Vector3 posToSpawn = transform.position - transform.position;
-          posToSpawn = posToSpawn.normalized * offset + transform.position;
-          currentFireBall = Instantiate(fireBall, posToSpawn, Quaternion.identity).GetComponent<fireBallController>();
-          timeWaited = 0;
+            Vector3 posToSpawn = transform.position - transform.position;
+            posToSpawn = posToSpawn.normalized * offset + transform.position;
+            currentFireBall = Instantiate(fireBall, posToSpawn, Quaternion.identity).GetComponent<fireBallController>();
+            timeWaited = 0;
             if(!playerController.fliped)
             {
                 currentFireBall.direction = Vector2.right;

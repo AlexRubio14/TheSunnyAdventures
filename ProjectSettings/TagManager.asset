@@ -7,20 +7,27 @@ TagManager:
   - Floor
   - Enemy
   - Wall
+  - Spikes
+  - FireBall
+  - Checpoint1
+  - Door
+  - Candelabro
+  - AttackPoint
+  - MageBall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Floor
+  - 
   - Water
   - UI
   - Floor
   - FlipCollider
   - Spikes
   - Enemy
-  - 
-  - 
-  - 
+  - Boss Door Collider
+  - Falling Platform
+  - MageBall
   - 
   - 
   - 
