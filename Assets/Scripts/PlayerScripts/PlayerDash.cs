@@ -54,6 +54,8 @@ public class PlayerDash : MonoBehaviour
                 canDash = false;
                 rb.gravityScale = 0f;
                 rb.velocity = new Vector2(player.direction * dashForce, 0f);
+                player.SetIsJumping(true);
+
             }
     }
 

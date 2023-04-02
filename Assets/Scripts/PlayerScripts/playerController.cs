@@ -22,11 +22,13 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private float jumpForce;
     [SerializeField]
-    private float fallMultiplier = 2.5f;
+    private float fallSpeed;
     [SerializeField]
-    private float lowJumpMultiplier = 2f;
     private bool isJumping;
     private bool isGrounded;
+    [SerializeField]
+    float jumpTimer;
+    float jumpWaited = 0;
 
     //Rotation
     public bool fliped = false;
@@ -50,6 +52,7 @@ public class playerController : MonoBehaviour
 
     public float attackRange = 0.5f;
     public int attackDamage = 40;
+
 
     private void Awake()
     {
@@ -148,6 +151,7 @@ public class playerController : MonoBehaviour
             {
                 isJumping = false;
                 isGrounded = true;
+                jumpWaited = 0;
             }
             else
             {
@@ -158,20 +162,26 @@ public class playerController : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
+
+        if (Input.GetKey(KeyCode.Space) && !isJumping)
         {
             //Apply JumpForce
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
-            isJumping = true;
+
+            jumpWaited += Time.deltaTime;
+            if (jumpWaited >= jumpTimer)
+            {
+                isJumping = true;
+                rb2d.velocity = new Vector2(rb2d.velocity.x, fallSpeed);
+                jumpWaited = 0;
+            }
         }
 
-        if (rb2d.velocity.y < 0)
+        if (Input.GetKeyUp(KeyCode.Space) && !isJumping)
         {
-            rb2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-        else if (rb2d.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
-        {
-            rb2d.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            isJumping = true;
+            rb2d.velocity = new Vector2(rb2d.velocity.x, fallSpeed);
+            jumpWaited = 0;
         }
 
 
@@ -229,7 +239,10 @@ public class playerController : MonoBehaviour
         return isGrounded;
     }
 
-
+    public void SetIsJumping(bool _isJumping)
+    {
+        isJumping = _isJumping;
+    }
 
 
 }
