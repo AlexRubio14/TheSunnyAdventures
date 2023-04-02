@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: "Ilustracio\u0301n_sin_ti\u0301tulo-6"
+  m_Name: gardenmp
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: bde0d4bff8f1d654d87954fe2ccb4b3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ced20b8fdc80d2b4699bebc4359dfd39, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
