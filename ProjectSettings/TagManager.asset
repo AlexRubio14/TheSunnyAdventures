@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Floor
+  - Enemy
+  - Wall
+  - Spikes
+  - FireBall
+  - Checpoint1
+  - Door
+  - Candelabro
+  - AttackPoint
+  - MageBall
   layers:
   - Default
   - TransparentFX
@@ -11,13 +21,13 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Floor
+  - FlipCollider
+  - Spikes
+  - Enemy
+  - Boss Door Collider
+  - Falling Platform
+  - MageBall
   - 
   - 
   - 
