@@ -151,6 +151,7 @@ public class playerController : MonoBehaviour
             {
                 isJumping = false;
                 isGrounded = true;
+                jumpWaited = 0;
             }
             else
             {
