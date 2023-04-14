@@ -38,18 +38,37 @@ public class MovingPlatform : MonoBehaviour
     {
         if(active == true)
         {
-            rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
-            if(transform.position.x >= maxX)
+            if (maxX >= transform.position.x)
             {
-                speed = 0;
-                timer += Time.deltaTime;
-                if(timer >= delayDestroy)
+                rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
+                if (transform.position.x >= maxX-0.1)
                 {
-                    timer = 0;
-                    Destroy(gameObject);
+                    speed = 0;
+                    timer += Time.deltaTime;
+                    if (timer >= delayDestroy)
+                    {
+                        timer = 0;
+                        Destroy(gameObject);
+                    }
+
                 }
-                
             }
+            else
+            {
+                rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
+                if (transform.position.x <= maxX+0.1)
+                {
+                    speed = 0;
+                    timer += Time.deltaTime;
+                    if (timer >= delayDestroy)
+                    {
+                        timer = 0;
+                        Destroy(gameObject);
+                    }
+
+                }
+            }
+           
         }
     }
 }
