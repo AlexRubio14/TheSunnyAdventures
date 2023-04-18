@@ -44,9 +44,9 @@ public class fireBallController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.CompareTag("Floor") || collision.CompareTag("Wall"))
+        if (collision.CompareTag("Floor") || collision.CompareTag("Wall") || collision.CompareTag("Water"))
         {
             Destroy(gameObject);
-        }
+        }        
     }
 }
