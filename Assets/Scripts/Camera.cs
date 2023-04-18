@@ -5,6 +5,7 @@ using UnityEngine;
 public class Camera : MonoBehaviour
 {
     public GameObject virtualCam;
+    [SerializeField]
 
     private void OnTriggerEnter2D(Collider2D other)
     {

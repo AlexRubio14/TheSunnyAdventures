@@ -18,6 +18,7 @@ public class CandelabroController : MonoBehaviour
 
     [SerializeField]
     GameObject[] endDoor;
+    
 
 
     private void Awake()
