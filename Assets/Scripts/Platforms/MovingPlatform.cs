@@ -5,25 +5,45 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     playerController playerController;
-    Rigidbody2D rb2d;
+    private Rigidbody2D rb2d;
+    private SpriteRenderer sr;
+    private BoxCollider2D bc2d;
 
     [SerializeField]
     private float maxX;
     [SerializeField]
     private float speed;
+    private float realSpeed;
+
+    [SerializeField]
+    private float X;
+    private float Y;
+    private float Z;
 
     private bool active;
     [SerializeField]
     private float timer;
     [SerializeField]
     private float delayDestroy;
+    bool retorno = false;
+    bool direction = false;
 
 
     private void Awake()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>();
         rb2d = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        bc2d = GetComponent<BoxCollider2D>();
         active = false;
+        X = transform.position.x;
+        Y = transform.position.y;
+        Z = transform.position.z;
+        realSpeed = speed;
+        if (maxX >= transform.position.x)
+        {
+            direction = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,39 +56,71 @@ public class MovingPlatform : MonoBehaviour
 
     private void Update()
     {
-        if(active == true)
+        if (active == true)
         {
-            if (maxX >= transform.position.x)
+            if (retorno == false && direction == true)
             {
                 rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
-                if (transform.position.x >= maxX-0.1)
+                if (transform.position.x >= maxX - 0.1)
                 {
                     speed = 0;
                     timer += Time.deltaTime;
                     if (timer >= delayDestroy)
                     {
+                        sr.enabled = false;
+                        bc2d.enabled = false;
+                        retorno = true;
+                        speed = realSpeed;
                         timer = 0;
-                        Destroy(gameObject);
                     }
-
                 }
             }
-            else
+            else if (retorno && direction == true)
             {
                 rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
-                if (transform.position.x <= maxX+0.1)
+                if (transform.position.x <= X)
+                {
+                    rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+                    sr.enabled = true;
+                    bc2d.enabled = true;
+                    retorno = false;
+                    active = false;
+                }
+
+            }
+            if (retorno == false && direction == false)
+            {
+                rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
+                if (transform.position.x <= maxX)
                 {
                     speed = 0;
                     timer += Time.deltaTime;
                     if (timer >= delayDestroy)
                     {
+                        sr.enabled = false;
+                        bc2d.enabled = false;
+                        retorno = true;
+                        speed = realSpeed;
                         timer = 0;
-                        Destroy(gameObject);
                     }
-
                 }
             }
-           
+            else if (retorno && direction == false)
+            {
+                rb2d.velocity = new Vector2(realSpeed, rb2d.velocity.y);
+                if (transform.position.x >= X)
+                {
+                    rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+                    sr.enabled = true;
+                    bc2d.enabled = true;
+                    retorno = false;
+                    active = false;
+                }
+
+            }
+
         }
     }
 }
+    
+
