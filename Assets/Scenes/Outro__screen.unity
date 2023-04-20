@@ -284,7 +284,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 667454152}
-        m_TargetAssemblyTypeName: TitlesScreen, Assembly-CSharp
+        m_TargetAssemblyTypeName: OutroController, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 667454147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3dfc515953a684e855bfc862ccfb2e, type: 3}
+  m_Script: {fileID: 11500000, guid: a5a503bc5120e444dac7aed9f8b0cf4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1331845157
@@ -1006,9 +1006,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 102900000, guid: 3a1c1e02a1b4946469c6eeb388bf4125, type: 3}
-        m_TargetAssemblyTypeName: TitlesScreen, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 667454152}
+        m_TargetAssemblyTypeName: OutroController, Assembly-CSharp
+        m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
