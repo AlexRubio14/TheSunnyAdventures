@@ -28,5 +28,15 @@ public class timer : MonoBehaviour
         timerText.text = "Time: " + timerNum.ToString("f0");
     }
 
+    public float GetTimer()
+    {
+        return timerNum;
+    }
+
+    public void SetTimer(float timer)
+    {
+        timerNum = timer;
+    }
+
 
 }
