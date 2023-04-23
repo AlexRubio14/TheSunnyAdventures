@@ -14,7 +14,6 @@ public class fireBallController : MonoBehaviour
     JumpBossMovement jumpBossMovement;
     EnemyMovementV enemyMovementV;
     EnemyMovementM enemyMovementM;
-
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -34,6 +33,7 @@ public class fireBallController : MonoBehaviour
     void Update()
     {
         rb2d.position += direction * velocity * Time.deltaTime;
+ 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
