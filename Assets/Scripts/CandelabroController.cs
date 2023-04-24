@@ -18,7 +18,8 @@ public class CandelabroController : MonoBehaviour
 
     [SerializeField]
     GameObject[] endDoor;
-    
+
+    bool lightPlatforms;
 
 
     private void Awake()
@@ -37,15 +38,13 @@ public class CandelabroController : MonoBehaviour
                 lighten = false;
                 foreach (GameObject elem in platform)
                 {
-                    elem.gameObject.SetActive(false);
+                    if(elem.gameObject.active)
+                        elem.gameObject.SetActive(false);
+                    else
+                    {
+                        elem.gameObject.SetActive(true);
+                    }
                 }
-                foreach (GameObject elem in endDoor)
-                {
-                    elem.gameObject.SetActive(true);
-                }
-                text.gameObject.SetActive(false);
-
-                
             }
         }
         else
@@ -57,7 +56,14 @@ public class CandelabroController : MonoBehaviour
 
                 foreach (GameObject elem in platform)
                 {
-                    elem.gameObject.SetActive(true);
+                    if (elem.gameObject.active)
+                    {
+                        elem.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        elem.gameObject.SetActive(true);
+                    }
                 }
             }
         }
