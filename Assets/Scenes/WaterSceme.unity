@@ -454,9 +454,8 @@ GameObject:
   - component: {fileID: 1624245255}
   - component: {fileID: 1624245254}
   - component: {fileID: 1624245252}
-  - component: {fileID: 1624245251}
   - component: {fileID: 1624245256}
-  - component: {fileID: 1624245257}
+  - component: {fileID: 1624245258}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Water
@@ -464,22 +463,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!70 &1624245251
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624245250}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.002769031, y: 0.0055527706}
-  m_Size: {x: 1.1123546, y: 1.0318623}
-  m_Direction: 1
 --- !u!50 &1624245252
 Rigidbody2D:
   serializedVersion: 4
@@ -580,7 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1529fccacfcf527429218139affda9fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &1624245257
+--- !u!61 &1624245258
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -590,10 +573,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008491233, y: -1.9801893}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -604,5 +587,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.71129835, y: 2.875969}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
