@@ -49,7 +49,6 @@ public class verticalPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && playerController.GetAnimAttack())
         {
-            Debug.Log("Si");
             active = true;
         }
     }
@@ -61,8 +60,8 @@ public class verticalPlatform : MonoBehaviour
         {
             if (retorno == false && direction == true)
             {
-                rb2d.velocity = new Vector2(speed, rb2d.velocity.x);
-                if (transform.position.y >= maxY - 0.1)
+                rb2d.velocity = new Vector2(rb2d.velocity.x, speed);
+                if (transform.position.y >= maxY)
                 {
                     speed = 0;
                     timer += Time.deltaTime;
@@ -78,7 +77,7 @@ public class verticalPlatform : MonoBehaviour
             }
             else if (retorno==true && direction == true)
             {
-                rb2d.velocity = new Vector2(-speed, rb2d.velocity.x);
+                rb2d.velocity = new Vector2(rb2d.velocity.x, -speed);
                 if (transform.position.y <= Y)
                 {
                     rb2d.velocity = new Vector2(0, 0);
