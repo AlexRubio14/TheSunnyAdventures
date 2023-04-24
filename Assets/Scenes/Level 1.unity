@@ -2074,6 +2074,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456390, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_Size.x
+      value: 0.53060627
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456390, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2859199
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456390, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.46862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456390, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.12954557
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456390, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456390, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456390, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456391, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: leftRaycast
       value: 0.12
@@ -12320,6 +12348,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1034794040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9152766392956456250, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+  m_PrefabInstance: {fileID: 552564690}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &1034794050
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034794040}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.06654978, y: -0.010587454}
+  m_Size: {x: 0.46155453, y: 0.9788251}
+  m_Direction: 0
 --- !u!1001 &1045997515
 PrefabInstance:
   m_ObjectHideFlags: 0

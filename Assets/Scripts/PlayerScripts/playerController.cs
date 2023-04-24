@@ -200,15 +200,7 @@ public class playerController : MonoBehaviour
     #region ATTACK
     void Attack()
     {
-        //Detect enemies in range of attack 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(pointAttack.transform.position, attackRange, enemyLayer);
 
-        //Damage them
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            Debug.Log("We hit an enemy");
-            enemy.GetComponent<mivi_enemyHit>().TakeDamage(attackDamage);
-        }
     }
     public void endAttack() //setup in attack animation
     {
