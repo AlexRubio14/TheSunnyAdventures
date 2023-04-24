@@ -16,6 +16,7 @@ public class fireBallThrowController : MonoBehaviour
 
     private playerController playerController;
 
+    
     private void Awake()
     {
         playerController = GetComponent<playerController>();
@@ -30,7 +31,7 @@ public class fireBallThrowController : MonoBehaviour
             ThrowShuriken();
         }
     }
-
+   
     void ThrowShuriken()
     {
         if(Input.GetKeyDown(KeyCode.X))
