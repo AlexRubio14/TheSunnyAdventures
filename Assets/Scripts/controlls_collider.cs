@@ -9,9 +9,9 @@ public class controlls_collider : MonoBehaviour
     [SerializeField]
     Animator _animator;
 
-    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _animator.SetBool("PassTrigger", true);
+        if (collision.CompareTag("Player"))
+            _animator.SetBool("PassTrigger", true);
     }
 }
