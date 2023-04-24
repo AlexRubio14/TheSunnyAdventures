@@ -22566,6 +22566,7 @@ GameObject:
   - component: {fileID: 1678814564}
   - component: {fileID: 1678814563}
   - component: {fileID: 1678814562}
+  - component: {fileID: 1678814565}
   m_Layer: 2
   m_Name: Room 1
   m_TagString: Untagged
@@ -22632,6 +22633,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1678814565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678814561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c1b291677e06d49b375a29a6f2dee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text_controller: {fileID: 840850163}
+  _animator: {fileID: 840850165}
 --- !u!4 &1711320294 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6188843610487546259, guid: 41ef93d090d54034a8d578f26ff67993, type: 3}
