@@ -16,5 +16,4 @@ public class _SunnyDeathController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }

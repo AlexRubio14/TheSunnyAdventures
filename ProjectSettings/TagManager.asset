@@ -15,6 +15,7 @@ TagManager:
   - AttackPoint
   - MageBall
   - Water
+  - Rain
   layers:
   - Default
   - TransparentFX
