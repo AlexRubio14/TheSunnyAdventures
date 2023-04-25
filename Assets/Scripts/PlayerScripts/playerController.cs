@@ -53,6 +53,8 @@ public class playerController : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 40;
 
+    [SerializeField]
+    private int score = 0;
 
     private void Awake()
     {
@@ -236,5 +238,8 @@ public class playerController : MonoBehaviour
         isJumping = _isJumping;
     }
 
-
+    public void SetScore(int value)
+    {
+        score += value;
+    }
 }
