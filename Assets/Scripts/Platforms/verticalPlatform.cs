@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlatform : MonoBehaviour
+public class verticalPlatform : MonoBehaviour
 {
     playerController playerController;
     private Rigidbody2D rb2d;
@@ -10,14 +10,14 @@ public class MovingPlatform : MonoBehaviour
     private BoxCollider2D bc2d;
 
     [SerializeField]
-    private float maxX;
+    private float maxY;
     [SerializeField]
     private float speed;
     private float realSpeed;
 
     [SerializeField]
-    private float X;
     private float Y;
+    private float X;
     private float Z;
 
     private bool active;
@@ -40,7 +40,7 @@ public class MovingPlatform : MonoBehaviour
         Y = transform.position.y;
         Z = transform.position.z;
         realSpeed = speed;
-        if (maxX >= transform.position.x)
+        if (maxY >= transform.position.y)
         {
             direction = true;
         }
@@ -55,12 +55,13 @@ public class MovingPlatform : MonoBehaviour
 
     private void Update()
     {
+       // rb2d.velocity = new Vector2(0, rb2d.velocity.x);
         if (active == true)
         {
             if (retorno == false && direction == true)
             {
-                rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
-                if (transform.position.x >= maxX - 0.1)
+                rb2d.velocity = new Vector2(rb2d.velocity.x, speed);
+                if (transform.position.y >= maxY)
                 {
                     speed = 0;
                     timer += Time.deltaTime;
@@ -74,52 +75,21 @@ public class MovingPlatform : MonoBehaviour
                     }
                 }
             }
-            else if (retorno && direction == true)
+            else if (retorno==true && direction == true)
             {
-                rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
-                if (transform.position.x <= X)
+                rb2d.velocity = new Vector2(rb2d.velocity.x, -speed);
+                if (transform.position.y <= Y)
                 {
-                    rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+                    rb2d.velocity = new Vector2(0, 0);
                     sr.enabled = true;
                     bc2d.enabled = true;
                     retorno = false;
                     active = false;
                 }
-
-            }
-            if (retorno == false && direction == false)
-            {
-                rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
-                if (transform.position.x <= maxX)
-                {
-                    speed = 0;
-                    timer += Time.deltaTime;
-                    if (timer >= delayDestroy)
-                    {
-                        sr.enabled = false;
-                        bc2d.enabled = false;
-                        retorno = true;
-                        speed = realSpeed;
-                        timer = 0;
-                    }
-                }
-            }
-            else if (retorno && direction == false)
-            {
-                rb2d.velocity = new Vector2(realSpeed, rb2d.velocity.y);
-                if (transform.position.x >= X)
-                {
-                    rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-                    sr.enabled = true;
-                    bc2d.enabled = true;
-                    retorno = false;
-                    active = false;
-                }
-
             }
 
         }
     }
 }
-    
+
 
