@@ -38,12 +38,7 @@ public class CandelabroController : MonoBehaviour
                 lighten = false;
                 foreach (GameObject elem in platform)
                 {
-                    if(elem.gameObject.active)
-                        elem.gameObject.SetActive(false);
-                    else
-                    {
-                        elem.gameObject.SetActive(true);
-                    }
+                    elem.gameObject.SetActive(false);
                 }
             }
         }
@@ -56,14 +51,7 @@ public class CandelabroController : MonoBehaviour
 
                 foreach (GameObject elem in platform)
                 {
-                    if (elem.gameObject.active)
-                    {
-                        elem.gameObject.SetActive(false);
-                    }
-                    else
-                    {
-                        elem.gameObject.SetActive(true);
-                    }
+                    elem.gameObject.SetActive(true);
                 }
             }
         }

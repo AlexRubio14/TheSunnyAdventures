@@ -38,9 +38,6 @@ public class playerController : MonoBehaviour
     private PlayerDash playerDash;
     private Rigidbody2D rb2d;
 
-    //Attack
-    public GameObject pointAttack;
-    public LayerMask enemyLayer;
 
     //Death
     [SerializeField]
@@ -50,12 +47,15 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private LayerMask floorLayer;
 
-    public float attackRange = 0.5f;
-    public int attackDamage = 40;
+    private Collider2D boxCollider;
+    private Collider2D capsuleCollider;
+
 
 
     private void Awake()
     {
+        boxCollider = GetComponent<BoxCollider2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
         rb2d = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
         playerDash = GetComponent<PlayerDash>();
@@ -112,22 +112,30 @@ public class playerController : MonoBehaviour
         {
             fliped = true;
             sp.flipX = true;
-            pointAttack.transform.localPosition = new Vector2(-pointAttack.transform.localPosition.x, pointAttack.transform.localPosition.y);
 
             float aux = leftRaycast;
             leftRaycast = rightRaycast;
             rightRaycast = aux;
+
+            capsuleCollider.offset = new Vector2(-capsuleCollider.offset.x, capsuleCollider.offset.y);
+            boxCollider.offset = new Vector2(-boxCollider.offset.x, boxCollider.offset.y);
+
+
         }
         else if(fliped && movementDirection > 0)
         {
             fliped = false;
             sp.flipX = false;
-            pointAttack.transform.localPosition = new Vector2(-pointAttack.transform.localPosition.x, pointAttack.transform.localPosition.y);
+
 
             float aux = leftRaycast;
             leftRaycast = rightRaycast;
             rightRaycast = aux;
+
+            capsuleCollider.offset = new Vector2(-capsuleCollider.offset.x, capsuleCollider.offset.y);
+            boxCollider.offset = new Vector2(-boxCollider.offset.x, boxCollider.offset.y);
         }
+
 
     }
 
@@ -189,13 +197,6 @@ public class playerController : MonoBehaviour
 
     #endregion 
 
-    private void OnDrawGizmosSelected()
-    {
-        if (pointAttack == null)
-            return;
-
-        Gizmos.DrawWireSphere(pointAttack.transform.position, attackRange);
-    }
 
     #region ATTACK
     void Attack()

@@ -17,8 +17,6 @@ public class verticalPlatform : MonoBehaviour
 
     [SerializeField]
     private float Y;
-    private float X;
-    private float Z;
 
     private bool active;
     [SerializeField]
@@ -36,26 +34,25 @@ public class verticalPlatform : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         bc2d = GetComponent<BoxCollider2D>();
         active = false;
-        X = transform.position.x;
         Y = transform.position.y;
-        Z = transform.position.z;
         realSpeed = speed;
         if (maxY >= transform.position.y)
         {
             direction = true;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && playerController.GetAnimAttack())
         {
             active = true;
+            
         }
     }
 
-    private void Update()
+    void Update()
     {
-       // rb2d.velocity = new Vector2(0, rb2d.velocity.x);
         if (active == true)
         {
             if (retorno == false && direction == true)
@@ -75,7 +72,7 @@ public class verticalPlatform : MonoBehaviour
                     }
                 }
             }
-            else if (retorno==true && direction == true)
+            else if (retorno == true && direction == true)
             {
                 rb2d.velocity = new Vector2(rb2d.velocity.x, -speed);
                 if (transform.position.y <= Y)
