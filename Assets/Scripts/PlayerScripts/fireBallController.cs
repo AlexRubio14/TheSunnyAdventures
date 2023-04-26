@@ -42,7 +42,7 @@ public class fireBallController : MonoBehaviour
         if (collision.TryGetComponent<JumpBossMovement>(out JumpBossMovement bossBehaviour))
         {
      
-            Debug.Log("Si");
+           
             bossBehaviour.minusHealth(20);
             Destroy(gameObject);    
         }

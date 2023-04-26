@@ -138,4 +138,9 @@ public class JumpBossMovement : MonoBehaviour
     {
         healt = value;
     }
+
+    public int GetHeatlh()
+    {
+        return healt;
+    }
 }
