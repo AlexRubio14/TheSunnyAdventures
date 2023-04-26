@@ -25,6 +25,7 @@ public class playerController : MonoBehaviour
     private float fallSpeed;
     [SerializeField]
     private bool isJumping;
+    [SerializeField]
     private bool isGrounded;
     [SerializeField]
     float jumpTimer;
@@ -74,13 +75,14 @@ public class playerController : MonoBehaviour
         movementDirection = Input.GetAxisRaw("Horizontal");
         playerDash.WaitCD();
 
+        CheckRaycast();
+
         if (!playerDash.GetIsDashing())
         {
             flip();
             Move();
             Jump();
         }
-        
 
         if (Input.GetKeyDown(KeyCode.Z))
         { 
@@ -150,22 +152,20 @@ public class playerController : MonoBehaviour
 
     #region JUMP
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void CheckRaycast()
     {
-        if (collision.gameObject.CompareTag("Floor"))
+        if (Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) ||
+            Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
         {
-            if (Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) ||
-                Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
-            {
-                isJumping = false;
-                isGrounded = true;
-                jumpWaited = 0;
-            }
-            else
-            {
-                isGrounded = false;
-            }
+            isJumping = false;
+            isGrounded = true;
+            jumpWaited = 0;
         }
+        else
+        {
+            isGrounded = false;
+        }
+
     }
 
     private void Jump()

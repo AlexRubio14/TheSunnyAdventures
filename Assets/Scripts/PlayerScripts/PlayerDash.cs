@@ -18,8 +18,8 @@ public class PlayerDash : MonoBehaviour
     [SerializeField]
     private float timeCanDash = 1f; // <- Cooldown
     private bool isDashing;
+    [SerializeField]
     private bool canDash = true;
-    //public bool IsDashing => isDashing;
 
     private void Awake()
     {
@@ -55,7 +55,6 @@ public class PlayerDash : MonoBehaviour
                 rb.gravityScale = 0f;
                 rb.velocity = new Vector2(player.direction * dashForce, 0f);
                 player.SetIsJumping(true);
-
             }
     }
 
