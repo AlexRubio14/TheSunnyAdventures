@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class timer : MonoBehaviour
 {
@@ -9,15 +10,12 @@ public class timer : MonoBehaviour
     private TextMeshProUGUI timerText;
 
     [SerializeField]
-    private float maxTime = 200.0f;
+    private float maxTime;
 
     private float timerNum;
-    
-
 
     void Start()
     {
-        maxTime = 200.0f;
         timerNum = maxTime;
     }
 
@@ -25,7 +23,12 @@ public class timer : MonoBehaviour
     {
         timerNum -= Time.deltaTime;
 
-        timerText.text = "Time: " + timerNum.ToString("f0");
+        timerText.text = "Time: " + timerNum.ToString("f1");
+
+        if(timerNum <= 0.1)
+        {
+            SceneManager.LoadScene("Dead");
+        }
     }
 
     public float GetTimer()

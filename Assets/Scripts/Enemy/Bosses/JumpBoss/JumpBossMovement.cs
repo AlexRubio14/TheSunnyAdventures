@@ -31,6 +31,7 @@ public class JumpBossMovement : MonoBehaviour
     BossDoorController doorController;
     SunnyDeathController sunnyDeathController;
     SpriteRenderer sp;
+    bool level1Win;
 
 
     private void Awake()
@@ -91,7 +92,8 @@ public class JumpBossMovement : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        level1Win = true;
+        SceneManager.LoadScene("HubScene");
     }
 
     public void Restart()

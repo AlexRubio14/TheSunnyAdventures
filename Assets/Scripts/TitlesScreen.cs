@@ -7,7 +7,10 @@ public class TitlesScreen : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+        LevelManager.instance.currentLevel = "Level 1";
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
+        
     }
 
     public void ExitGame()
