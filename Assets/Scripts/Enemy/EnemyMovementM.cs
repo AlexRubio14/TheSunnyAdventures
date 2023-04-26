@@ -91,4 +91,9 @@ public class EnemyMovementM : MonoBehaviour
     {
         return enemyMovement;
     }
+
+    public bool GetRotate()
+    {
+        return rotate;
+    }
 }
