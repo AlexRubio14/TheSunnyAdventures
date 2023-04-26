@@ -43,7 +43,7 @@ public class fireBallController : MonoBehaviour
         {
      
             Debug.Log("Si");
-            bossBehaviour.SetHeatlh(20);
+            bossBehaviour.minusHealth(20);
             Destroy(gameObject);    
         }
 
