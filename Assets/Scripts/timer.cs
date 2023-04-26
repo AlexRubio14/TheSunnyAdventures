@@ -23,9 +23,9 @@ public class timer : MonoBehaviour
     {
         timerNum -= Time.deltaTime;
 
-        timerText.text = "Time: " + timerNum.ToString("f0");
+        timerText.text = "Time: " + timerNum.ToString("f1");
 
-        if(timerNum <= 0)
+        if(timerNum <= 0.1)
         {
             SceneManager.LoadScene("Dead");
         }
