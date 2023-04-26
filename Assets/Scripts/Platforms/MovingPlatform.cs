@@ -45,7 +45,7 @@ public class MovingPlatform : MonoBehaviour
             direction = true;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && playerController.GetAnimAttack())
         {
