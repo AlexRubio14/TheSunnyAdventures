@@ -27,11 +27,11 @@ public class ShootMage : MonoBehaviour
         timeWaited += Time.deltaTime;
         if (timeWaited >= timeToThrow)
         {
-            ThrowShuriken();
+            ShootFire();
         }
     }
 
-    void ThrowShuriken()
+    void ShootFire()
     {
         if (mage.GetEnemyMovement() == 0)
         {
@@ -40,14 +40,14 @@ public class ShootMage : MonoBehaviour
             posToSpawn = posToSpawn.normalized * offset + transform.position;
             currentFireBall = Instantiate(fireBall, posToSpawn, Quaternion.identity).GetComponent<fireBallController>();
             timeWaited = 0;
-            //if (!enemy.fliped)
-            //{
+            if (!mage.GetRotate())
+            {
                 currentFireBall.direction = Vector2.right;
-            //}
-            //else
-            //{
-            //    currentFireBall.direction = -Vector2.right;
-            //}
+            }
+            else
+            {
+                currentFireBall.direction = Vector2.left;
+            }
         }
     }
 }

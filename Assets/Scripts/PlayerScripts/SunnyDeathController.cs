@@ -27,8 +27,7 @@ public class SunnyDeathController : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //We have to add if sunny touches the projectil of the mage
-        if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Spikes") /* || collision.collider.CompareTag("MageBall")*/)
+        if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Spikes"))
         {
             rb2d.velocity = new Vector2(0, 0);
             StartCoroutine(TimeToRespawn(false));
@@ -39,6 +38,21 @@ public class SunnyDeathController : MonoBehaviour
             EnemiesManager.Instance.DisableEenemies();
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("MageBall"))
+        {
+            rb2d.velocity = new Vector2(0, 0);
+            StartCoroutine(TimeToRespawn(false));
+            sp.enabled = false;
+            playerController.enabled = false;
+            fireBallThrowController.enabled = false;
+            transform.position = playerController.m_respawnPoint.position;
+            EnemiesManager.Instance.DisableEenemies();
+        }
+    }
+
     IEnumerator TimeToRespawn(bool alive) 
     {
         isAlive = alive;
