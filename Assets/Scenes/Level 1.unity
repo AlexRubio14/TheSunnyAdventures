@@ -1927,11 +1927,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 52.68
+      value: 14.09
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.66
+      value: 30.8
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12303,6 +12303,10 @@ PrefabInstance:
       propertyPath: maxY
       value: 72
       objectReference: {fileID: 0}
+    - target: {fileID: 2673845869408261013, guid: de962b03081a7f046bf95efcd8477e04, type: 3}
+      propertyPath: speedReturn
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2673845869408261014, guid: de962b03081a7f046bf95efcd8477e04, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -22070,9 +22074,17 @@ PrefabInstance:
       propertyPath: maxX
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 6161403711120280989, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
+      propertyPath: speedReturn
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6161403711120280990, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
       propertyPath: m_Name
       value: MovingPlatform (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161403711120280990, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
@@ -25650,12 +25662,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6161403711120280989, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
+      propertyPath: X
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161403711120280989, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
       propertyPath: maxX
       value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161403711120280989, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
+      propertyPath: speedReturn
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6161403711120280990, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
       propertyPath: m_Name
       value: MovingPlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161403711120280990, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
@@ -25839,6 +25863,10 @@ PrefabInstance:
     - target: {fileID: 2673845869408261013, guid: de962b03081a7f046bf95efcd8477e04, type: 3}
       propertyPath: maxY
       value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673845869408261013, guid: de962b03081a7f046bf95efcd8477e04, type: 3}
+      propertyPath: speedReturn
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2673845869408261014, guid: de962b03081a7f046bf95efcd8477e04, type: 3}
       propertyPath: m_RootOrder

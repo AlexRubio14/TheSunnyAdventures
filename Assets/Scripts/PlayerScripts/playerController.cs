@@ -213,6 +213,7 @@ public class playerController : MonoBehaviour
 
     #endregion
 
+
     public void SetRespawnPoint(Transform respawnPoint)
     {
         m_respawnPoint = respawnPoint;
