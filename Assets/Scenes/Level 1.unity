@@ -1927,11 +1927,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.98
+      value: 13.86
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.492
+      value: -3.48
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12500,7 +12500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1908148750}
-  maxTime: 200
+  maxTime: 450
 --- !u!223 &1184761756
 Canvas:
   m_ObjectHideFlags: 0
@@ -26816,13 +26816,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4225713777940256842, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -399.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4225713777940256842, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -378.7273
+      objectReference: {fileID: 0}
     - target: {fileID: 4851402217660482442, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4851402217660482443, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4851402217660482548, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
       propertyPath: winText
