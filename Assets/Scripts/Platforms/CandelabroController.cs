@@ -8,9 +8,6 @@ public class CandelabroController : MonoBehaviour
     [SerializeField]
     GameObject[] platform;
 
-    [SerializeField]
-    GameObject text;
-
     playerController playerController; 
 
     [SerializeField]
@@ -22,17 +19,29 @@ public class CandelabroController : MonoBehaviour
     bool lightPlatforms;
 
 
+    private Animator animatorCandelabro;
+
+    private void Start()
+    {
+        animatorCandelabro = GetComponent<Animator>(); 
+    }
+
     private void Awake()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>();
     }
 
-   
+    private void Update()
+    {
+        animatorCandelabro.SetBool("switched_on", lighten);
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (lighten)
         {
+            // animatorCandelabro.SetBool("switched_on", true);
+
             if (collision.gameObject.CompareTag("Player") && playerController.GetAnimAttack())
             {
                 lighten = false;
@@ -44,11 +53,13 @@ public class CandelabroController : MonoBehaviour
         }
         else
         {
+            // animatorCandelabro.SetBool("switched_on", false);
+
             if (collision.CompareTag("FireBall"))
             {
                 Destroy(collision.gameObject);
                 lighten = true;
-
+     
                 foreach (GameObject elem in platform)
                 {
                     elem.gameObject.SetActive(true);
