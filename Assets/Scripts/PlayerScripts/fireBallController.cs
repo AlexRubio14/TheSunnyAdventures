@@ -14,6 +14,7 @@ public class fireBallController : MonoBehaviour
     JumpBossMovement jumpBossMovement;
     EnemyMovementV enemyMovementV;
     EnemyMovementM enemyMovementM;
+
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -40,8 +41,10 @@ public class fireBallController : MonoBehaviour
     {
         if (collision.TryGetComponent<JumpBossMovement>(out JumpBossMovement bossBehaviour))
         {
-            bossBehaviour.Die();
-            Destroy(gameObject);
+     
+           
+            bossBehaviour.minusHealth(20);
+            Destroy(gameObject);    
         }
 
         if (collision.CompareTag("Floor") || collision.CompareTag("Wall") || collision.CompareTag("Rain"))

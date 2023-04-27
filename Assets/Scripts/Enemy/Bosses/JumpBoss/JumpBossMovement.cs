@@ -24,6 +24,9 @@ public class JumpBossMovement : MonoBehaviour
     [SerializeField]
     private bool rotate;
 
+    [SerializeField]
+    private int healt;
+
     Rigidbody2D rb2d;
 
     [SerializeField]
@@ -53,8 +56,13 @@ public class JumpBossMovement : MonoBehaviour
         if (sunnyDeathController.GetAlive() == false)
         {
             doorController.SetEnter(false);
+            healt = 200;
             Restart();
             gameObject.SetActive(false);
+        }
+        if (healt <= 0)
+        {
+            Die();
         }
     }
 
@@ -74,11 +82,6 @@ public class JumpBossMovement : MonoBehaviour
                 rotate = false;
                 sp.flipX = false;
             }
-        }
-
-        if(collision.collider.CompareTag("FireBall"))
-        {
-            Die();
         }
     }
 
@@ -106,6 +109,7 @@ public class JumpBossMovement : MonoBehaviour
 
     private void Behaviour()
     {
+
         if (isGrounded)
         {
             Jump();
@@ -126,5 +130,19 @@ public class JumpBossMovement : MonoBehaviour
         {
             rb2d.velocity = new Vector2(-enemyMovement, rb2d.velocity.y);
         }
+    }
+
+    public void minusHealth(int value)
+    {
+        healt -= value;
+    }
+    public void SetHealth(int value)
+    {
+        healt = value;
+    }
+
+    public int GetHeatlh()
+    {
+        return healt;
     }
 }

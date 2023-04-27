@@ -17,6 +17,7 @@ TagManager:
   - Water
   - Rain
   - Music
+  - Boss
   layers:
   - Default
   - TransparentFX
