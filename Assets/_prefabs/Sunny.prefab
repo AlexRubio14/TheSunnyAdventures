@@ -108,12 +108,9 @@ MonoBehaviour:
   jumpForce: 15
   fallSpeed: 3.2
   isJumping: 0
+  isGrounded: 0
   jumpTimer: 0.28
   fliped: 0
-  pointAttack: {fileID: 0}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 512
   spikesLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -121,8 +118,7 @@ MonoBehaviour:
   floorLayer:
     serializedVersion: 2
     m_Bits: 64
-  attackRange: 1.17
-  attackDamage: 30
+  score: 0
 --- !u!114 &9152766392956456384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +163,7 @@ MonoBehaviour:
   dashingTime: 0.2
   dashForce: 20
   timeCanDash: 0.4
+  canDash: 1
 --- !u!50 &9152766392956456389
 Rigidbody2D:
   serializedVersion: 4

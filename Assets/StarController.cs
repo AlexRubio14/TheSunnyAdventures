@@ -14,10 +14,8 @@ public class StarController : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            Debug.Log(player.GetScore());
-            Destroy(gameObject);
             player.AddScore();
-            Debug.Log(player.GetScore());
+            Destroy(gameObject);
         }
     }
 }

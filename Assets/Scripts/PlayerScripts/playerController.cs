@@ -223,8 +223,6 @@ public class playerController : MonoBehaviour
         sp.flipX = flip;
     }
 
-
-
     public bool GetAnimAttack()
     {
         return anim.GetBool("Attack");
@@ -251,6 +249,6 @@ public class playerController : MonoBehaviour
     }
     public void AddScore()
     {
-        score += 1;
+        score++;
     }
 }

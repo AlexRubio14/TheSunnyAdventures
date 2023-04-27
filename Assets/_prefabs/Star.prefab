@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4462754181202319616}
   - component: {fileID: 4462754181202319617}
   - component: {fileID: 4462754181202319630}
-  - component: {fileID: 4462754181202319619}
+  - component: {fileID: 1084767640}
   m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75abd3ef5fa1654799cb6047479eee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &4462754181202319619
-CapsuleCollider2D:
+--- !u!58 &1084767640
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -111,6 +111,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.009656906, y: 0.008273125}
-  m_Size: {x: 0.5945015, y: 0.5972614}
-  m_Direction: 0
+  m_Offset: {x: 0.012514114, y: -0.033374786}
+  serializedVersion: 2
+  m_Radius: 0.34565163
