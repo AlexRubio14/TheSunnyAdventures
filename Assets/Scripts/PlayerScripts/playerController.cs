@@ -53,7 +53,7 @@ public class playerController : MonoBehaviour
 
 
     [SerializeField]
-    private int score = 0;
+    private int score;
 
     private void Awake()
     {
@@ -67,6 +67,7 @@ public class playerController : MonoBehaviour
         rightRaycast = 0.12f;
         leftRaycast = 0.25f;
         isJumping = false;
+        score = 0;
     }
 
     private void Update()
@@ -239,8 +240,17 @@ public class playerController : MonoBehaviour
         isJumping = _isJumping;
     }
 
+    public int GetScore()
+    {
+        return score;
+    }
+
     public void SetScore(int value)
     {
-        score += value;
+        score = value;
+    }
+    public void AddScore()
+    {
+        score += 1;
     }
 }
