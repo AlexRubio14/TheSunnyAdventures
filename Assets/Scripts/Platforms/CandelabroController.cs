@@ -29,6 +29,23 @@ public class CandelabroController : MonoBehaviour
     private void Awake()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>();
+
+        if (lighten)
+        {
+            foreach (GameObject elem in platform)
+            {
+                elem.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (GameObject elem in platform)
+            {
+                elem.gameObject.SetActive(false);
+            }
+        }
+        
+    
     }
 
     private void Update()
