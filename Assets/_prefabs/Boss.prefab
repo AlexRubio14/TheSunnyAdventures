@@ -140,7 +140,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   rotate: 0
-  respawnPoint: {fileID: 0}
+  healt: 200
+  respawnPoint: {fileID: 5903176320048962750}
+  winText: {fileID: 0}
 --- !u!61 &4851402217660482549
 BoxCollider2D:
   m_ObjectHideFlags: 0

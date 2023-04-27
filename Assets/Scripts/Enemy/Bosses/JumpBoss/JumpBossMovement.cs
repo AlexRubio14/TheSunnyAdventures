@@ -36,6 +36,10 @@ public class JumpBossMovement : MonoBehaviour
     SpriteRenderer sp;
     bool level1Win;
 
+    [SerializeField]
+    GameObject winText;
+
+    timer timeClass;
 
     private void Awake()
     {
@@ -43,6 +47,7 @@ public class JumpBossMovement : MonoBehaviour
         doorController = GameObject.FindGameObjectWithTag("Door").GetComponent<BossDoorController>();
         sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
         sp = GetComponent<SpriteRenderer>();
+        timeClass = FindObjectOfType<timer>();
         rotate = false;
         isGrounded = true;
     }
@@ -63,7 +68,11 @@ public class JumpBossMovement : MonoBehaviour
         if (healt <= 0)
         {
             Die();
+            SceneManager.LoadScene("HUB");
         }
+
+       
+           
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -96,7 +105,7 @@ public class JumpBossMovement : MonoBehaviour
     {
         Destroy(gameObject);
         level1Win = true;
-        SceneManager.LoadScene("HubScene");
+        winText.SetActive(true);
     }
 
     public void Restart()
