@@ -15,13 +15,8 @@ public class ScoreController : MonoBehaviour
         playerController = FindObjectOfType<playerController>();
     }
 
-    void Start()
-    {
-        playerController.GetScore();
-    }
-
     void Update()
     {
-        scoreText.text = "Score: " + playerController.GetScore().ToString("f0");
+        scoreText.text = "Stars: " + playerController.GetScore().ToString("f0");
     }
 }
