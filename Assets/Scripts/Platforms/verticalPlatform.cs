@@ -14,6 +14,8 @@ public class verticalPlatform : MonoBehaviour
     [SerializeField]
     private float speed;
     private float realSpeed;
+    [SerializeField]
+    private float speedReturn;
 
     [SerializeField]
     private float Y;
@@ -74,7 +76,7 @@ public class verticalPlatform : MonoBehaviour
             }
             else if (retorno == true && direction == true)
             {
-                rb2d.velocity = new Vector2(rb2d.velocity.x, -speed);
+                rb2d.velocity = new Vector2(rb2d.velocity.x, -speedReturn);
                 if (transform.position.y <= Y)
                 {
                     rb2d.velocity = new Vector2(0, 0);

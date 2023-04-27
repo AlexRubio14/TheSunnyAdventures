@@ -14,6 +14,8 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField]
     private float speed;
     private float realSpeed;
+    [SerializeField]
+    private float speedReturn;
 
     [SerializeField]
     private float X;
@@ -76,7 +78,7 @@ public class MovingPlatform : MonoBehaviour
             }
             else if (retorno && direction == true)
             {
-                rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
+                rb2d.velocity = new Vector2(-speedReturn, rb2d.velocity.y);
                 if (transform.position.x <= X)
                 {
                     rb2d.velocity = new Vector2(0, rb2d.velocity.y);
@@ -106,7 +108,7 @@ public class MovingPlatform : MonoBehaviour
             }
             else if (retorno && direction == false)
             {
-                rb2d.velocity = new Vector2(realSpeed, rb2d.velocity.y);
+                rb2d.velocity = new Vector2(speedReturn, rb2d.velocity.y);
                 if (transform.position.x >= X)
                 {
                     rb2d.velocity = new Vector2(0, rb2d.velocity.y);

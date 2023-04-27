@@ -19,6 +19,7 @@ TagManager:
   - Music
   - Boss
   - TitleScreenMusic
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
