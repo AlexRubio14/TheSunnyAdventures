@@ -46,6 +46,7 @@ public class ChooseLevel : MonoBehaviour
             {
                 if (Input.GetKeyUp(KeyCode.UpArrow))
                 {
+                    LevelManager.instance.currentLevel = scene;
                     SceneManager.LoadScene(scene);
                 }
                 proces += Time.deltaTime / velocity; // valor entre: 0 - 1
