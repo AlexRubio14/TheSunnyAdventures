@@ -10,6 +10,14 @@ public class DieController : MonoBehaviour
         SceneManager.LoadScene(LevelManager.instance.currentLevel);
     }
 
+    public void HubReturn()
+    {
+        SceneManager.LoadScene("HUB");
+    }
 
+    public void Exit()
+    {
+        Application.Quit();
+    }
 
 }
