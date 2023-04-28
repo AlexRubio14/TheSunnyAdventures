@@ -222,6 +222,11 @@ public class playerController : MonoBehaviour
     public void SetFlip(bool flip)
     {
         sp.flipX = flip;
+    } 
+
+    public bool GetFlip()
+    {
+        return sp.flipX; 
     }
 
     public bool GetAnimAttack()

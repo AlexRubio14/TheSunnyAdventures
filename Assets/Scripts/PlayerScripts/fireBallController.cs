@@ -14,6 +14,8 @@ public class fireBallController : MonoBehaviour
     JumpBossMovement jumpBossMovement;
     EnemyMovementV enemyMovementV;
     EnemyMovementM enemyMovementM;
+    playerController playerController;
+    SpriteRenderer sp; 
 
     private void Awake()
     {
@@ -22,6 +24,8 @@ public class fireBallController : MonoBehaviour
         enemyMovementV = GetComponent<EnemyMovementV>();
         enemyMovementM = GetComponent<EnemyMovementM>();
         jumpBossMovement = GetComponent<JumpBossMovement>();
+        playerController = FindObjectOfType<playerController>();
+        sp = GetComponent<SpriteRenderer>();
     }
 
     // Start is called before the first frame update
@@ -34,7 +38,13 @@ public class fireBallController : MonoBehaviour
     void Update()
     {
         rb2d.position += direction * velocity * Time.deltaTime;
- 
+
+        
+    }
+
+    private void OnEnable()
+    {
+        sp.flipX = playerController.GetFlip(); 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
