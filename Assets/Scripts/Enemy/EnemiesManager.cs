@@ -73,6 +73,7 @@ public class EnemiesManager : MonoBehaviour
         foreach (EnemyMovementM item in enemyM)
         {
             item.gameObject.SetActive(true);
+            item.Restart();
         }
         foreach (FallingPlatform item in fallingPlatforms)
         {
