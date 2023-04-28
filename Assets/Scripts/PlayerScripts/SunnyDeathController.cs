@@ -41,7 +41,7 @@ public class SunnyDeathController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("MageBall"))
+        if (collision.CompareTag("MageBall") || collision.CompareTag("PlantsBullet"))
         {
             rb2d.velocity = new Vector2(0, 0);
             StartCoroutine(TimeToRespawn(false));

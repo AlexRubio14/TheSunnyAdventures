@@ -7,8 +7,13 @@ public class BossDoorController : MonoBehaviour
 
     public GameObject door;
     SunnyDeathController SunnyDeathController;
+
     [SerializeField]
     GameObject jumpBoss;
+
+    [SerializeField]
+    GameObject[] plants;
+
     bool enter;
 
     private void Awake()
@@ -32,6 +37,10 @@ public class BossDoorController : MonoBehaviour
            door.SetActive(true);
            enter = true;
            jumpBoss.SetActive(true);
+            foreach (GameObject item in plants)
+            {
+                item.gameObject.SetActive(true);
+            }
         }
     }
 
