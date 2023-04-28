@@ -8,6 +8,7 @@ public class MovingPlatform : MonoBehaviour
     private Rigidbody2D rb2d;
     private SpriteRenderer sr;
     private BoxCollider2D bc2d;
+    private Animator animMovingPlatform; 
 
     [SerializeField]
     private float maxX;
@@ -37,6 +38,8 @@ public class MovingPlatform : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         bc2d = GetComponent<BoxCollider2D>();
+        animMovingPlatform = GetComponent<Animator>();
+
         active = false;
         X = transform.position.x;
         Y = transform.position.y;
@@ -61,9 +64,12 @@ public class MovingPlatform : MonoBehaviour
         {
             if (retorno == false && direction == true)
             {
+
                 rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
                 if (transform.position.x >= maxX - 0.1)
                 {
+                    // animMovingPlatform.SetBool("blinking", true);
+
                     speed = 0;
                     timer += Time.deltaTime;
                     if (timer >= delayDestroy)
@@ -81,6 +87,8 @@ public class MovingPlatform : MonoBehaviour
                 rb2d.velocity = new Vector2(-speedReturn, rb2d.velocity.y);
                 if (transform.position.x <= X)
                 {
+                   //  animMovingPlatform.SetBool("blinking", false);
+
                     rb2d.velocity = new Vector2(0, rb2d.velocity.y);
                     sr.enabled = true;
                     bc2d.enabled = true;
@@ -91,9 +99,12 @@ public class MovingPlatform : MonoBehaviour
             }
             if (retorno == false && direction == false)
             {
+
                 rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
                 if (transform.position.x <= maxX)
                 {
+                    animMovingPlatform.SetBool("blinking", true);
+
                     speed = 0;
                     timer += Time.deltaTime;
                     if (timer >= delayDestroy)
@@ -111,6 +122,8 @@ public class MovingPlatform : MonoBehaviour
                 rb2d.velocity = new Vector2(speedReturn, rb2d.velocity.y);
                 if (transform.position.x >= X)
                 {
+                    animMovingPlatform.SetBool("blinking", false);
+
                     rb2d.velocity = new Vector2(0, rb2d.velocity.y);
                     sr.enabled = true;
                     bc2d.enabled = true;

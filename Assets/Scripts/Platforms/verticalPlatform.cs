@@ -8,6 +8,7 @@ public class verticalPlatform : MonoBehaviour
     private Rigidbody2D rb2d;
     private SpriteRenderer sr;
     private BoxCollider2D bc2d;
+    private Animator animVerticalPlatform; 
 
     [SerializeField]
     private float maxY;
@@ -35,6 +36,8 @@ public class verticalPlatform : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         bc2d = GetComponent<BoxCollider2D>();
+        animVerticalPlatform= GetComponent<Animator>();
+
         active = false;
         Y = transform.position.y;
         realSpeed = speed;
@@ -62,6 +65,8 @@ public class verticalPlatform : MonoBehaviour
                 rb2d.velocity = new Vector2(rb2d.velocity.x, speed);
                 if (transform.position.y >= maxY)
                 {
+                    animVerticalPlatform.SetBool("blinking", true);
+
                     speed = 0;
                     timer += Time.deltaTime;
                     if (timer >= delayDestroy)
@@ -79,6 +84,8 @@ public class verticalPlatform : MonoBehaviour
                 rb2d.velocity = new Vector2(rb2d.velocity.x, -speedReturn);
                 if (transform.position.y <= Y)
                 {
+                    animVerticalPlatform.SetBool("blinking", false);
+
                     rb2d.velocity = new Vector2(0, 0);
                     sr.enabled = true;
                     bc2d.enabled = true;
