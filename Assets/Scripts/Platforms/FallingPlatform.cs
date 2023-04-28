@@ -18,16 +18,20 @@ public class FallingPlatform : MonoBehaviour
     bool startCont = false;
     SunnyDeathController sunnyDeathController;
 
+    private Animator animatorFallingPlatform; 
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animatorFallingPlatform = GetComponent<Animator>(); 
     }
   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             collisionActivated = true;
+            animatorFallingPlatform.SetBool("blinking", true);
         }
     }
 
@@ -39,7 +43,6 @@ public class FallingPlatform : MonoBehaviour
    
             if (timeWasted >= fallDelay)
             {
-              
                 timeWasted = 0;
                 startCont = true;
                 spriteRenderer.enabled = false;
@@ -48,11 +51,13 @@ public class FallingPlatform : MonoBehaviour
         }
         if(collisionActivated && startCont)
         {
+            
             timeWaited += Time.deltaTime;
      
             if (timeWaited >= destroyDelay)
             {
-           
+                animatorFallingPlatform.SetBool("blinking", false);
+
                 timeWaited = 0;
                 startCont = false;
                 spriteRenderer.enabled = true;
@@ -64,6 +69,7 @@ public class FallingPlatform : MonoBehaviour
 
     public void Restart()
     {
+        animatorFallingPlatform.SetBool("blinking", false);
         timeWaited = 0;
         startCont = false;
         spriteRenderer.enabled = true;
