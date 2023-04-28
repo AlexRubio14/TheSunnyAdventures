@@ -68,7 +68,7 @@ public class MovingPlatform : MonoBehaviour
                 rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
                 if (transform.position.x >= maxX - 0.1)
                 {
-                    // animMovingPlatform.SetBool("blinking", true);
+                     animMovingPlatform.SetBool("blinking", true);
 
                     speed = 0;
                     timer += Time.deltaTime;
@@ -87,7 +87,7 @@ public class MovingPlatform : MonoBehaviour
                 rb2d.velocity = new Vector2(-speedReturn, rb2d.velocity.y);
                 if (transform.position.x <= X)
                 {
-                   //  animMovingPlatform.SetBool("blinking", false);
+                    animMovingPlatform.SetBool("blinking", false);
 
                     rb2d.velocity = new Vector2(0, rb2d.velocity.y);
                     sr.enabled = true;
