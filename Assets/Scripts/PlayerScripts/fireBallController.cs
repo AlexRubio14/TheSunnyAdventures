@@ -38,8 +38,6 @@ public class fireBallController : MonoBehaviour
     void Update()
     {
         rb2d.position += direction * velocity * Time.deltaTime;
-
-        
     }
 
     private void OnEnable()
@@ -51,8 +49,6 @@ public class fireBallController : MonoBehaviour
     {
         if (collision.TryGetComponent<JumpBossMovement>(out JumpBossMovement bossBehaviour))
         {
-     
-           
             bossBehaviour.minusHealth(20);
             Destroy(gameObject);    
         }
