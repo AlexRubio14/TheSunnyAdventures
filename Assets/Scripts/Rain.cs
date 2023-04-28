@@ -9,8 +9,11 @@ public class Rain : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             Destroy(collision.gameObject);
+        }     
+        if(collision.CompareTag("Floor"))
+        {
+            Destroy(gameObject);
         }
     }
 
-   
 }
