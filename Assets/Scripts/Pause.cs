@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class Pause : MonoBehaviour
 {
     [SerializeField]
     private GameObject menuBoton;
+
+    [SerializeField]
+    private GameObject settingBoton;
 
     private bool pauseGame = false;
 
@@ -21,6 +25,7 @@ public class Pause : MonoBehaviour
             else
             {
                 Pauses();
+                settingBoton.SetActive(false);
             }
         }
     }
@@ -42,8 +47,7 @@ public class Pause : MonoBehaviour
 
     public void Setting()
     {
-        Debug.Log("Setting");
-        //Mover a la scene de setting
+        settingBoton.SetActive(true);
     }
 
     public void Return()
@@ -51,5 +55,15 @@ public class Pause : MonoBehaviour
         Time.timeScale = 1.0f;
         pauseGame = false;
         SceneManager.LoadScene("HUB");
+    }
+
+    public void ChangeVolume(float volume)
+    {
+        Debug.Log("si");
+    }
+
+    public void returnMenu()
+    {
+        settingBoton.SetActive(false);
     }
 }
