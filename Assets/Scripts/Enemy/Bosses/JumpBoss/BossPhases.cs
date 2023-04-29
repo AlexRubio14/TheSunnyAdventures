@@ -5,6 +5,6 @@ using UnityEngine.Events;
 
 public class BossPhases : MonoBehaviour
 {
-    [SerializeField]
-    private UnityEvent 
+    //  [SerializeField]
+    //private UnityEvent ;
 }

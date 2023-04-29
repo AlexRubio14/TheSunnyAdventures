@@ -27727,8 +27727,8 @@ MonoBehaviour:
   door: {fileID: 1408224284}
   jumpBoss: {fileID: 283745054}
   plants:
-  - {fileID: 1838825875}
   - {fileID: 851945296}
+  - {fileID: 1838825875}
 --- !u!61 &1781406757
 BoxCollider2D:
   m_ObjectHideFlags: 0
