@@ -27,6 +27,11 @@ public class JumpBossMovement : MonoBehaviour
     [SerializeField]
     private int healt;
 
+    [SerializeField]
+    private float time;
+    [SerializeField]
+    private float changeSceneTime;
+
     Rigidbody2D rb2d;
 
     [SerializeField]
@@ -34,6 +39,9 @@ public class JumpBossMovement : MonoBehaviour
     BossDoorController doorController;
     SunnyDeathController sunnyDeathController;
     SpriteRenderer sp;
+    BoxCollider2D bx2d;
+    [SerializeField]
+    GameObject canva;
     bool level1Win;
 
     [SerializeField]
@@ -48,6 +56,7 @@ public class JumpBossMovement : MonoBehaviour
         sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
         sp = GetComponent<SpriteRenderer>();
         timeClass = FindObjectOfType<timer>();
+        bx2d= GetComponent<BoxCollider2D>();
         rotate = false;
         isGrounded = true;
     }
@@ -68,7 +77,14 @@ public class JumpBossMovement : MonoBehaviour
         if (healt <= 0)
         {
             Die();
-            SceneManager.LoadScene("HUB");
+            time += Time.deltaTime;
+            if(time >= changeSceneTime)
+            {
+                SceneManager.LoadScene("HUB");
+                Destroy(gameObject);
+                time = 0;
+            }
+            
         }
 
        
@@ -103,7 +119,10 @@ public class JumpBossMovement : MonoBehaviour
 
     public void Die()
     {
-        Destroy(gameObject);
+        rb2d.velocity = new Vector2(0, 0);
+        canva.SetActive(false);
+        bx2d.enabled= false;
+        sp.enabled= false;
         level1Win = true;
         winText.SetActive(true);
     }

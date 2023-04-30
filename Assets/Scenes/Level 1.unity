@@ -4363,11 +4363,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.7
+      value: 13.8
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 55.6
+      value: 70.7
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23634,6 +23634,11 @@ Transform:
   m_Father: {fileID: 919656900}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1290265770 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2860778806393175350, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
+  m_PrefabInstance: {fileID: 4851402215962537653}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1291234347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6188843610487546259, guid: 41ef93d090d54034a8d578f26ff67993, type: 3}
@@ -29728,14 +29733,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 2860778806393175350, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4851402217660482443, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4851402217660482548, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
+      propertyPath: canva
+      value: 
+      objectReference: {fileID: 1290265770}
+    - target: {fileID: 4851402217660482548, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
       propertyPath: winText
       value: 
       objectReference: {fileID: 205585860}
+    - target: {fileID: 4851402217660482548, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
+      propertyPath: changeSceneTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7420420934633314130, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
       propertyPath: m_RootOrder
       value: 3
