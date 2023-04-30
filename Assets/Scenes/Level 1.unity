@@ -4363,11 +4363,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.12
+      value: 31.08
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 69.66
+      value: 50.72
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5864,8 +5864,12 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 3.9771786, y: 14.142651}
+      - {x: 1.6354256, y: 14.23209}
+      - {x: -3.2601528, y: 15.384159}
+      - {x: -3.3914013, y: 14.158287}
       - {x: -18.68829, y: 14.190746}
-      - {x: -14.448926, y: -6.575018}
+      - {x: -15.119301, y: -3.0352097}
+      - {x: -13.160794, y: -6.5347633}
       - {x: 16.850979, y: -6.5641823}
       - {x: 17.429478, y: 14.133965}
 --- !u!4 &923982407 stripped
@@ -24190,10 +24194,15 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 17.741037, y: 10.1877575}
-      - {x: -13.926779, y: 10.549618}
-      - {x: -13.851915, y: 13.595299}
+      - {x: -12.6803055, y: 11.427898}
+      - {x: -12.538572, y: 11.456245}
+      - {x: -13.462978, y: 11.85096}
+      - {x: -14.617285, y: 13.17009}
+      - {x: -14.844063, y: 13.283482}
       - {x: -17.78501, y: 13.618815}
       - {x: -17.925936, y: -8.147525}
+      - {x: -13.076096, y: -7.656008}
+      - {x: -11.866293, y: -8.538869}
       - {x: 18.017668, y: -9.442441}
 --- !u!4 &1550330592
 Transform:
@@ -24775,7 +24784,9 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 17.682875, y: 10.55017}
-      - {x: -18.688236, y: 10.36762}
+      - {x: -11.891186, y: 10.315468}
+      - {x: -13.131065, y: 11.004914}
+      - {x: -18.348284, y: 10.962538}
       - {x: -18.981285, y: 9.413457}
       - {x: -18.787611, y: -9.383708}
       - {x: 17.880701, y: -9.30819}
@@ -27728,7 +27739,6 @@ MonoBehaviour:
   jumpBoss: {fileID: 283745054}
   plants:
   - {fileID: 851945296}
-  - {fileID: 1838825875}
 --- !u!61 &1781406757
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28128,11 +28138,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
---- !u!1 &1838825875 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2923459776552524651, guid: dae502bd0f6630e4497f0d7f380f596d, type: 3}
-  m_PrefabInstance: {fileID: 553103103}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1854304493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29578,6 +29583,10 @@ PrefabInstance:
     - target: {fileID: 2923459776552524648, guid: dae502bd0f6630e4497f0d7f380f596d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923459776552524650, guid: dae502bd0f6630e4497f0d7f380f596d, type: 3}
+      propertyPath: timeToThrow
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2923459776552524651, guid: dae502bd0f6630e4497f0d7f380f596d, type: 3}
       propertyPath: m_Name

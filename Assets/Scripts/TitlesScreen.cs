@@ -10,6 +10,10 @@ public class TitlesScreen : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void Options()
+    {
+
+    }
     public void ExitGame()
     {
         Application.Quit();
