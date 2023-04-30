@@ -66,4 +66,10 @@ public class Pause : MonoBehaviour
     {
         settingBoton.SetActive(false);
     }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
+    }
 }
