@@ -4504,6 +4504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuBoton: {fileID: 494611948}
   settingBoton: {fileID: 85140255}
+  slider: {fileID: 686347903}
 --- !u!1001 &432878617
 PrefabInstance:
   m_ObjectHideFlags: 0

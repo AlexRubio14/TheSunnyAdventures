@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class Pause : MonoBehaviour
 {
@@ -12,7 +14,17 @@ public class Pause : MonoBehaviour
     [SerializeField]
     private GameObject settingBoton;
 
+    public Slider slider;
+
+    [SerializeField]
+    private float m_value;
+
     private bool pauseGame = false;
+
+    private void Start()
+    {
+        slider.value = m_value;
+    }
 
     private void Update()
     {
@@ -59,7 +71,9 @@ public class Pause : MonoBehaviour
 
     public void ChangeVolume(float volume)
     {
-        Debug.Log("si");
+        // AudioMixer.SetFloat("Volume", volume);
+        m_value = slider.value;
+        Debug.Log(slider.value);
     }
 
     public void returnMenu()
@@ -72,4 +86,5 @@ public class Pause : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
+
 }
