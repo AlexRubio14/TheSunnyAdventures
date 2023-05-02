@@ -4505,6 +4505,7 @@ MonoBehaviour:
   menuBoton: {fileID: 494611948}
   settingBoton: {fileID: 85140255}
   slider: {fileID: 686347903}
+  m_value: 0
 --- !u!1001 &432878617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5093,11 +5094,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.7
+      value: 17.27
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 55.6
+      value: 72.98
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.z

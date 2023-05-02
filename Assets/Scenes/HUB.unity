@@ -6988,6 +6988,7 @@ MonoBehaviour:
   menuBoton: {fileID: 1928857658}
   settingBoton: {fileID: 1287805112}
   slider: {fileID: 2026734813}
+  m_value: 0
 --- !u!114 &1402199828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7625,7 +7626,7 @@ GameObject:
   - component: {fileID: 1722021592}
   m_Layer: 0
   m_Name: Camera room HUB
-  m_TagString: Untagged
+  m_TagString: BackgroundMusic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -21,10 +21,6 @@ public class Pause : MonoBehaviour
 
     private bool pauseGame = false;
 
-    private void Start()
-    {
-        slider.value = m_value;
-    }
 
     private void Update()
     {
@@ -84,7 +80,7 @@ public class Pause : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Quit");
-        Application.Quit();
+        SceneManager.LoadScene("TitleScreen");
     }
 
 }

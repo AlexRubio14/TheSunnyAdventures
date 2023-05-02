@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+    [SerializeField]
+    private int song;
+
     // Animation
     private Animator anim;
 
@@ -68,6 +71,7 @@ public class playerController : MonoBehaviour
         leftRaycast = 0.25f;
         isJumping = false;
         score = 0;
+        FindObjectOfType<MusicController>().ChangeMusic(song);
     }
 
     private void Update()
