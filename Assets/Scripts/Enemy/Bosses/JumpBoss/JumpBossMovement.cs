@@ -43,6 +43,10 @@ public class JumpBossMovement : MonoBehaviour
     [SerializeField]
     GameObject canva;
     bool level1Win;
+    [SerializeField]
+    GameObject plant1;
+    [SerializeField] 
+    GameObject plant2;
 
     [SerializeField]
     GameObject winText;
@@ -73,6 +77,16 @@ public class JumpBossMovement : MonoBehaviour
             healt = 200;
             Restart();
             gameObject.SetActive(false);
+            plant1.gameObject.SetActive(false);
+            plant2.gameObject.SetActive(false);
+        }
+        if(healt <= 140)
+        {
+            plant1.SetActive(true);
+        }
+        if(healt <= 80)
+        {
+            plant2.SetActive(true);
         }
         if (healt <= 0)
         {

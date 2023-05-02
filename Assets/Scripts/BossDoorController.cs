@@ -7,8 +7,10 @@ public class BossDoorController : MonoBehaviour
 
     public GameObject door;
     SunnyDeathController SunnyDeathController;
+
     [SerializeField]
     GameObject jumpBoss;
+
     bool enter;
 
     private void Awake()

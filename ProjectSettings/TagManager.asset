@@ -21,6 +21,7 @@ TagManager:
   - TitleScreenMusic
   - MovingPlatform
   - Room
+  - PlantsBullet
   layers:
   - Default
   - TransparentFX
