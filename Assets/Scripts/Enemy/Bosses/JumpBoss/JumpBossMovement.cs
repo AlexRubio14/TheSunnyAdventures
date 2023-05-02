@@ -51,6 +51,8 @@ public class JumpBossMovement : MonoBehaviour
     [SerializeField]
     GameObject winText;
 
+    private bool isAlive;
+
     timer timeClass;
 
     private void Awake()
@@ -63,6 +65,7 @@ public class JumpBossMovement : MonoBehaviour
         bx2d= GetComponent<BoxCollider2D>();
         rotate = false;
         isGrounded = true;
+        isAlive = true;
     }
 
     private void Update()
@@ -133,6 +136,9 @@ public class JumpBossMovement : MonoBehaviour
 
     public void Die()
     {
+        isAlive = false;
+        plant1.gameObject.SetActive(false);
+        plant2.gameObject.SetActive(false);
         rb2d.velocity = new Vector2(0, 0);
         canva.SetActive(false);
         bx2d.enabled= false;
@@ -186,5 +192,10 @@ public class JumpBossMovement : MonoBehaviour
     public int GetHeatlh()
     {
         return healt;
+    }
+
+    public bool GetIsAlive()
+    {
+        return isAlive;
     }
 }
