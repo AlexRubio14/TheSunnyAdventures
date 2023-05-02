@@ -51,6 +51,8 @@ public class playerController : MonoBehaviour
     private Collider2D boxCollider;
     private Collider2D capsuleCollider;
 
+    private float boxColliderX;
+    private float capsuleColliderX;
 
     [SerializeField]
     private int score;
@@ -68,6 +70,9 @@ public class playerController : MonoBehaviour
         leftRaycast = 0.25f;
         isJumping = false;
         score = 0;
+        boxCollider.enabled = false;
+        boxColliderX = boxCollider.offset.x;
+        capsuleColliderX = capsuleCollider.offset.x;
     }
 
     private void Update()
@@ -86,6 +91,8 @@ public class playerController : MonoBehaviour
             Move();
             Jump();
         }
+
+        flipColliders();
 
         if (Input.GetKeyDown(KeyCode.Z))
         { 
@@ -122,8 +129,6 @@ public class playerController : MonoBehaviour
             leftRaycast = rightRaycast;
             rightRaycast = aux;
 
-            capsuleCollider.offset = new Vector2(-capsuleCollider.offset.x, capsuleCollider.offset.y);
-            boxCollider.offset = new Vector2(-boxCollider.offset.x, boxCollider.offset.y);
 
 
         }
@@ -137,12 +142,25 @@ public class playerController : MonoBehaviour
             leftRaycast = rightRaycast;
             rightRaycast = aux;
 
-            capsuleCollider.offset = new Vector2(-capsuleCollider.offset.x, capsuleCollider.offset.y);
-            boxCollider.offset = new Vector2(-boxCollider.offset.x, boxCollider.offset.y);
         }
 
 
     }
+
+    private void flipColliders()
+    {
+        if (fliped)
+        {
+            capsuleCollider.offset = new Vector2(-capsuleColliderX, capsuleCollider.offset.y);
+            boxCollider.offset = new Vector2(-boxColliderX, boxCollider.offset.y);
+        }
+        else
+        {
+            capsuleCollider.offset = new Vector2(capsuleColliderX, capsuleCollider.offset.y);
+            boxCollider.offset = new Vector2(boxColliderX, boxCollider.offset.y);
+        }
+    }
+
 
     #endregion
 
@@ -204,10 +222,11 @@ public class playerController : MonoBehaviour
     #region ATTACK
     void Attack()
     {
-
+        boxCollider.enabled = true;
     }
     public void endAttack() //setup in attack animation
     {
+        boxCollider.enabled = false;
         anim.SetBool("Attack", false);
     }
 
@@ -227,6 +246,11 @@ public class playerController : MonoBehaviour
     public bool GetFlip()
     {
         return sp.flipX; 
+    }
+
+    public bool GetFliped()
+    {
+        return fliped;
     }
 
     public bool GetAnimAttack()

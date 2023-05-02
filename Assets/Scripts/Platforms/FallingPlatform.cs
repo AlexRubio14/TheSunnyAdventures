@@ -7,6 +7,8 @@ public class FallingPlatform : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField]
     private Collider2D coll;
+    [SerializeField]
+    private Collider2D trig;
 
     [SerializeField]
     private float fallDelay = 0.75f;
@@ -16,7 +18,6 @@ public class FallingPlatform : MonoBehaviour
     float timeWaited;
     bool collisionActivated = false;
     bool startCont = false;
-    SunnyDeathController sunnyDeathController;
 
     private Animator animatorFallingPlatform; 
 
@@ -47,6 +48,7 @@ public class FallingPlatform : MonoBehaviour
                 startCont = true;
                 spriteRenderer.enabled = false;
                 coll.enabled = false;
+                trig.enabled = false;
             }
         }
         if(collisionActivated && startCont)
@@ -62,6 +64,7 @@ public class FallingPlatform : MonoBehaviour
                 startCont = false;
                 spriteRenderer.enabled = true;
                 coll.enabled = true;
+                trig.enabled = true;
                 collisionActivated = false;
             }
         }

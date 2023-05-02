@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CheckPointController : MonoBehaviour
 {
-    [SerializeField] private Transform respawnPoint;
+    [SerializeField] 
+    private Transform respawnPoint;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,4 +16,5 @@ public class CheckPointController : MonoBehaviour
 
         }
     }
+
 }
