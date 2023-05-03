@@ -10,20 +10,12 @@ public class fireBallController : MonoBehaviour
     private Rigidbody2D rb2d;
 
     public Vector2 direction;
-    EnemyMovementT enemyMovementT;
-    JumpBossMovement jumpBossMovement;
-    EnemyMovementV enemyMovementV;
-    EnemyMovementM enemyMovementM;
     playerController playerController;
     SpriteRenderer sp; 
 
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        enemyMovementT = GetComponent<EnemyMovementT>();
-        enemyMovementV = GetComponent<EnemyMovementV>();
-        enemyMovementM = GetComponent<EnemyMovementM>();
-        jumpBossMovement = GetComponent<JumpBossMovement>();
         playerController = FindObjectOfType<playerController>();
         sp = GetComponent<SpriteRenderer>();
     }
