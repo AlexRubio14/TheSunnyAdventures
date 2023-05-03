@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(gameObject);
             return;
-        }
+        }   
 
         instance = this;
         

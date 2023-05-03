@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: af8a1906eb0f4d54c883fbdf6add15a0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - titleScreenMusic: {fileID: 8300000, guid: 779ffac2a43b9154e8081912ecdf2e69, type: 3}
+  - themeMusic: {fileID: 8300000, guid: ec7b469ad1b29a548827bb5c5918e7ff, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

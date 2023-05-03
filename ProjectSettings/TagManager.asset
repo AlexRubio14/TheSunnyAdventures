@@ -20,8 +20,9 @@ TagManager:
   - Boss
   - TitleScreenMusic
   - MovingPlatform
-  - Room
   - PlantsBullet
+  - Room
+  - BackgroundMusic
   layers:
   - Default
   - TransparentFX
