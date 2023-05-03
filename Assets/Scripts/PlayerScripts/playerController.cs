@@ -7,6 +7,9 @@ public class playerController : MonoBehaviour
     // Animation
     private Animator anim;
 
+    //Trail Renderer
+    private TrailRenderer tr;
+
     //Movement
     [SerializeField]
     private float speed;
@@ -73,6 +76,8 @@ public class playerController : MonoBehaviour
         boxCollider.enabled = false;
         boxColliderX = boxCollider.offset.x;
         capsuleColliderX = capsuleCollider.offset.x;
+        tr = GetComponent<TrailRenderer>();
+        tr.enabled = false;
     }
 
     private void Update()
@@ -114,7 +119,10 @@ public class playerController : MonoBehaviour
         if (playerDash.GetIsDashing())
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+            tr.enabled = true;
         }
+        else
+            tr.enabled = false;
     }
 
     #region FLIP
