@@ -4458,6 +4458,22 @@ PrefabInstance:
       propertyPath: checkPointLeft
       value: 
       objectReference: {fileID: 410442170}
+    - target: {fileID: 1034794051, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_Time
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1034794051, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1034794051, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
+      value: 0.8379888
+      objectReference: {fileID: 0}
+    - target: {fileID: 1034794051, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
+      value: 0.11320755
+      objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456250, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_Name
       value: Sunny
@@ -4468,11 +4484,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.31
+      value: 13.95
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.78
+      value: -3.49
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5368,6 +5384,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 181462227}
     m_Modifications:
+    - target: {fileID: 6161403711120280984, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
+      propertyPath: m_UseOneWay
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6161403711120280985, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -30057,7 +30077,7 @@ PrefabInstance:
       objectReference: {fileID: 1290265770}
     - target: {fileID: 4851402217660482548, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
       propertyPath: healt
-      value: 20
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4851402217660482548, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
       propertyPath: plant1
