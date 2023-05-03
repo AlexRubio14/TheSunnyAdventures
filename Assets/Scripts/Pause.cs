@@ -21,6 +21,23 @@ public class Pause : MonoBehaviour
 
     private bool pauseGame = false;
 
+    public string actualVolume;
+
+    public static Pause instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+
+        DontDestroyOnLoad(this);
+    }
+
 
     private void Update()
     {
