@@ -6,6 +6,8 @@ public class MusicController : MonoBehaviour
 {
     AudioSource music;
 
+    public static MusicController instance;
+
     [SerializeField]
     AudioClip titleScreenMusic;
     [SerializeField]
@@ -13,9 +15,18 @@ public class MusicController : MonoBehaviour
 
     private void Awake()
     {
-        music = GetComponent<AudioSource>();
-        ChangeMusic(0);
-        DontDestroyOnLoad(gameObject);
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            music = GetComponent<AudioSource>();
+            ChangeMusic(0);
+            DontDestroyOnLoad(gameObject);
+        }
+        
     }
 
     public void ChangeMusic(int index)
@@ -23,15 +34,23 @@ public class MusicController : MonoBehaviour
         switch (index)
         {
             case 0:
-                music.clip = titleScreenMusic;
+                if(music.clip != titleScreenMusic)
+                {
+                    music.clip = titleScreenMusic;
+                    music.Play();
+                }
                 break;
             case 1:
-                music.clip = themeMusic;
+                if (music.clip != themeMusic)
+                {
+                    music.clip = themeMusic;
+                    music.Play();
+                }
                 break;
 
             default:
                 break;
         }
-        music.Play();
+        
     }
 }

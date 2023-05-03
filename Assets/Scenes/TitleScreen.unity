@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleScreenMusic: {fileID: 8300000, guid: 779ffac2a43b9154e8081912ecdf2e69, type: 3}
-  themeMusic: {fileID: 8300000, guid: 82b35c6575b2a294ca1e5cd5b2c8607f, type: 3}
+  themeMusic: {fileID: 8300000, guid: ec7b469ad1b29a548827bb5c5918e7ff, type: 3}
 --- !u!82 &138960458
 AudioSource:
   m_ObjectHideFlags: 0
