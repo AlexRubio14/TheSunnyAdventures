@@ -13369,7 +13369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1908148750}
-  maxTime: 450
+  maxTime: 400
 --- !u!223 &1184761756
 Canvas:
   m_ObjectHideFlags: 0
