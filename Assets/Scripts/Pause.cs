@@ -85,11 +85,7 @@ public class Pause : MonoBehaviour
         SceneManager.LoadScene("HUB");
     }
 
-    public void ChangeVolume(float volume)
-    {
-      
-    }
-
+  
     public void returnMenu()
     {
         settingBoton.SetActive(false);
