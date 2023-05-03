@@ -8,6 +8,8 @@ public class TitlesScreen : MonoBehaviour
     [SerializeField]
     private GameObject settingBoton;
     [SerializeField]
+    private GameObject QuitBoton;
+    [SerializeField]
     private GameObject Boton1;
     [SerializeField]
     private GameObject Boton2;
@@ -25,10 +27,6 @@ public class TitlesScreen : MonoBehaviour
         Boton2.SetActive(false);
         Boton3.SetActive(false);
     }
-    public void ChangeVolume(float volume)
-    {
-        // AudioMixer.SetFloat("Volume", volume);
-    }
     public void returnMenu()
     {
         settingBoton.SetActive(false);
@@ -39,6 +37,21 @@ public class TitlesScreen : MonoBehaviour
 
     public void ExitGame()
     {
+        QuitBoton.SetActive(true);
+        Boton1.SetActive(false);
+        Boton2.SetActive(false);
+        Boton3.SetActive(false);
+    }
+    public void DenyExit()
+    {
+        QuitBoton.SetActive(false);
+        Boton1.SetActive(true);
+        Boton2.SetActive(true);
+        Boton3.SetActive(true);
+    }
+    public void Exit()
+    {
         Application.Quit();
     }
+
 }
