@@ -26,7 +26,6 @@ public class PlayerDash : MonoBehaviour
         rb = GetComponent <Rigidbody2D>();
         player = GetComponent<playerController>();
         baseGravity = rb.gravityScale;
-        
     }
 
     public void WaitCD()
