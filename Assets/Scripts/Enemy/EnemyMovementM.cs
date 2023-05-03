@@ -18,17 +18,20 @@ public class EnemyMovementM : MonoBehaviour
     Rigidbody2D rb2d;
     SunnyDeathController sunnyDeathController;
 
+    public ShootMage shootMage;
 
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         sunnyDeathController = GameObject.FindGameObjectWithTag("Player").GetComponent<SunnyDeathController>();
+        shootMage = GetComponent<ShootMage>();
     }
 
     public void Die()
     {
         rotate = false;
         gameObject.SetActive(false);
+        enemyMovement = 3;
     }
     public void Restart()
     {

@@ -53,7 +53,12 @@ public class CandelabroController : MonoBehaviour
         animatorCandelabro.SetBool("switched_on", lighten);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (lighten)
         {
@@ -70,13 +75,11 @@ public class CandelabroController : MonoBehaviour
         }
         else
         {
-            // animatorCandelabro.SetBool("switched_on", false);
-
-            if (collision.CompareTag("FireBall"))
+            if (collision.gameObject.CompareTag("FireBall"))
             {
                 Destroy(collision.gameObject);
                 lighten = true;
-     
+
                 foreach (GameObject elem in platform)
                 {
                     elem.gameObject.SetActive(true);
@@ -84,5 +87,4 @@ public class CandelabroController : MonoBehaviour
             }
         }
     }
-
 }

@@ -16,9 +16,12 @@ public class ShootMage : MonoBehaviour
 
     private EnemyMovementM mage;
 
+    private List<GameObject> balls;
+
     private void Awake()
     {
         mage = GetComponent<EnemyMovementM>();
+        balls = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -31,7 +34,7 @@ public class ShootMage : MonoBehaviour
         }
     }
 
-    void ShootFire()
+    private void ShootFire()
     {
         if (mage.GetEnemyMovement() == 0)
         {
@@ -48,6 +51,17 @@ public class ShootMage : MonoBehaviour
             {
                 currentFireBall.direction = Vector2.left;
             }
+            balls.Add(currentFireBall.gameObject);
         }
+    }
+
+    public void DestroyMageBalls()
+    {
+        foreach(GameObject item in balls)
+        {
+            if (item != null)
+                Destroy (item);
+        }
+        balls.Clear();
     }
 }
