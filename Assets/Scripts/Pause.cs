@@ -14,6 +14,18 @@ public class Pause : MonoBehaviour
     [SerializeField]
     private GameObject settingBoton;
 
+    [SerializeField]
+    private GameObject QuitBoton;
+
+    [SerializeField]
+    private GameObject Boton1;
+    [SerializeField]
+    private GameObject Boton2;
+    [SerializeField]
+    private GameObject Boton3;
+    [SerializeField]
+    private GameObject Boton4;
+
     public Slider slider;
 
     [SerializeField]
@@ -22,21 +34,7 @@ public class Pause : MonoBehaviour
     private bool pauseGame = false;
 
     public string actualVolume;
-
-    public static Pause instance;
-
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        instance = this;
-
-        DontDestroyOnLoad(this);
-    }
+  
 
 
     private void Update()
@@ -73,6 +71,10 @@ public class Pause : MonoBehaviour
     public void Setting()
     {
         settingBoton.SetActive(true);
+        Boton1.SetActive(false); 
+        Boton2.SetActive(false);
+        Boton3.SetActive(false);
+        Boton4.SetActive(false);
     }
 
     public void Return()
@@ -93,12 +95,37 @@ public class Pause : MonoBehaviour
     public void returnMenu()
     {
         settingBoton.SetActive(false);
+        Boton1.SetActive(true);
+        Boton2.SetActive(true);
+        Boton3.SetActive(true);
+        Boton4.SetActive(true);
     }
 
-    public void QuitGame()
+    public void TitleGame()
     {
-        Debug.Log("Quit");
+        Time.timeScale = 1.0f;
+        pauseGame = false;
         SceneManager.LoadScene("TitleScreen");
+    }
+    public void Quit()
+    {
+        QuitBoton.SetActive(true);
+        Boton1.SetActive(false);
+        Boton2.SetActive(false);
+        Boton3.SetActive(false);
+        Boton4.SetActive(false);
+    }
+    public void DenyQuit()
+    {
+        QuitBoton.SetActive(false);
+        Boton1.SetActive(true);
+        Boton2.SetActive(true);
+        Boton3.SetActive(true);
+        Boton4.SetActive(true);
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
 }
