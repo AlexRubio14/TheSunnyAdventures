@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 313898264}
   - component: {fileID: 313898265}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: CollisionTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,6 +165,7 @@ MonoBehaviour:
     m_Bits: 64
   rotate: 0
   respawnPoint: {fileID: 6269292549751673144}
+  shootMage: {fileID: 0}
 --- !u!114 &1756693145091329589
 MonoBehaviour:
   m_ObjectHideFlags: 0

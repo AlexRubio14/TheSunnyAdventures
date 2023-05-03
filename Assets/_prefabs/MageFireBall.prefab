@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6738312176403548738}
   - component: {fileID: 5146130157026248217}
   - component: {fileID: 469681420}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: MageFireBall
   m_TagString: MageBall
   m_Icon: {fileID: 0}
