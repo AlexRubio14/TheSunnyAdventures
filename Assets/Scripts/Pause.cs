@@ -87,9 +87,7 @@ public class Pause : MonoBehaviour
 
     public void ChangeVolume(float volume)
     {
-        // AudioMixer.SetFloat("Volume", volume);
-        m_value = slider.value;
-        Debug.Log(slider.value);
+      
     }
 
     public void returnMenu()
