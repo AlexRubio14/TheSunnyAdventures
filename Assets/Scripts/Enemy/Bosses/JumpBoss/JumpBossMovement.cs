@@ -94,9 +94,11 @@ public class JumpBossMovement : MonoBehaviour
         if (healt <= 0)
         {
             Die();
+           
             time += Time.deltaTime;
             if(time >= changeSceneTime)
             {
+                winText.SetActive(false);
                 SceneManager.LoadScene("HUB");
                 Destroy(gameObject);
                 time = 0;
@@ -141,6 +143,7 @@ public class JumpBossMovement : MonoBehaviour
         plant2.gameObject.SetActive(false);
         rb2d.velocity = new Vector2(0, 0);
         canva.SetActive(false);
+        winText.SetActive(true);
         bx2d.enabled= false;
         sp.enabled= false;
         level1Win = true;

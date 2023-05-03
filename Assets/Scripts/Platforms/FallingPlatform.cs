@@ -77,6 +77,7 @@ public class FallingPlatform : MonoBehaviour
         startCont = false;
         spriteRenderer.enabled = true;
         coll.enabled = true;
+        trig.enabled = true;
         collisionActivated = false;
     }
 }
