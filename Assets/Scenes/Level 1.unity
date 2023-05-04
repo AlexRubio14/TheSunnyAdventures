@@ -4469,6 +4469,10 @@ PrefabInstance:
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1034794051, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1034794051, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -4527,6 +4531,30 @@ PrefabInstance:
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456389, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_LinearDrag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456389, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: m_GravityScale
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456391, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: speed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456391, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: jumpForce
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456391, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: maxGravity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152766392956456391, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: minGravity
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1034794050, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
@@ -4623,7 +4651,6 @@ GameObject:
   m_Component:
   - component: {fileID: 604917168}
   - component: {fileID: 604917167}
-  - component: {fileID: 604917169}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -4662,32 +4689,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &604917169
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 604917166}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 38.5, y: 55.5}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 3}
-  m_EdgeRadius: 0
 --- !u!1 &608573379
 GameObject:
   m_ObjectHideFlags: 0
@@ -11739,22 +11740,12 @@ CompositeCollider2D:
         Y: 830000000
       - X: 810000000
         Y: 730000000
-      - X: 190000100
+      - X: 190000000
         Y: 730000000
-      - X: 190000100
-        Y: 740000041
-      - X: 190000041
-        Y: 740000100
-      - X: 179999959
-        Y: 740000100
-      - X: 179999900
-        Y: 740000041
-      - X: 179999900
-        Y: 729999959
-      - X: 179999959
-        Y: 729999900
+      - X: 190000000
+        Y: 740000000
       - X: 180000000
-        Y: 729999900
+        Y: 740000000
       - X: 180000000
         Y: 710000000
       - X: 360000000
@@ -12203,14 +12194,6 @@ CompositeCollider2D:
         Y: 270000000
       - X: 190000000
         Y: 270000000
-    - - X: 270000000
-        Y: 280000000
-      - X: 260000000
-        Y: 280000000
-      - X: 260000000
-        Y: 270000000
-      - X: 270000000
-        Y: 270000000
     - - X: 340000000
         Y: 270000000
       - X: 390000000
@@ -12227,6 +12210,14 @@ CompositeCollider2D:
         Y: 260000000
       - X: 340000000
         Y: 260000000
+    - - X: 270000000
+        Y: 280000000
+      - X: 260000000
+        Y: 280000000
+      - X: 260000000
+        Y: 270000000
+      - X: 270000000
+        Y: 270000000
     - - X: 210000000
         Y: 280000000
       - X: 200000000
@@ -12255,14 +12246,6 @@ CompositeCollider2D:
         Y: 230000000
       - X: 710000000
         Y: 230000000
-    - - X: 330000000
-        Y: 160000000
-      - X: 300000000
-        Y: 160000000
-      - X: 300000000
-        Y: 150000000
-      - X: 330000000
-        Y: 150000000
     - - X: 410000000
         Y: 160000000
       - X: 380000000
@@ -12270,6 +12253,14 @@ CompositeCollider2D:
       - X: 380000000
         Y: 150000000
       - X: 410000000
+        Y: 150000000
+    - - X: 330000000
+        Y: 160000000
+      - X: 300000000
+        Y: 160000000
+      - X: 300000000
+        Y: 150000000
+      - X: 330000000
         Y: 150000000
   m_CompositePaths:
     m_Paths:
@@ -12387,9 +12378,9 @@ CompositeCollider2D:
       - {x: 74.00003, y: 83}
       - {x: 81, y: 82.99997}
       - {x: 80.99997, y: 73}
-      - {x: 19.00001, y: 73.00003}
-      - {x: 18.999975, y: 74.000015}
-      - {x: 17.99999, y: 73.99998}
+      - {x: 19, y: 73.00003}
+      - {x: 18.999971, y: 74}
+      - {x: 18, y: 73.99997}
       - {x: 18.000029, y: 71}
       - {x: 36, y: 70.99997}
       - {x: 36.00003, y: 67}
@@ -12665,7 +12656,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 39d4b22e7a142bc4589e66c3ba075c1b, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -28438,6 +28429,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1506607917}
     m_Modifications:
+    - target: {fileID: 6161403711120280984, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
+      propertyPath: m_UseOneWay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161403711120280984, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
+      propertyPath: m_SurfaceArc
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 6161403711120280985, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -28530,7 +28529,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Floor
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6161403711120280984, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
 --- !u!1001 &1854304493
 PrefabInstance:
