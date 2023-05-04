@@ -44,6 +44,10 @@ public class Pause : MonoBehaviour
             if(pauseGame)
             {
                 Resume();
+                Boton1.SetActive(true);
+                Boton2.SetActive(true);
+                Boton3.SetActive(true);
+                Boton4.SetActive(true);
             }
             else
             {
