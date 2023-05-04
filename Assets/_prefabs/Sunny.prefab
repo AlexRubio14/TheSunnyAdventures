@@ -105,12 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de9f68dd8a98f54781dde01243b6268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  fallSpeed: 3.2
-  maxJumps: 1
-  isGrounded: 0
-  jumpTimer: 0.28
+  speed: 200
   fliped: 0
+  maxDrag: 10
   dashForce: 10
   dashTime: 0.2
   spikesLayer:
@@ -120,8 +117,9 @@ MonoBehaviour:
   floorLayer:
     serializedVersion: 2
     m_Bits: 64
+  interactTime: 0.2
   <score>k__BackingField: 0
-  jumpForce: 15
+  jumpForce: 100
   minGravity: 10
   maxGravity: 25
 --- !u!114 &9152766392956456384

@@ -22,18 +22,6 @@ public class playerController : MonoBehaviour
     private float leftRaycast;
     private float distanceRayCast;
 
-
-    [SerializeField]
-    private float fallSpeed;
-    [SerializeField]
-    private int maxJumps = 1;
-    private int currentJumps = 0;
-    [SerializeField]
-    private bool isGrounded;
-    [SerializeField]
-    float jumpTimer;
-    float jumpWaited = 0;
-
     //Rotation
     public bool fliped = false;
     private SpriteRenderer sp;
@@ -41,8 +29,12 @@ public class playerController : MonoBehaviour
     //Dash
     private Rigidbody2D rb2d;
     bool wantsToDash = false;
-    public float dashForce = 10f;
-    public float dashTime = 0.2f;
+    [SerializeField]
+    private float maxDrag;
+    [SerializeField]
+    public float dashForce;
+    [SerializeField]
+    public float dashTime;
 
     //Death
     [SerializeField]
@@ -58,19 +50,25 @@ public class playerController : MonoBehaviour
     private float boxColliderX;
     private float capsuleColliderX;
 
+    [SerializeField]
+    private float interactTime;
+    private bool wantsToInteract = false;
+
     [field: SerializeField]
     public int score { get; private set; }
 
     [Header("Jump and gravity")]
     [SerializeField]
-    private float jumpForce = 50f;
+    private float jumpForce;
     [SerializeField]
-    private float minGravity = 10f;
+    private float minGravity;
     [SerializeField]
-    private float maxGravity = 25f;
-
-    //------MOVEMENT
+    private float maxGravity;
+    private int maxJumps = 1;
+    private int currentJumps = 0;
+    private bool isGrounded;
     bool wantsToJump = false;
+
 
     private void Awake()
     {
@@ -98,12 +96,17 @@ public class playerController : MonoBehaviour
             case MovementState.WALKING:
                 CheckJump();
                 CheckDash();
+                CheckInteract();
                 break;
             case MovementState.INTERACTING:
+                CheckJump();
+                CheckDash();
+                CheckInteract();
                 break;
             case MovementState.FALLING:
                 CheckJump();
                 CheckDash();
+                CheckInteract();
                 break;
             case MovementState.DASHING:
                 break;
@@ -194,6 +197,9 @@ public class playerController : MonoBehaviour
                     Dash();
                 break;
             case MovementState.INTERACTING:
+                Move();
+                if (wantsToInteract)
+                    Attack();
                 break;
             case MovementState.FALLING:
                 Move();
@@ -219,8 +225,6 @@ public class playerController : MonoBehaviour
     }
 
 
-    #region JUMP
-
     private void CheckRaycast()
     {
         if ((Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) ||
@@ -229,7 +233,6 @@ public class playerController : MonoBehaviour
         {
             isGrounded = true;
             currentJumps = 0;
-            jumpWaited = 0;
             if (currentMovementState == MovementState.FALLING)
                 currentMovementState = MovementState.WALKING;
         }
@@ -254,6 +257,12 @@ public class playerController : MonoBehaviour
     {
         wantsToDash |= Input.GetKeyDown(KeyCode.Z);
     }
+
+    void CheckInteract()
+    {
+        wantsToInteract = Input.GetKeyDown(KeyCode.LeftControl);
+    }
+
     void UpdateJump()
     {
         if (rb2d.velocity.y > 0 && Input.GetKey(KeyCode.Space))
@@ -283,25 +292,21 @@ public class playerController : MonoBehaviour
     {
         currentMovementState = isGrounded ? MovementState.WALKING : MovementState.FALLING;
         rb2d.gravityScale = maxGravity;
-        rb2d.drag = 10f;
+        rb2d.drag = maxDrag;
     }
 
-    #endregion 
-
-
-    #region ATTACK
     void Attack()
     {
+        wantsToInteract = false;
         boxCollider.enabled = true;
+        Invoke("endAttack", interactTime);
     }
-    public void endAttack() //setup in attack animation
+    public void endAttack() 
     {
+        currentMovementState = isGrounded ? MovementState.WALKING : MovementState.FALLING;
         boxCollider.enabled = false;
         anim.SetBool("Attack", false);
     }
-
-    #endregion
-
 
     public void SetRespawnPoint(Transform respawnPoint)
     {
