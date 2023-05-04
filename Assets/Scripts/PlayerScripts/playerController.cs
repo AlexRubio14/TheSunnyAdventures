@@ -26,15 +26,7 @@ public class playerController : MonoBehaviour
     public bool fliped = false;
     private SpriteRenderer sp;
 
-    //Dash
-    private Rigidbody2D rb2d;
-    bool wantsToDash = false;
-    [SerializeField]
-    private float maxDrag;
-    [SerializeField]
-    public float dashForce;
-    [SerializeField]
-    public float dashTime;
+    
 
     //Death
     [SerializeField]
@@ -68,6 +60,17 @@ public class playerController : MonoBehaviour
     private int currentJumps = 0;
     private bool isGrounded;
     bool wantsToJump = false;
+
+    [Header("Dash")]
+    private Rigidbody2D rb2d;
+    bool wantsToDash = false;
+    [SerializeField]
+    private float maxDrag;
+    [SerializeField]
+    public float dashForce;
+    [SerializeField]
+    public float dashTime;
+    bool hasDashed = false;
 
 
     private void Awake()
@@ -206,7 +209,7 @@ public class playerController : MonoBehaviour
                 if (wantsToJump)
                     Jump();
                 UpdateJump();
-                if (wantsToDash)
+                if (wantsToDash && !hasDashed)
                     Dash();
                 break;
             case MovementState.DASHING:
@@ -233,6 +236,7 @@ public class playerController : MonoBehaviour
         {
             isGrounded = true;
             currentJumps = 0;
+            hasDashed = false;
             if (currentMovementState == MovementState.FALLING)
                 currentMovementState = MovementState.WALKING;
         }
@@ -280,12 +284,14 @@ public class playerController : MonoBehaviour
     void Dash()
     {
         wantsToDash = false;
+        hasDashed = true;
         currentMovementState = MovementState.DASHING;
         Vector2 dashDirection = new Vector2(fliped ? -1f : 1f, 0f);
         rb2d.velocity = dashDirection * dashForce;
         rb2d.drag = 0f;
         rb2d.gravityScale = 0f;
         Invoke("EndDash", dashTime);
+        
     }
 
     void EndDash()
@@ -350,5 +356,12 @@ public class playerController : MonoBehaviour
     public void AddScore()
     {
         score++;
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.collider.CompareTag("Wall"))
+        {
+            EndDash();
+        }
     }
 }
