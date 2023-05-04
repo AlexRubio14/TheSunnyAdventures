@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 9152766392956456391}
   - component: {fileID: 9152766392956456384}
   - component: {fileID: -3540917643391987682}
-  - component: {fileID: 9152766392956456385}
   - component: {fileID: 9152766392956456389}
   - component: {fileID: 2303659723972991898}
   - component: {fileID: 151767809481261492}
@@ -107,12 +106,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  jumpForce: 15
   fallSpeed: 3.2
-  isJumping: 0
+  maxJumps: 1
   isGrounded: 0
   jumpTimer: 0.28
   fliped: 0
+  dashForce: 10
+  dashTime: 0.2
   spikesLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -120,7 +120,10 @@ MonoBehaviour:
   floorLayer:
     serializedVersion: 2
     m_Bits: 64
-  score: 0
+  <score>k__BackingField: 0
+  jumpForce: 15
+  minGravity: 10
+  maxGravity: 25
 --- !u!114 &9152766392956456384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,22 +154,6 @@ MonoBehaviour:
   respawnPoint: {fileID: 0}
   timeToRespawn: 0.8
   checkPointLeft: {fileID: 0}
---- !u!114 &9152766392956456385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9152766392956456250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03225025098843049bd9af970c8efe6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashingTime: 0.2
-  dashForce: 20
-  timeCanDash: 0.4
-  canDash: 1
 --- !u!50 &9152766392956456389
 Rigidbody2D:
   serializedVersion: 4
