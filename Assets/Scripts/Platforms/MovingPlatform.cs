@@ -19,6 +19,11 @@ public class MovingPlatform : MonoBehaviour
     private float speedReturn;
 
     [SerializeField]
+    private float activeTime = 0;
+    [SerializeField]
+    private float totalActiveTime;
+
+    [SerializeField]
     private float X;
     private float Y;
     private float Z;
@@ -54,7 +59,7 @@ public class MovingPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && playerController.GetAnimAttack())
         {
-            active = true;
+             active = true;    
         }
     }
 
@@ -62,78 +67,85 @@ public class MovingPlatform : MonoBehaviour
     {
         if (active == true)
         {
-            if (retorno == false && direction == true)
-            {
-
-                rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
-                if (transform.position.x >= maxX - 0.1)
+           activeTime += Time.deltaTime;
+           if(activeTime >= totalActiveTime)
+           {
+                activeTime = 1;
+                if (retorno == false && direction == true)
                 {
-                     animMovingPlatform.SetBool("blinking", true);
 
-                    speed = 0;
-                    timer += Time.deltaTime;
-                    if (timer >= delayDestroy)
+                    rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
+                    if (transform.position.x >= maxX - 0.1)
                     {
-                        sr.enabled = false;
-                        bc2d.enabled = false;
-                        retorno = true;
-                        speed = realSpeed;
-                        timer = 0;
+                        animMovingPlatform.SetBool("blinking", true);
+
+                        speed = 0;
+                        timer += Time.deltaTime;
+                        if (timer >= delayDestroy)
+                        {
+                            sr.enabled = false;
+                            bc2d.enabled = false;
+                            retorno = true;
+                            speed = realSpeed;
+                            timer = 0;
+                        }
                     }
                 }
-            }
-            else if (retorno && direction == true)
-            {
-                rb2d.velocity = new Vector2(-speedReturn, rb2d.velocity.y);
-                if (transform.position.x <= X)
+                else if (retorno && direction == true)
                 {
-                    animMovingPlatform.SetBool("blinking", false);
-
-                    rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-                    sr.enabled = true;
-                    bc2d.enabled = true;
-                    retorno = false;
-                    active = false;
-                }
-
-            }
-            if (retorno == false && direction == false)
-            {
-
-                rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
-                if (transform.position.x <= maxX)
-                {
-                    animMovingPlatform.SetBool("blinking", true);
-
-                    speed = 0;
-                    timer += Time.deltaTime;
-                    if (timer >= delayDestroy)
+                    rb2d.velocity = new Vector2(-speedReturn, rb2d.velocity.y);
+                    if (transform.position.x <= X)
                     {
-                        sr.enabled = false;
-                        bc2d.enabled = false;
-                        retorno = true;
-                        speed = realSpeed;
-                        timer = 0;
+                        animMovingPlatform.SetBool("blinking", false);
+
+                        rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+                        sr.enabled = true;
+                        bc2d.enabled = true;
+                        retorno = false;
+                        active = false;
+                        activeTime = 0;
+                    }
+
+                }
+                if (retorno == false && direction == false)
+                {
+
+                    rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
+                    if (transform.position.x <= maxX)
+                    {
+                        animMovingPlatform.SetBool("blinking", true);
+
+                        speed = 0;
+                        timer += Time.deltaTime;
+                        if (timer >= delayDestroy)
+                        {
+                            sr.enabled = false;
+                            bc2d.enabled = false;
+                            retorno = true;
+                            speed = realSpeed;
+                            timer = 0;
+                        }
                     }
                 }
-            }
-            else if (retorno && direction == false)
-            {
-                rb2d.velocity = new Vector2(speedReturn, rb2d.velocity.y);
-                if (transform.position.x >= X)
+                else if (retorno && direction == false)
                 {
-                    animMovingPlatform.SetBool("blinking", false);
+                    rb2d.velocity = new Vector2(speedReturn, rb2d.velocity.y);
+                    if (transform.position.x >= X)
+                    {
+                        animMovingPlatform.SetBool("blinking", false);
 
-                    rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-                    sr.enabled = true;
-                    bc2d.enabled = true;
-                    retorno = false;
-                    active = false;
+                        rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+                        sr.enabled = true;
+                        bc2d.enabled = true;
+                        retorno = false;
+                        active = false;
+                        activeTime = 0;
+                    }
+
                 }
-
-            }
-
+            }     
         }
+           
     }
 }
     
