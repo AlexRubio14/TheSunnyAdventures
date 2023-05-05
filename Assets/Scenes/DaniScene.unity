@@ -468,14 +468,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2673845869408261013, guid: de962b03081a7f046bf95efcd8477e04, type: 3}
-      propertyPath: TotalTimeReturn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2673845869408261013, guid: de962b03081a7f046bf95efcd8477e04, type: 3}
-      propertyPath: totalActiveTime
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2673845869408261014, guid: de962b03081a7f046bf95efcd8477e04, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -576,14 +568,6 @@ PrefabInstance:
     - target: {fileID: 6161403711120280985, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6161403711120280989, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
-      propertyPath: speedReturn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6161403711120280989, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
-      propertyPath: totalActiveTime
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6161403711120280990, guid: 97b65585400c9ce4ca1f4acf7a4b4e24, type: 3}
       propertyPath: m_Name

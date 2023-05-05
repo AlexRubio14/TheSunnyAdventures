@@ -18,7 +18,7 @@ public class DeathCounter : MonoBehaviour
 
     private void Update()
     {
-        deathCounters.text = "Death: " + deathNum.ToString("f1");
+        deathCounters.text = "Death: " + deathNum.ToString();
     }
 
     public void AddDeath()
