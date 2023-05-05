@@ -41,5 +41,10 @@ public class timer : MonoBehaviour
         timerNum = timer;
     }
 
+    public void StarTimer(float times)
+    {
+        timerNum += times;
+    }
+
 
 }

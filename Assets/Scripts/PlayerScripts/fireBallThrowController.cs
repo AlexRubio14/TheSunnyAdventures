@@ -14,12 +14,15 @@ public class fireBallThrowController : MonoBehaviour
 
     private float timeWaited = 0;
 
+    private List<GameObject> balls;
+
     private playerController playerController;
 
     
     private void Awake()
     {
         playerController = GetComponent<playerController>();
+        balls = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -28,11 +31,12 @@ public class fireBallThrowController : MonoBehaviour
         timeWaited += Time.deltaTime;
         if (timeWaited >= timeToThrow)
         {
-            ThrowShuriken();
+            ThrowFireball();
+            
         }
     }
    
-    void ThrowShuriken()
+    void ThrowFireball()
     {
         if(Input.GetKeyDown(KeyCode.X))
         {
@@ -49,6 +53,16 @@ public class fireBallThrowController : MonoBehaviour
             {
                 currentFireBall.direction = -Vector2.right;
             }
+            balls.Add(currentFireBall.gameObject);
         }
+    }
+    public void DestroyFireBalls()
+    {
+        foreach (GameObject item in balls)
+        {
+            if (item != null)
+                Destroy(item);
+        }
+        balls.Clear();
     }
 }

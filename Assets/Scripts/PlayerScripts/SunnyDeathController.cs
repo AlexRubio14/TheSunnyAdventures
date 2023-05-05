@@ -18,8 +18,7 @@ public class SunnyDeathController : MonoBehaviour
 
     [SerializeField]
     GameObject checkPointLeft;
-
-    fireBallController[] fireBalls;
+    fireBallThrowController[] fireBalls;
 
     private void Awake()
     {
@@ -28,7 +27,7 @@ public class SunnyDeathController : MonoBehaviour
         sp = GetComponent<SpriteRenderer>();
         fireBallThrowController = gameObject.GetComponent<fireBallThrowController>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
-        fireBalls = FindObjectsOfType<fireBallController>();
+        fireBalls = FindObjectsOfType<fireBallThrowController>();
 
     }
     
@@ -36,7 +35,10 @@ public class SunnyDeathController : MonoBehaviour
     {
         if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Spikes"))
         {
-            eraseFireBalls();
+            foreach (fireBallThrowController item in fireBalls)
+            {
+                item.DestroyFireBalls();
+            }
             rb2d.velocity = new Vector2(0, 0);
             StartCoroutine(TimeToRespawn(false));
             sp.enabled = false;
@@ -51,8 +53,12 @@ public class SunnyDeathController : MonoBehaviour
     {
         if (collision.CompareTag("MageBall") || collision.CompareTag("PlantsBullet"))
         {
-            eraseFireBalls();
+            
             rb2d.velocity = new Vector2(0, 0);
+            foreach (fireBallThrowController item in fireBalls)
+            {
+                item.DestroyFireBalls();
+            }
             StartCoroutine(TimeToRespawn(false));
             sp.enabled = false;
             playerController.enabled = false;
@@ -88,13 +94,4 @@ public class SunnyDeathController : MonoBehaviour
     {
         return isAlive;
     }
-
-    private void eraseFireBalls()
-    {
-        foreach (fireBallController item in fireBalls)
-        {
-            Destroy(item.gameObject);
-        }
-    }
-
 }

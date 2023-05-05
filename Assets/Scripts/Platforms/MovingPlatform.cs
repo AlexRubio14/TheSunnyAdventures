@@ -24,9 +24,8 @@ public class MovingPlatform : MonoBehaviour
     private float totalActiveTime;
 
     [SerializeField]
-    private float X;
-    private float Y;
-    private float Z;
+    Vector3  pos;
+  
 
     private bool active;
     [SerializeField]
@@ -46,14 +45,13 @@ public class MovingPlatform : MonoBehaviour
         animMovingPlatform = GetComponent<Animator>();
 
         active = false;
-        X = transform.position.x;
-        Y = transform.position.y;
-        Z = transform.position.z;
+ 
         realSpeed = speed;
         if (maxX >= transform.position.x)
         {
             direction = true;
         }
+        pos = gameObject.transform.position;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -93,9 +91,10 @@ public class MovingPlatform : MonoBehaviour
                 }
                 else if (retorno && direction == true)
                 {
-                    rb2d.velocity = new Vector2(-speedReturn, rb2d.velocity.y);
-                    if (transform.position.x <= X)
-                    {
+                    sr.enabled = false;
+                    gameObject.transform.position = pos;
+                   
+                    
                         animMovingPlatform.SetBool("blinking", false);
 
                         rb2d.velocity = new Vector2(0, rb2d.velocity.y);
@@ -104,7 +103,7 @@ public class MovingPlatform : MonoBehaviour
                         retorno = false;
                         active = false;
                         activeTime = 0;
-                    }
+                    
 
                 }
                 if (retorno == false && direction == false)
@@ -130,8 +129,7 @@ public class MovingPlatform : MonoBehaviour
                 else if (retorno && direction == false)
                 {
                     rb2d.velocity = new Vector2(speedReturn, rb2d.velocity.y);
-                    if (transform.position.x >= X)
-                    {
+                  
                         animMovingPlatform.SetBool("blinking", false);
 
                         rb2d.velocity = new Vector2(0, rb2d.velocity.y);
@@ -140,7 +138,7 @@ public class MovingPlatform : MonoBehaviour
                         retorno = false;
                         active = false;
                         activeTime = 0;
-                    }
+                    
 
                 }
             }     
