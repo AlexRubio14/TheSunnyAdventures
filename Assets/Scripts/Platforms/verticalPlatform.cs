@@ -16,18 +16,25 @@ public class verticalPlatform : MonoBehaviour
     private float speed;
     private float realSpeed;
     [SerializeField]
-    private float speedReturn;
+    private float activeTime = 0;
+    [SerializeField]
+    private float totalActiveTime;
+    [SerializeField]
+    private float TimeReturn = 0;
+    [SerializeField]
+    private float TotalTimeReturn;
 
     [SerializeField]
-    private float Y;
+    Vector3 pos;
 
     private bool active;
     [SerializeField]
     private float timer;
     [SerializeField]
     private float delayDestroy;
-    bool retorno = false;
-    bool direction = false;
+    [SerializeField]
+    private bool returning;
+  
 
 
     private void Awake()
@@ -39,12 +46,9 @@ public class verticalPlatform : MonoBehaviour
         animVerticalPlatform= GetComponent<Animator>();
 
         active = false;
-        Y = transform.position.y;
+        returning = false;
+        pos = gameObject.transform.position;
         realSpeed = speed;
-        if (maxY >= transform.position.y)
-        {
-            direction = true;
-        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -60,40 +64,44 @@ public class verticalPlatform : MonoBehaviour
     {
         if (active == true)
         {
-            if (retorno == false && direction == true)
+            activeTime += Time.deltaTime;
+            if (activeTime >= totalActiveTime)
             {
+                activeTime = totalActiveTime;
                 rb2d.velocity = new Vector2(rb2d.velocity.x, speed);
                 if (transform.position.y >= maxY)
                 {
                     animVerticalPlatform.SetBool("blinking", true);
-
                     speed = 0;
                     timer += Time.deltaTime;
                     if (timer >= delayDestroy)
                     {
                         sr.enabled = false;
                         bc2d.enabled = false;
-                        retorno = true;
-                        speed = realSpeed;
+                        returning = true;
+                        gameObject.transform.position = pos;
                         timer = 0;
                     }
                 }
-            }
-            else if (retorno == true && direction == true)
-            {
-                rb2d.velocity = new Vector2(rb2d.velocity.x, -speedReturn);
-                if (transform.position.y <= Y)
+
+
+                if (returning)
                 {
-                    animVerticalPlatform.SetBool("blinking", false);
-
-                    rb2d.velocity = new Vector2(0, 0);
-                    sr.enabled = true;
-                    bc2d.enabled = true;
-                    retorno = false;
-                    active = false;
+                    TimeReturn += Time.deltaTime;
+                    if (TimeReturn >= TotalTimeReturn)
+                    {
+                        animVerticalPlatform.SetBool("blinking", false);
+                        sr.enabled = true;
+                        bc2d.enabled = true;
+                        active = false;
+                        returning = false;
+                        speed = realSpeed;
+                        TimeReturn = 0;
+                        activeTime = 0;
+                    }
                 }
-            }
 
+            }
         }
     }
 }

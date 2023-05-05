@@ -18,17 +18,6 @@ public class Water : MonoBehaviour
         animatorWater = GetComponent<Animator>(); 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-       if(activate == false)
-        {
-            if (collision.collider.CompareTag("Player"))
-            {
-                Destroy(collision.gameObject);
-            }        
-        }        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("FireBall"))

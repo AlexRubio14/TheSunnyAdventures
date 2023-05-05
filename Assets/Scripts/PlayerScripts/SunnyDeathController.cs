@@ -33,7 +33,7 @@ public class SunnyDeathController : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Spikes"))
+        if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Spikes") || collision.collider.CompareTag("Water"))
         {
             foreach (fireBallThrowController item in fireBalls)
             {
@@ -51,7 +51,7 @@ public class SunnyDeathController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("MageBall") || collision.CompareTag("PlantsBullet"))
+        if (collision.CompareTag("MageBall") || collision.CompareTag("PlantsBullet") || collision.CompareTag("Rain"))
         {
             
             rb2d.velocity = new Vector2(0, 0);

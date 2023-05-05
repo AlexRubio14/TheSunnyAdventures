@@ -70,7 +70,7 @@ public class MovingPlatform : MonoBehaviour
            activeTime += Time.deltaTime;
            if(activeTime >= totalActiveTime)
            {
-                activeTime = 1;
+                activeTime = totalActiveTime;
                 if ( direction == true)
                 {
 
