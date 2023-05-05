@@ -16,7 +16,10 @@ public class MovingPlatform : MonoBehaviour
     private float speed;
     private float realSpeed;
     [SerializeField]
-    private float speedReturn;
+    private float TimeReturn;
+    [SerializeField]
+    private float TotalTimeReturn;
+    private bool returning = false;
 
     [SerializeField]
     private float activeTime = 0;
@@ -25,14 +28,13 @@ public class MovingPlatform : MonoBehaviour
 
     [SerializeField]
     Vector3  pos;
-  
 
+    [SerializeField]
     private bool active;
     [SerializeField]
     private float timer;
     [SerializeField]
     private float delayDestroy;
-    bool retorno = false;
     bool direction = false;
 
 
@@ -69,7 +71,7 @@ public class MovingPlatform : MonoBehaviour
            if(activeTime >= totalActiveTime)
            {
                 activeTime = 1;
-                if (retorno == false && direction == true)
+                if ( direction == true)
                 {
 
                     rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
@@ -83,30 +85,33 @@ public class MovingPlatform : MonoBehaviour
                         {
                             sr.enabled = false;
                             bc2d.enabled = false;
-                            retorno = true;
-                            speed = realSpeed;
+                            gameObject.transform.position = pos;
+                            returning = true;
+                          
+                           
+                        }
+                       
+                    }
+                    if (returning)
+                    {
+                        TimeReturn += Time.deltaTime;
+                        if (TimeReturn >= TotalTimeReturn)
+                        {
+                            sr.enabled = true;
+                            bc2d.enabled = true;
+                            
+                            activeTime = 0;
+                            TimeReturn = 0;
                             timer = 0;
+                            returning = false;
+                            speed = realSpeed;
+                            active = false;
+                            animMovingPlatform.SetBool("blinking", false);
                         }
                     }
                 }
-                else if (retorno && direction == true)
-                {
-                    sr.enabled = false;
-                    gameObject.transform.position = pos;
-                   
                     
-                        animMovingPlatform.SetBool("blinking", false);
-
-                        rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-                        sr.enabled = true;
-                        bc2d.enabled = true;
-                        retorno = false;
-                        active = false;
-                        activeTime = 0;
-                    
-
-                }
-                if (retorno == false && direction == false)
+                if ( direction == false)
                 {
 
                     rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
@@ -119,27 +124,29 @@ public class MovingPlatform : MonoBehaviour
                         if (timer >= delayDestroy)
                         {
                             sr.enabled = false;
-                            bc2d.enabled = false;
-                            retorno = true;
+                            bc2d.enabled = false;   
+                            gameObject.transform.position = pos;
+                            returning = true;
+
+                        }
+                                     
+                    }
+                    if (returning)
+                    {
+                        TimeReturn += Time.deltaTime;
+                        if (TimeReturn >= TotalTimeReturn)
+                        {
+                            sr.enabled = true;
+                            bc2d.enabled = true;
                             speed = realSpeed;
+                            activeTime = 0;
+                            TimeReturn = 0;
                             timer = 0;
+                            returning = false;
+                            active = false;
+                            animMovingPlatform.SetBool("blinking", false);
                         }
                     }
-                }
-                else if (retorno && direction == false)
-                {
-                    rb2d.velocity = new Vector2(speedReturn, rb2d.velocity.y);
-                  
-                        animMovingPlatform.SetBool("blinking", false);
-
-                        rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-                        sr.enabled = true;
-                        bc2d.enabled = true;
-                        retorno = false;
-                        active = false;
-                        activeTime = 0;
-                    
-
                 }
             }     
         }
