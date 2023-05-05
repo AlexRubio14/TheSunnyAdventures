@@ -104,8 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de9f68dd8a98f54781dde01243b6268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
-  maxSpeed: 200
+  speed: 190
+  maxSpeed: 190
   minSpeed: 100
   fliped: 0
   spikesLayer:
@@ -119,9 +119,9 @@ MonoBehaviour:
   <score>k__BackingField: 0
   jumpForce: 35
   minGravity: 2
-  maxGravity: 23
+  maxGravity: 17
   maxDrag: 8
-  dashForce: 10
+  dashForce: 20
   dashTime: 0.2
 --- !u!50 &9152766392956456389
 Rigidbody2D:
