@@ -34,7 +34,7 @@ public class fireBallThrowController : MonoBehaviour
    
     void ThrowShuriken()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        if(Input.GetKeyDown(KeyCode.J))
         {
             fireBallController currentFireBall;
             Vector3 posToSpawn = transform.position - transform.position;

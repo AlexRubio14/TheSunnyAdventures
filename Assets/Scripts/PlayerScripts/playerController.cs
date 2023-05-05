@@ -15,6 +15,10 @@ public class playerController : MonoBehaviour
     //Movement
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private float maxSpeed;
+    [SerializeField]
+    private float minSpeed;
     private float movementDirection;
 
     //Raycast
@@ -49,6 +53,7 @@ public class playerController : MonoBehaviour
     [field: SerializeField]
     public int score { get; private set; }
 
+
     [Header("Jump and gravity")]
     [SerializeField]
     private float jumpForce;
@@ -71,7 +76,6 @@ public class playerController : MonoBehaviour
     [SerializeField]
     public float dashTime;
     bool hasDashed = false;
-
 
     private void Awake()
     {
@@ -130,13 +134,6 @@ public class playerController : MonoBehaviour
 
 
         flip();
-
-
-        //ATTACK ANIMATION
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            anim.SetBool("Attack", true); 
-        }
     }
 
     #region FLIP
@@ -193,6 +190,7 @@ public class playerController : MonoBehaviour
         switch (currentMovementState)
         {
             case MovementState.WALKING:
+                speed = maxSpeed;
                 Move();
                 if (wantsToJump)
                     Jump();
@@ -205,6 +203,7 @@ public class playerController : MonoBehaviour
                     Attack();
                 break;
             case MovementState.FALLING:
+                speed = minSpeed;
                 Move();
                 if (wantsToJump)
                     Jump();
@@ -237,13 +236,14 @@ public class playerController : MonoBehaviour
             isGrounded = true;
             currentJumps = 0;
             hasDashed = false;
+            speed *= 2;
             if (currentMovementState == MovementState.FALLING)
                 currentMovementState = MovementState.WALKING;
         }
         else
         {
             isGrounded = false;
-            if(currentMovementState != MovementState.DASHING)
+            if (currentMovementState != MovementState.DASHING)
                 currentMovementState = MovementState.FALLING;
         }
 
@@ -259,12 +259,16 @@ public class playerController : MonoBehaviour
 
     void CheckDash()
     {
-        wantsToDash |= Input.GetKeyDown(KeyCode.Z);
+        wantsToDash |= Input.GetKeyDown(KeyCode.LeftShift);
     }
 
     void CheckInteract()
     {
-        wantsToInteract = Input.GetKeyDown(KeyCode.LeftControl);
+        wantsToInteract = Input.GetKeyDown(KeyCode.K);
+        if(wantsToInteract)
+        {
+            anim.SetBool("Attack", true);
+        }
     }
 
     void UpdateJump()
