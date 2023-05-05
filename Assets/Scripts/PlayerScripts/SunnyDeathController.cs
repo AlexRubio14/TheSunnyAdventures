@@ -11,6 +11,7 @@ public class SunnyDeathController : MonoBehaviour
     playerController playerController;
     fireBallThrowController fireBallThrowController;
     SpriteRenderer sp;
+    DeathCounter deathCounter;
 
 
     [SerializeField]
@@ -28,7 +29,7 @@ public class SunnyDeathController : MonoBehaviour
         fireBallThrowController = gameObject.GetComponent<fireBallThrowController>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         fireBalls = FindObjectsOfType<fireBallThrowController>();
-
+        deathCounter = FindObjectOfType<DeathCounter>();
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -39,6 +40,7 @@ public class SunnyDeathController : MonoBehaviour
             {
                 item.DestroyFireBalls();
             }
+            deathCounter.AddDeath();
             rb2d.velocity = new Vector2(0, 0);
             StartCoroutine(TimeToRespawn(false));
             sp.enabled = false;
@@ -59,6 +61,7 @@ public class SunnyDeathController : MonoBehaviour
             {
                 item.DestroyFireBalls();
             }
+            deathCounter.AddDeath();
             StartCoroutine(TimeToRespawn(false));
             sp.enabled = false;
             playerController.enabled = false;
