@@ -1536,7 +1536,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: dash "shift", fireball "j", interact "k"
+  m_text: dash 'leftshift, fireJall 'j', interaCt 'k'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6abab6dfcbc7b47479d83c2f56b0269b, type: 2}
   m_sharedMaterial: {fileID: -3601895650900839023, guid: 6abab6dfcbc7b47479d83c2f56b0269b, type: 2}
@@ -43307,7 +43307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1908148750}
-  maxTime: 85
+  maxTime: 400
 --- !u!223 &1184761756
 Canvas:
   m_ObjectHideFlags: 0
