@@ -25,6 +25,8 @@ public class playerController : MonoBehaviour
     private float rightRaycast;
     private float leftRaycast;
     private float distanceRayCast;
+    private float rightRaycastLenght;
+    private float leftRaycastLenght;
 
     //Rotation
     public bool fliped = false;
@@ -86,8 +88,8 @@ public class playerController : MonoBehaviour
         sp = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         distanceRayCast = 0.6f;
-        rightRaycast = 0.12f;
-        leftRaycast = 0.25f;
+        rightRaycastLenght = 0.12f;
+        leftRaycastLenght = 0.25f;
         score = 0;
         boxCollider.enabled = false;
         boxColliderX = boxCollider.offset.x;
@@ -136,36 +138,37 @@ public class playerController : MonoBehaviour
         flip();
     }
 
-    #region FLIP
     private void flip()
     {
         if(!fliped && movementDirection < 0)
         {
             fliped = true;
             sp.flipX = true;
-
-            float aux = leftRaycast;
-            leftRaycast = rightRaycast;
-            rightRaycast = aux;
-
-
-
         }
         else if(fliped && movementDirection > 0)
         {
             fliped = false;
             sp.flipX = false;
-
-
-            float aux = leftRaycast;
-            leftRaycast = rightRaycast;
-            rightRaycast = aux;
-
         }
 
         flipColliders();
-
+        flipRayCast();
     }
+
+    private void flipRayCast()
+    {
+        if (!fliped)
+        {
+            leftRaycast = leftRaycastLenght;
+            rightRaycast = rightRaycastLenght;
+        }
+        else
+        {
+            leftRaycast = rightRaycastLenght;
+            rightRaycast = leftRaycastLenght;
+        }
+    }
+
 
     private void flipColliders()
     {
@@ -182,7 +185,6 @@ public class playerController : MonoBehaviour
     }
 
 
-    #endregion
 
     private void FixedUpdate()
     {
