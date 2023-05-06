@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SunnyDeathController : MonoBehaviour
@@ -29,12 +30,12 @@ public class SunnyDeathController : MonoBehaviour
         fireBallThrowController = gameObject.GetComponent<fireBallThrowController>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         fireBalls = FindObjectsOfType<fireBallThrowController>();
-        deathCounter = FindObjectOfType<DeathCounter>();
+        deathCounter = FindObjectOfType<DeathCounter>(); 
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Spikes") || collision.collider.CompareTag("Water"))
+        if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Spikes") || (collision.collider.CompareTag("Water")))
         {
             foreach (fireBallThrowController item in fireBalls)
             {
