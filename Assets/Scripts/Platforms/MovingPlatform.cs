@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -73,7 +74,6 @@ public class MovingPlatform : MonoBehaviour
                 activeTime = totalActiveTime;
                 if ( direction == true)
                 {
-
                     rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
                     if (transform.position.x >= maxX - 0.1)
                     {
@@ -86,9 +86,7 @@ public class MovingPlatform : MonoBehaviour
                             sr.enabled = false;
                             bc2d.enabled = false;
                             gameObject.transform.position = pos;
-                            returning = true;
-                          
-                           
+                            returning = true;                           
                         }
                        
                     }
@@ -113,7 +111,6 @@ public class MovingPlatform : MonoBehaviour
                     
                 if ( direction == false)
                 {
-
                     rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
                     if (transform.position.x <= maxX)
                     {
@@ -127,9 +124,7 @@ public class MovingPlatform : MonoBehaviour
                             bc2d.enabled = false;   
                             gameObject.transform.position = pos;
                             returning = true;
-
-                        }
-                                     
+                        }            
                     }
                     if (returning)
                     {
@@ -151,6 +146,18 @@ public class MovingPlatform : MonoBehaviour
             }     
         }
            
+    }
+    public void disable()
+    {
+        gameObject.SetActive(false);
+        timer = 0;
+        activeTime = 0;
+        TimeReturn = 0;
+        active = false;
+    }
+    public void Restart()
+    {
+        transform.position = pos;
     }
 }
     

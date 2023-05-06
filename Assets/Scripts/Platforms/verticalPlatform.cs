@@ -104,6 +104,19 @@ public class verticalPlatform : MonoBehaviour
             }
         }
     }
+    public void Disable()
+    {
+        gameObject.SetActive(false);
+        timer = 0;
+        activeTime = 0;
+        TimeReturn = 0;
+        active = false;
+    }
+
+    public void Restart()
+    {
+        transform.position = pos;
+    }
 }
 
 
