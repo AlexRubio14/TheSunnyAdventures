@@ -71,7 +71,7 @@ public class verticalPlatform : MonoBehaviour
                 rb2d.velocity = new Vector2(rb2d.velocity.x, speed);
                 if (transform.position.y >= maxY)
                 {
-                    animVerticalPlatform.SetBool("blinking", true);
+                    animVerticalPlatform.SetBool("blinkVerticalPlatform", true);
                     speed = 0;
                     timer += Time.deltaTime;
                     if (timer >= delayDestroy)
@@ -90,7 +90,7 @@ public class verticalPlatform : MonoBehaviour
                     TimeReturn += Time.deltaTime;
                     if (TimeReturn >= TotalTimeReturn)
                     {
-                        animVerticalPlatform.SetBool("blinking", false);
+                        animVerticalPlatform.SetBool("blinkVerticalPlatform", false);
                         sr.enabled = true;
                         bc2d.enabled = true;
                         active = false;
