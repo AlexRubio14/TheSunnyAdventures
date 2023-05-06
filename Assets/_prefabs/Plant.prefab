@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2923459776552524648
 Transform:
   m_ObjectHideFlags: 0
@@ -99,4 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 551814048957009700, guid: 25d6bd7fe2fac67418e1fee330d98044, type: 3}
   offset: 2
-  timeToThrow: 1
+  timeToThrow: 2

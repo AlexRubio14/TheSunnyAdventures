@@ -29,13 +29,13 @@ public class EnemyMovementM : MonoBehaviour
 
     public void Die()
     {
-        rotate = false;
         gameObject.SetActive(false);
         enemyMovement = 3;
     }
     public void Restart()
     {
         transform.position = respawnPoint.position;
+        rotate = false;
     }
 
     private void Update()
@@ -43,28 +43,33 @@ public class EnemyMovementM : MonoBehaviour
         if (sunnyDeathController.GetAlive())
         {
             Behaviour();
+            CheckRaycast();
         }
     }
 
     private void Behaviour()
     {
-        if (rotate == false)
+        if (rotate)
         {
-            rb2d.velocity = new Vector2(enemyMovement, rb2d.velocity.y);
-            if (Physics2D.Raycast(transform.position, Vector2.right, 0.6f, floor) || !Physics2D.Raycast(transform.position + (Vector3.right * 0.5f), Vector2.down, 0.6f, floor))
-            {
-                transform.eulerAngles = new Vector2(0, 0);
-                rotate = true;
-            }
+            rb2d.velocity = new Vector2(-enemyMovement, rb2d.velocity.y);
+            transform.eulerAngles = new Vector2(0, 0);
         }
         else
         {
-            rb2d.velocity = new Vector2(-enemyMovement, rb2d.velocity.y);
-            if (Physics2D.Raycast(transform.position, Vector2.left, 0.6f, floor) || !Physics2D.Raycast(transform.position + (Vector3.left * 0.5f), Vector2.down, 0.6f, floor))
-            {
-                transform.eulerAngles = new Vector2(0, 180);
-                rotate = false;
-            }
+            rb2d.velocity = new Vector2(enemyMovement, rb2d.velocity.y);
+            transform.eulerAngles = new Vector2(0, 180);
+        }
+    }
+
+    private void CheckRaycast()
+    {
+        if((Physics2D.Raycast(transform.position, Vector2.right, 0.6f, floor) || !Physics2D.Raycast(transform.position + (Vector3.right * 0.5f), Vector2.down, 0.6f, floor)) && (rotate == false))
+        {
+            rotate = true;
+        }
+        else if ((Physics2D.Raycast(transform.position, Vector2.left, 0.6f, floor) || !Physics2D.Raycast(transform.position + (Vector3.left * 0.5f), Vector2.down, 0.6f, floor)) && (rotate == true))
+        {
+            rotate = false;
         }
     }
 
