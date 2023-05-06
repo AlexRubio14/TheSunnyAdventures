@@ -7,7 +7,7 @@ public class ChooseLevel : MonoBehaviour
 {
 
     [SerializeField]
-    private string scene; 
+    private string scene;
 
     [SerializeField]
     GameObject tower;
@@ -18,8 +18,8 @@ public class ChooseLevel : MonoBehaviour
     private float velocity; // segundos en subir i bajar 
 
     private bool move_title;
-    private bool directionUp; 
-    private Vector2 starterPos; 
+    private bool directionUp;
+    private Vector2 starterPos;
     private Vector2 enderPos;
     private float proces;
 
@@ -33,11 +33,11 @@ public class ChooseLevel : MonoBehaviour
     {
         if (move_title)
         {
-            if(directionUp)
+            if (directionUp)
             {
-                proces -= Time.deltaTime / velocity; 
+                proces -= Time.deltaTime / velocity;
                 tower.transform.position = Vector2.Lerp(starterPos, enderPos, proces);
-                if(proces <= 0)
+                if (proces <= 0)
                 {
                     move_title = false;
                 }
@@ -45,10 +45,19 @@ public class ChooseLevel : MonoBehaviour
             else
             {
                 if (Input.GetKeyUp(KeyCode.UpArrow))
-                {
-                    LevelManager.instance.currentLevel = scene;
-                    FindObjectOfType<MusicController>().ChangeMusic(1);
-                    SceneManager.LoadScene(scene);
+                { 
+                    if(scene == "Level 1" && !ChangeLevel.instance.canEnter)
+                    {
+                        LevelManager.instance.currentLevel = scene;
+                        FindObjectOfType<MusicController>().ChangeMusic(1);
+                        SceneManager.LoadScene(scene);
+                    }
+                    if (scene == "Level 2" && ChangeLevel.instance.canEnter)
+                    {
+                        LevelManager.instance.currentLevel = scene;
+                        FindObjectOfType<MusicController>().ChangeMusic(1);
+                        SceneManager.LoadScene(scene);
+                    }
                 }
                 proces += Time.deltaTime / velocity; // valor entre: 0 - 1
                 tower.transform.position = Vector2.Lerp(starterPos, enderPos, proces); // interpolar: passar de punto A a B 
@@ -62,8 +71,8 @@ public class ChooseLevel : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             move_title = true;
-            directionUp = false; 
-        
+            directionUp = false;
+
         }
     }
 
@@ -75,4 +84,5 @@ public class ChooseLevel : MonoBehaviour
             directionUp = true;
         }
     }
+   
 }

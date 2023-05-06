@@ -93,11 +93,11 @@ public class JumpBossMovement : MonoBehaviour
         }
         if (healt <= 0)
         {
-            Die();
-           
+            Die(); 
             time += Time.deltaTime;
             if(time >= changeSceneTime)
             {
+                ChangeLevel.instance.canEnter = true;
                 winText.SetActive(false);
                 SceneManager.LoadScene("HUB");
                 Destroy(gameObject);
