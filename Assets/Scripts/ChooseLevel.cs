@@ -11,6 +11,8 @@ public class ChooseLevel : MonoBehaviour
 
     [SerializeField]
     GameObject tower;
+    [SerializeField]
+    GameObject door; 
 
     [SerializeField]
     float down;
@@ -22,6 +24,7 @@ public class ChooseLevel : MonoBehaviour
     private Vector2 starterPos;
     private Vector2 enderPos;
     private float proces;
+
 
     private void Start()
     {
@@ -63,6 +66,15 @@ public class ChooseLevel : MonoBehaviour
                 tower.transform.position = Vector2.Lerp(starterPos, enderPos, proces); // interpolar: passar de punto A a B 
             }
             proces = Mathf.Clamp01(proces); // asegurar que proces no se pase de su valor 0 - 1 
+        }
+        DoorOpen(); 
+    }
+
+    private void DoorOpen()
+    {
+        if (scene == "Level 2" && !ChangeLevel.instance.canEnter)
+        {
+            Destroy(door);  
         }
     }
 
