@@ -9,6 +9,8 @@ public class timer : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI timerText;
 
+    private bool bossDefeated = false;
+
     [SerializeField]
     private float maxTime;
 
@@ -21,8 +23,11 @@ public class timer : MonoBehaviour
 
     void Update()
     {
-        timerNum -= Time.deltaTime;
-
+        if(!bossDefeated)
+        {
+            timerNum -= Time.deltaTime;
+        }
+        
         timerText.text = "Time: " + timerNum.ToString("f1");
 
         if(timerNum <= 0.1)
@@ -44,6 +49,15 @@ public class timer : MonoBehaviour
     public void StarTimer(float times)
     {
         timerNum += times;
+    }
+
+    public void StopTime()
+    {
+        bossDefeated= true;
+    }
+    public void ResumeTime()
+    {
+        bossDefeated = false;
     }
 
 
