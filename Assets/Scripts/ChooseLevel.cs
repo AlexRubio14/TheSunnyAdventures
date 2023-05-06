@@ -11,8 +11,15 @@ public class ChooseLevel : MonoBehaviour
 
     [SerializeField]
     GameObject tower;
+
     [SerializeField]
-    GameObject door; 
+    GameObject door;
+
+    [SerializeField]
+    GameObject key;
+
+    [SerializeField]
+    GameObject lockKey;
 
     [SerializeField]
     float down;
@@ -67,7 +74,8 @@ public class ChooseLevel : MonoBehaviour
             }
             proces = Mathf.Clamp01(proces); // asegurar que proces no se pase de su valor 0 - 1 
         }
-        DoorOpen(); 
+        DoorOpen();
+        KeyAndLock(); 
     }
 
     private void DoorOpen()
@@ -75,6 +83,15 @@ public class ChooseLevel : MonoBehaviour
         if (scene == "Level 2" && !ChangeLevel.instance.canEnter)
         {
             Destroy(door);  
+        }
+    }
+
+    private void KeyAndLock()
+    {
+        if (scene == "Level 1" && ChangeLevel.instance.canEnter)
+        {
+            Destroy(key);
+            Destroy(lockKey);
         }
     }
 
