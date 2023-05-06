@@ -233,7 +233,7 @@ public class playerController : MonoBehaviour
     {
         if ((Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) ||
             Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
-            && rb2d.velocity.y < 0.01f)
+            )//&& rb2d.velocity.y < 0.01f)
         {
             isGrounded = true;
             currentJumps = 0;
