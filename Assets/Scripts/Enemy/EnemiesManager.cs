@@ -16,6 +16,8 @@ public class EnemiesManager : MonoBehaviour
     EnemyMovementM[] enemyM;
     EnemyMovementV[] enemyV;
     FallingPlatform[] fallingPlatforms;
+    MovingPlatform[] movingPlatforms;
+    verticalPlatform[] verticalPlatforms;
     public static EnemiesManager Instance;
 
     private void Awake()
@@ -34,6 +36,8 @@ public class EnemiesManager : MonoBehaviour
         enemyM = FindObjectsOfType<EnemyMovementM>();
         enemyV = FindObjectsOfType<EnemyMovementV>();
         fallingPlatforms = FindObjectsOfType<FallingPlatform>();
+        movingPlatforms = FindObjectsOfType<MovingPlatform>();
+        verticalPlatforms = FindObjectsOfType<verticalPlatform>();
     }
     
 
@@ -54,6 +58,14 @@ public class EnemiesManager : MonoBehaviour
         {
             item.gameObject.SetActive(false);
             item.shootMage.DestroyMageBalls();
+        }
+        foreach (MovingPlatform item in movingPlatforms)
+        {
+            item.disable();
+        }
+        foreach (verticalPlatform item in verticalPlatforms)
+        {
+            item.Disable();
         }
     } 
     
@@ -78,6 +90,16 @@ public class EnemiesManager : MonoBehaviour
         }
         foreach (FallingPlatform item in fallingPlatforms)
         {
+            item.Restart();
+        }
+        foreach (MovingPlatform item in movingPlatforms)
+        {
+            item.gameObject.SetActive(true);
+            item.Restart();
+        }
+        foreach (verticalPlatform item in verticalPlatforms)
+        {
+            item.gameObject.SetActive(true);
             item.Restart();
         }
 
