@@ -11,7 +11,10 @@ public class TitlesScreen : MonoBehaviour
     private GameObject QuitButton;
     [SerializeField]
     private GameObject controlsButton;
+    [SerializeField]
+    private GameObject Button;
     private bool canPress = true;
+
     public void PlayGame()
     {
         if(canPress)
@@ -22,6 +25,7 @@ public class TitlesScreen : MonoBehaviour
     {
         if(canPress)
         {
+            Button.SetActive(true);
             settingButton.SetActive(true);
             canPress = false;
         }   
@@ -29,20 +33,28 @@ public class TitlesScreen : MonoBehaviour
     public void returnMenu()
     {
         settingButton.SetActive(false);
+        Button.SetActive(false);
         canPress = true;
     }
     public void Controls()
     {
-        if (canPress)
-        {
             controlsButton.SetActive(true);
-            canPress = false;
-        }
+            settingButton.SetActive(false);
+            Button.SetActive(false);
+            canPress = false; 
     }
     public void returnControls()
     {
         controlsButton.SetActive(false);
-        canPress = true;
+        Button.SetActive(true);
+        settingButton.SetActive(true);
+    }
+    public void Credit()
+    {
+        if(canPress)
+        {
+            SceneManager.LoadScene("Credit");
+        }
     }
 
     public void ExitGame()
