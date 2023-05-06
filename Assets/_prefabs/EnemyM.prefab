@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBall: {fileID: 7851971908248623886, guid: 6dcfcf41f36dc88479c3e8780653547c, type: 3}
   offset: 2
-  timeToThrow: 0.2
+  timeToThrow: 0.8
 --- !u!50 &1756693145091329590
 Rigidbody2D:
   serializedVersion: 4
