@@ -147,10 +147,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a181985575616bf448e218147fe3ced9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxX: -3
+  maxX: 44
   speed: 2
-  speedReturn: 0
-  X: 0
+  TimeReturn: 0
+  TotalTimeReturn: 2
+  activeTime: 0
+  totalActiveTime: 1
+  pos: {x: 0, y: 0, z: 0}
+  active: 0
   timer: 0
   delayDestroy: 3
 --- !u!95 &4575666892338382877

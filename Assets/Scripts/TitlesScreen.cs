@@ -6,48 +6,57 @@ using UnityEngine.SceneManagement; //Agregada
 public class TitlesScreen : MonoBehaviour
 {
     [SerializeField]
-    private GameObject settingBoton;
+    private GameObject settingButton;
     [SerializeField]
-    private GameObject QuitBoton;
+    private GameObject QuitButton;
     [SerializeField]
-    private GameObject Boton1;
-    [SerializeField]
-    private GameObject Boton2;
-    [SerializeField]
-    private GameObject Boton3;
+    private GameObject controlsButton;
+    private bool canPress = true;
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if(canPress)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Option()
     {
-        settingBoton.SetActive(true);
-        Boton1.SetActive(false);
-        Boton2.SetActive(false);
-        Boton3.SetActive(false);
+        if(canPress)
+        {
+            settingButton.SetActive(true);
+            canPress = false;
+        }   
     }
     public void returnMenu()
     {
-        settingBoton.SetActive(false);
-        Boton1.SetActive(true);
-        Boton2.SetActive(true);
-        Boton3.SetActive(true);
+        settingButton.SetActive(false);
+        canPress = true;
+    }
+    public void Controls()
+    {
+        if (canPress)
+        {
+            controlsButton.SetActive(true);
+            canPress = false;
+        }
+    }
+    public void returnControls()
+    {
+        controlsButton.SetActive(false);
+        canPress = true;
     }
 
     public void ExitGame()
     {
-        QuitBoton.SetActive(true);
-        Boton1.SetActive(false);
-        Boton2.SetActive(false);
-        Boton3.SetActive(false);
+        if(canPress)
+        {
+            QuitButton.SetActive(true);
+            canPress = false;
+        }   
     }
     public void DenyExit()
     {
-        QuitBoton.SetActive(false);
-        Boton1.SetActive(true);
-        Boton2.SetActive(true);
-        Boton3.SetActive(true);
+        QuitButton.SetActive(false);
+        canPress = true;
     }
     public void Exit()
     {

@@ -16,19 +16,25 @@ public class MovingPlatform : MonoBehaviour
     private float speed;
     private float realSpeed;
     [SerializeField]
-    private float speedReturn;
+    private float TimeReturn;
+    [SerializeField]
+    private float TotalTimeReturn;
+    private bool returning = false;
 
     [SerializeField]
-    private float X;
-    private float Y;
-    private float Z;
+    private float activeTime = 0;
+    [SerializeField]
+    private float totalActiveTime;
 
+    [SerializeField]
+    Vector3  pos;
+
+    [SerializeField]
     private bool active;
     [SerializeField]
     private float timer;
     [SerializeField]
     private float delayDestroy;
-    bool retorno = false;
     bool direction = false;
 
 
@@ -41,20 +47,19 @@ public class MovingPlatform : MonoBehaviour
         animMovingPlatform = GetComponent<Animator>();
 
         active = false;
-        X = transform.position.x;
-        Y = transform.position.y;
-        Z = transform.position.z;
+ 
         realSpeed = speed;
         if (maxX >= transform.position.x)
         {
             direction = true;
         }
+        pos = gameObject.transform.position;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && playerController.GetAnimAttack())
         {
-            active = true;
+             active = true;    
         }
     }
 
@@ -62,78 +67,90 @@ public class MovingPlatform : MonoBehaviour
     {
         if (active == true)
         {
-            if (retorno == false && direction == true)
-            {
-
-                rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
-                if (transform.position.x >= maxX - 0.1)
+           activeTime += Time.deltaTime;
+           if(activeTime >= totalActiveTime)
+           {
+                activeTime = totalActiveTime;
+                if ( direction == true)
                 {
-                     animMovingPlatform.SetBool("blinking", true);
 
-                    speed = 0;
-                    timer += Time.deltaTime;
-                    if (timer >= delayDestroy)
+                    rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
+                    if (transform.position.x >= maxX - 0.1)
                     {
-                        sr.enabled = false;
-                        bc2d.enabled = false;
-                        retorno = true;
-                        speed = realSpeed;
-                        timer = 0;
+                        animMovingPlatform.SetBool("blinking", true);
+
+                        speed = 0;
+                        timer += Time.deltaTime;
+                        if (timer >= delayDestroy)
+                        {
+                            sr.enabled = false;
+                            bc2d.enabled = false;
+                            gameObject.transform.position = pos;
+                            returning = true;
+                          
+                           
+                        }
+                       
+                    }
+                    if (returning)
+                    {
+                        TimeReturn += Time.deltaTime;
+                        if (TimeReturn >= TotalTimeReturn)
+                        {
+                            sr.enabled = true;
+                            bc2d.enabled = true;
+                            
+                            activeTime = 0;
+                            TimeReturn = 0;
+                            timer = 0;
+                            returning = false;
+                            speed = realSpeed;
+                            active = false;
+                            animMovingPlatform.SetBool("blinking", false);
+                        }
                     }
                 }
-            }
-            else if (retorno && direction == true)
-            {
-                rb2d.velocity = new Vector2(-speedReturn, rb2d.velocity.y);
-                if (transform.position.x <= X)
+                    
+                if ( direction == false)
                 {
-                    animMovingPlatform.SetBool("blinking", false);
 
-                    rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-                    sr.enabled = true;
-                    bc2d.enabled = true;
-                    retorno = false;
-                    active = false;
-                }
-
-            }
-            if (retorno == false && direction == false)
-            {
-
-                rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
-                if (transform.position.x <= maxX)
-                {
-                    animMovingPlatform.SetBool("blinking", true);
-
-                    speed = 0;
-                    timer += Time.deltaTime;
-                    if (timer >= delayDestroy)
+                    rb2d.velocity = new Vector2(-speed, rb2d.velocity.y);
+                    if (transform.position.x <= maxX)
                     {
-                        sr.enabled = false;
-                        bc2d.enabled = false;
-                        retorno = true;
-                        speed = realSpeed;
-                        timer = 0;
+                        animMovingPlatform.SetBool("blinking", true);
+
+                        speed = 0;
+                        timer += Time.deltaTime;
+                        if (timer >= delayDestroy)
+                        {
+                            sr.enabled = false;
+                            bc2d.enabled = false;   
+                            gameObject.transform.position = pos;
+                            returning = true;
+
+                        }
+                                     
+                    }
+                    if (returning)
+                    {
+                        TimeReturn += Time.deltaTime;
+                        if (TimeReturn >= TotalTimeReturn)
+                        {
+                            sr.enabled = true;
+                            bc2d.enabled = true;
+                            speed = realSpeed;
+                            activeTime = 0;
+                            TimeReturn = 0;
+                            timer = 0;
+                            returning = false;
+                            active = false;
+                            animMovingPlatform.SetBool("blinking", false);
+                        }
                     }
                 }
-            }
-            else if (retorno && direction == false)
-            {
-                rb2d.velocity = new Vector2(speedReturn, rb2d.velocity.y);
-                if (transform.position.x >= X)
-                {
-                    animMovingPlatform.SetBool("blinking", false);
-
-                    rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-                    sr.enabled = true;
-                    bc2d.enabled = true;
-                    retorno = false;
-                    active = false;
-                }
-
-            }
-
+            }     
         }
+           
     }
 }
     

@@ -11,6 +11,7 @@ public class SunnyDeathController : MonoBehaviour
     playerController playerController;
     fireBallThrowController fireBallThrowController;
     SpriteRenderer sp;
+    DeathCounter deathCounter;
 
 
     [SerializeField]
@@ -18,8 +19,7 @@ public class SunnyDeathController : MonoBehaviour
 
     [SerializeField]
     GameObject checkPointLeft;
-
-    fireBallController[] fireBalls;
+    fireBallThrowController[] fireBalls;
 
     private void Awake()
     {
@@ -28,15 +28,19 @@ public class SunnyDeathController : MonoBehaviour
         sp = GetComponent<SpriteRenderer>();
         fireBallThrowController = gameObject.GetComponent<fireBallThrowController>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
-        fireBalls = FindObjectsOfType<fireBallController>();
-
+        fireBalls = FindObjectsOfType<fireBallThrowController>();
+        deathCounter = FindObjectOfType<DeathCounter>();
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Spikes"))
+        if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Spikes") || collision.collider.CompareTag("Water"))
         {
-            eraseFireBalls();
+            foreach (fireBallThrowController item in fireBalls)
+            {
+                item.DestroyFireBalls();
+            }
+            deathCounter.AddDeath();
             rb2d.velocity = new Vector2(0, 0);
             StartCoroutine(TimeToRespawn(false));
             sp.enabled = false;
@@ -49,10 +53,15 @@ public class SunnyDeathController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("MageBall") || collision.CompareTag("PlantsBullet"))
+        if (collision.CompareTag("MageBall") || collision.CompareTag("PlantsBullet") || collision.CompareTag("Rain"))
         {
-            eraseFireBalls();
+            
             rb2d.velocity = new Vector2(0, 0);
+            foreach (fireBallThrowController item in fireBalls)
+            {
+                item.DestroyFireBalls();
+            }
+            deathCounter.AddDeath();
             StartCoroutine(TimeToRespawn(false));
             sp.enabled = false;
             playerController.enabled = false;
@@ -88,13 +97,4 @@ public class SunnyDeathController : MonoBehaviour
     {
         return isAlive;
     }
-
-    private void eraseFireBalls()
-    {
-        foreach (fireBallController item in fireBalls)
-        {
-            Destroy(item.gameObject);
-        }
-    }
-
 }
