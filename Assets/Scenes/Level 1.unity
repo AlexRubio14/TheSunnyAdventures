@@ -56048,8 +56048,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7917387556053668131}
-  - {fileID: 226131042}
   - {fileID: 2605068628676906885}
+  - {fileID: 226131042}
   m_Father: {fileID: 919656900}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -56064,7 +56064,6 @@ GameObject:
   - component: {fileID: 1550330592}
   - component: {fileID: 1550330591}
   - component: {fileID: 1550330590}
-  - component: {fileID: 1550330593}
   m_Layer: 2
   m_Name: Room 2
   m_TagString: Untagged
@@ -56143,20 +56142,6 @@ Transform:
   m_Father: {fileID: 1785338887}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1550330593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550330589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40c1b291677e06d49b375a29a6f2dee4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text_controller: {fileID: 0}
-  _animator: {fileID: 0}
 --- !u!1 &1576335426
 GameObject:
   m_ObjectHideFlags: 0
