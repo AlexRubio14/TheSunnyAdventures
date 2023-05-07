@@ -54,7 +54,7 @@ public class ChooseLevel : MonoBehaviour
             }
             else
             {
-                if (Input.GetKeyUp(KeyCode.UpArrow))
+                if (Input.GetKeyUp(KeyCode.K))
                 { 
                     if(scene == "Level 1")
                     {
