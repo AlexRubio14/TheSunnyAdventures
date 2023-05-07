@@ -18,6 +18,8 @@ public class EnemiesManager : MonoBehaviour
     FallingPlatform[] fallingPlatforms;
     MovingPlatform[] movingPlatforms;
     verticalPlatform[] verticalPlatforms;
+    Water[] water;
+    CandelabroController[] candelabroControllers;
     public static EnemiesManager Instance;
 
     private void Awake()
@@ -38,6 +40,8 @@ public class EnemiesManager : MonoBehaviour
         fallingPlatforms = FindObjectsOfType<FallingPlatform>();
         movingPlatforms = FindObjectsOfType<MovingPlatform>();
         verticalPlatforms = FindObjectsOfType<verticalPlatform>();
+        water = FindObjectsOfType<Water>();
+        candelabroControllers = FindObjectsOfType<CandelabroController>();
     }
     
 
@@ -66,6 +70,14 @@ public class EnemiesManager : MonoBehaviour
         foreach (verticalPlatform item in verticalPlatforms)
         {
             item.Disable();
+        }
+        foreach(Water item in water)
+        {
+            item.Resets();
+        }
+        foreach(CandelabroController item in candelabroControllers)
+        {
+            item.CandelRestar();
         }
     } 
     

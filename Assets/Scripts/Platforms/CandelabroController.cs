@@ -17,6 +17,7 @@ public class CandelabroController : MonoBehaviour
     GameObject[] endDoor;
 
     bool lightPlatforms;
+    bool light;
 
 
     private Animator animatorCandelabro;
@@ -35,6 +36,7 @@ public class CandelabroController : MonoBehaviour
             foreach (GameObject elem in platform)
             {
                 elem.gameObject.SetActive(true);
+                light = true;
             }
         }
         else
@@ -42,6 +44,7 @@ public class CandelabroController : MonoBehaviour
             foreach (GameObject elem in platform)
             {
                 elem.gameObject.SetActive(false);
+                light = false;
             }
         }
         
@@ -84,6 +87,25 @@ public class CandelabroController : MonoBehaviour
                 {
                     elem.gameObject.SetActive(true);
                 }
+            }
+        }
+    }
+    public void CandelRestar()
+    {
+        if(light)
+        {
+            lighten = true;
+            foreach (GameObject elem in platform)
+            {
+                elem.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            lighten = false;
+            foreach (GameObject elem in platform)
+            {
+                elem.gameObject.SetActive(false);
             }
         }
     }

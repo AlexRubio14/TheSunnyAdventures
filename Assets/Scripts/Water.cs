@@ -30,4 +30,11 @@ public class Water : MonoBehaviour
         }
     }
 
+    public void Resets()
+    {
+        gameObject.tag = "Water";
+        animatorWater.SetBool("turnStone", false);
+        Rain.SetActive(true);
+    }
+
 }
