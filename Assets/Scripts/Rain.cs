@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Rain : MonoBehaviour
 {
+    [SerializeField]
+    GameObject rain;
     private void OnTriggerEnter2D(Collider2D collision)
     {   
         if(collision.CompareTag("Floor"))
         {
-            Destroy(gameObject);
+            rain.SetActive(false);
         }
     }
 

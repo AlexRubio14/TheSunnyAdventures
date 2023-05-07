@@ -56,7 +56,7 @@ public class ChooseLevel : MonoBehaviour
             {
                 if (Input.GetKeyUp(KeyCode.UpArrow))
                 { 
-                    if(scene == "Level 1" && !ChangeLevel.instance.canEnter)
+                    if(scene == "Level 1")
                     {
                         LevelManager.instance.currentLevel = scene;
                         FindObjectOfType<MusicController>().ChangeMusic(1);

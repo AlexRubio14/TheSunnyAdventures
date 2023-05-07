@@ -6,7 +6,7 @@ public class Water : MonoBehaviour
 {
     private BoxCollider2D bx2D;
     public GameObject Rain;
-    private bool activate = false;
+    [SerializeField]
 
 
 
@@ -22,11 +22,19 @@ public class Water : MonoBehaviour
     {
         if (collision.CompareTag("FireBall"))
         {
+            gameObject.tag = "Rock";
             animatorWater.SetBool("turnStone", true);
             Rain.SetActive(false);
             Destroy(collision.gameObject);
-            activate = true;
+           
         }
+    }
+
+    public void Resets()
+    {
+        gameObject.tag = "Water";
+        animatorWater.SetBool("turnStone", false);
+        Rain.SetActive(true);
     }
 
 }
