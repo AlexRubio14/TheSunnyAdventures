@@ -103,6 +103,7 @@ public class Pause : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         pauseGame = false;
+        FindObjectOfType<MusicController>().ChangeMusic(0);
         SceneManager.LoadScene("TitleScreen");
     }
     public void Quit()
