@@ -149,17 +149,20 @@ public class MovingPlatform : MonoBehaviour
     }
     public void disable()
     {
-        gameObject.SetActive(false);
-        animMovingPlatform.SetBool("blinking", false);
+        gameObject.SetActive(false);  
         timer = 0;
         speed = realSpeed;
         activeTime = 0;
         TimeReturn = 0;
         active = false;
+        returning = false;
     }
     public void Restart()
     {
         transform.position = pos;
+        sr.enabled = true;
+        bc2d.enabled = true;
+        animMovingPlatform.SetBool("blinking", false);
     }
 }
     

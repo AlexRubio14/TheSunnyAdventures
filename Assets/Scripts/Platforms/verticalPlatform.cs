@@ -107,16 +107,19 @@ public class verticalPlatform : MonoBehaviour
     public void Disable()
     {
         gameObject.SetActive(false);
-        animVerticalPlatform.SetBool("blinkVerticalPlatform", false);
         timer = 0;
         speed = realSpeed;
         activeTime = 0;
         TimeReturn = 0;
         active = false;
+        returning = false;
     }
 
     public void Restart()
     {
+        animVerticalPlatform.SetBool("blinkVerticalPlatform", false);
+        sr.enabled = true;
+        bc2d.enabled = true;
         transform.position = pos;
     }
 }
