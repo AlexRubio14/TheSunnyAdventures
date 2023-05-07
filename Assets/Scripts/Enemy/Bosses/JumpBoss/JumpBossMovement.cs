@@ -102,16 +102,13 @@ public class JumpBossMovement : MonoBehaviour
             {
                 ChangeLevel.instance.canEnter = true;
                 winText.SetActive(false);
+                FindObjectOfType<MusicController>().ChangeMusic(0);
                 SceneManager.LoadScene("HUB");
                 Destroy(gameObject);
                 time = 0;
                 timers.ResumeTime();
             }
-            
         }
-
-       
-           
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -164,7 +161,6 @@ public class JumpBossMovement : MonoBehaviour
 
     private void Behaviour()
     {
-
         if (isGrounded)
         {
             Jump();
@@ -178,8 +174,6 @@ public class JumpBossMovement : MonoBehaviour
         if (rotate == true)
         {
             rb2d.velocity = new Vector2(enemyMovement, rb2d.velocity.y);
-            
-
         }
         else
         {

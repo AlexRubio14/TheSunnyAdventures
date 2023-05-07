@@ -9,6 +9,7 @@ public class EngGame : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
+            FindObjectOfType<MusicController>().ChangeMusic(0);
             SceneManager.LoadScene("TitleScreen");
         }
     }
