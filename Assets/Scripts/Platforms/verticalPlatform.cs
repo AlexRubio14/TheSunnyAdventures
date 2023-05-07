@@ -107,7 +107,9 @@ public class verticalPlatform : MonoBehaviour
     public void Disable()
     {
         gameObject.SetActive(false);
+        animVerticalPlatform.SetBool("blinkVerticalPlatform", false);
         timer = 0;
+        speed = realSpeed;
         activeTime = 0;
         TimeReturn = 0;
         active = false;

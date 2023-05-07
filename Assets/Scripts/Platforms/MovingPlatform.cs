@@ -150,7 +150,9 @@ public class MovingPlatform : MonoBehaviour
     public void disable()
     {
         gameObject.SetActive(false);
+        animMovingPlatform.SetBool("blinking", false);
         timer = 0;
+        speed = realSpeed;
         activeTime = 0;
         TimeReturn = 0;
         active = false;
