@@ -59,8 +59,7 @@ public class playerController : MonoBehaviour
     private float jumpForce;
     [SerializeField]
     private float minGravity;
-    [field: SerializeField]
-    public float maxGravity { get; private set; }
+    public float maxGravity;
     private int maxJumps = 1;
     private int currentJumps = 0;
     private bool isGrounded;
