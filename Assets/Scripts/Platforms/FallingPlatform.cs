@@ -38,10 +38,16 @@ public class FallingPlatform : MonoBehaviour
 
     private void Update()
     {
+        Blinking();
+        Respawning();
+    }
+
+    private void Blinking()
+    {
         if (collisionActivated && !startCont)
         {
             timeWasted += Time.deltaTime;
-   
+
             if (timeWasted >= fallDelay)
             {
                 timeWasted = 0;
@@ -51,11 +57,14 @@ public class FallingPlatform : MonoBehaviour
                 trig.enabled = false;
             }
         }
-        if(collisionActivated && startCont)
+    }
+
+    private void Respawning()
+    {
+        if (collisionActivated && startCont)
         {
-            
             timeWaited += Time.deltaTime;
-     
+
             if (timeWaited >= destroyDelay)
             {
                 animatorFallingPlatform.SetBool("blinking", false);

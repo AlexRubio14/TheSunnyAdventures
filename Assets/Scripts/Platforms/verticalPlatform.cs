@@ -44,7 +44,6 @@ public class verticalPlatform : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         bc2d = GetComponent<BoxCollider2D>();
         animVerticalPlatform= GetComponent<Animator>();
-
         active = false;
         returning = false;
         pos = gameObject.transform.position;
@@ -55,8 +54,7 @@ public class verticalPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && playerController.GetAnimAttack())
         {
-            active = true;
-            
+            active = true;      
         }
     }
 
@@ -68,39 +66,46 @@ public class verticalPlatform : MonoBehaviour
             if (activeTime >= totalActiveTime)
             {
                 activeTime = totalActiveTime;
-                rb2d.velocity = new Vector2(rb2d.velocity.x, speed);
-                if (transform.position.y >= maxY)
-                {
-                    animVerticalPlatform.SetBool("blinkVerticalPlatform", true);
-                    speed = 0;
-                    timer += Time.deltaTime;
-                    if (timer >= delayDestroy)
-                    {
-                        sr.enabled = false;
-                        bc2d.enabled = false;
-                        returning = true;
-                        gameObject.transform.position = pos;
-                        timer = 0;
-                    }
-                }
+                Moving();
+                Returning();
+            }
+        }
+    }
 
+    private void Moving()
+    {
+        rb2d.velocity = new Vector2(rb2d.velocity.x, speed);
+        if (transform.position.y >= maxY)
+        {
+            animVerticalPlatform.SetBool("blinkVerticalPlatform", true);
+            speed = 0;
+            timer += Time.deltaTime;
+            if (timer >= delayDestroy)
+            {
+                sr.enabled = false;
+                bc2d.enabled = false;
+                returning = true;
+                gameObject.transform.position = pos;
+                timer = 0;
+            }
+        }
+    }
 
-                if (returning)
-                {
-                    TimeReturn += Time.deltaTime;
-                    if (TimeReturn >= TotalTimeReturn)
-                    {
-                        animVerticalPlatform.SetBool("blinkVerticalPlatform", false);
-                        sr.enabled = true;
-                        bc2d.enabled = true;
-                        active = false;
-                        returning = false;
-                        speed = realSpeed;
-                        TimeReturn = 0;
-                        activeTime = 0;
-                    }
-                }
-
+    private void Returning()
+    {
+        if (returning)
+        {
+            TimeReturn += Time.deltaTime;
+            if (TimeReturn >= TotalTimeReturn)
+            {
+                animVerticalPlatform.SetBool("blinkVerticalPlatform", false);
+                sr.enabled = true;
+                bc2d.enabled = true;
+                active = false;
+                returning = false;
+                speed = realSpeed;
+                TimeReturn = 0;
+                activeTime = 0;
             }
         }
     }
