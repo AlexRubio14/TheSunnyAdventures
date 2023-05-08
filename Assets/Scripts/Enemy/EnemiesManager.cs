@@ -77,7 +77,7 @@ public class EnemiesManager : MonoBehaviour
         }
         foreach(CandelabroController item in candelabroControllers)
         {
-            item.CandelRestar();
+            item.CandelabroRestart();
         }
     } 
     

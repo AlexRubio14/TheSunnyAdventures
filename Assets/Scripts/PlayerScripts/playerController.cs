@@ -31,9 +31,7 @@ public class playerController : MonoBehaviour
     //Rotation
     public bool fliped = false;
     private SpriteRenderer sp;
-
     
-
     //Death
     [SerializeField]
     private LayerMask spikesLayer;
@@ -61,8 +59,8 @@ public class playerController : MonoBehaviour
     private float jumpForce;
     [SerializeField]
     private float minGravity;
-    [SerializeField]
-    private float maxGravity;
+    [field: SerializeField]
+    public float maxGravity { get; private set; }
     private int maxJumps = 1;
     private int currentJumps = 0;
     private bool isGrounded;
@@ -106,6 +104,7 @@ public class playerController : MonoBehaviour
                 CheckJump();
                 CheckDash();
                 CheckInteract();
+                tr.enabled = false;
                 break;
             case MovementState.INTERACTING:
                 CheckJump();
@@ -116,8 +115,10 @@ public class playerController : MonoBehaviour
                 CheckJump();
                 CheckDash();
                 CheckInteract();
+                tr.enabled = false;
                 break;
             case MovementState.DASHING:
+                tr.enabled = true;
                 break;
             case MovementState.DEAD:
                 break;

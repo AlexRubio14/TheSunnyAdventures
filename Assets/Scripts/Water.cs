@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
-    private BoxCollider2D bx2D;
     public GameObject Rain;
+    
     [SerializeField]
-
-
-
     private Animator animatorWater;
 
     private void Start()
     {
-        bx2D = GetComponent<BoxCollider2D>();
         animatorWater = GetComponent<Animator>(); 
     }
 
@@ -26,7 +22,6 @@ public class Water : MonoBehaviour
             animatorWater.SetBool("turnStone", true);
             Rain.SetActive(false);
             Destroy(collision.gameObject);
-           
         }
     }
 
@@ -36,5 +31,4 @@ public class Water : MonoBehaviour
         animatorWater.SetBool("turnStone", false);
         Rain.SetActive(true);
     }
-
 }

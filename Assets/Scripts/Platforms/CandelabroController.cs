@@ -47,8 +47,6 @@ public class CandelabroController : MonoBehaviour
                 light = false;
             }
         }
-        
-    
     }
 
     private void Update()
@@ -56,17 +54,10 @@ public class CandelabroController : MonoBehaviour
         animatorCandelabro.SetBool("switched_on", lighten);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (lighten)
         {
-            // animatorCandelabro.SetBool("switched_on", true);
-
             if (collision.gameObject.CompareTag("Player") && playerController.GetAnimAttack())
             {
                 lighten = false;
@@ -90,7 +81,7 @@ public class CandelabroController : MonoBehaviour
             }
         }
     }
-    public void CandelRestar()
+    public void CandelabroRestart()
     {
         if(light)
         {

@@ -74,6 +74,7 @@ public class SunnyDeathController : MonoBehaviour
 
     IEnumerator TimeToRespawn(bool alive) 
     {
+        rb2d.gravityScale = playerController.maxGravity;
         isAlive = alive;
         yield return new WaitForSeconds(timeToRespawn);
         isAlive = !alive;
