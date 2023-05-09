@@ -100,4 +100,11 @@ public class CandelabroController : MonoBehaviour
             }
         }
     }
+
+
+    public bool GetLighten()
+    {
+        return lighten; 
+    }
+
 }
