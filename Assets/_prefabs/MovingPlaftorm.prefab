@@ -216,7 +216,7 @@ MonoBehaviour:
   TimeReturn: 0
   TotalTimeReturn: 2
   activeTime: 0
-  totalActiveTime: 1
+  totalActiveTime: 0
   pos: {x: 0, y: 0, z: 0}
   active: 0
   timer: 0
