@@ -18,7 +18,8 @@ public class fireBallThrowController : MonoBehaviour
 
     private playerController playerController;
 
-    
+    bool shooting = false;
+
     private void Awake()
     {
         playerController = GetComponent<playerController>();
@@ -36,9 +37,9 @@ public class fireBallThrowController : MonoBehaviour
         }
     }
    
-    void ThrowFireball()
+    private void ThrowFireball()
     {
-        if(Input.GetKeyDown(KeyCode.J))
+        if(shooting)
         {
             fireBallController currentFireBall;
             Vector3 posToSpawn = transform.position - transform.position;
@@ -65,4 +66,10 @@ public class fireBallThrowController : MonoBehaviour
         }
         balls.Clear();
     }
+
+    public void InvertShooting()
+    {
+        shooting = !shooting;
+    }
+
 }

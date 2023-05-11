@@ -10,14 +10,16 @@ GameObject:
   m_Component:
   - component: {fileID: 9152766392956456388}
   - component: {fileID: 9152766392956456251}
+  - component: {fileID: 2256513172510716422}
   - component: {fileID: 9152766392956456391}
-  - component: {fileID: 9152766392956456389}
   - component: {fileID: 9152766392956456384}
   - component: {fileID: -3540917643391987682}
+  - component: {fileID: 9152766392956456389}
   - component: {fileID: 2303659723972991898}
   - component: {fileID: 151767809481261492}
   - component: {fileID: 105986334791768449}
   - component: {fileID: 1034794051}
+  - component: {fileID: 7185395319801477894}
   m_Layer: 0
   m_Name: Sunny
   m_TagString: Player
@@ -92,6 +94,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2256513172510716422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9152766392956456250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4af3576f8fbf745a191b3b02b30441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAction: {fileID: 2098664317877016543, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
+  jumpAction: {fileID: 5260099926027870394, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
 --- !u!114 &9152766392956456391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,27 +139,6 @@ MonoBehaviour:
   maxDrag: 8
   dashForce: 17.5
   dashTime: 0.2
---- !u!50 &9152766392956456389
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9152766392956456250}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 8
-  m_AngularDrag: 0.15
-  m_GravityScale: 20
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!114 &9152766392956456384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +169,27 @@ MonoBehaviour:
   respawnPoint: {fileID: 0}
   timeToRespawn: 0.8
   checkPointLeft: {fileID: 0}
+--- !u!50 &9152766392956456389
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9152766392956456250}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 8
+  m_AngularDrag: 0.15
+  m_GravityScale: 20
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!95 &2303659723972991898
 Animator:
   serializedVersion: 4
@@ -344,3 +360,33 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &7185395319801477894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9152766392956456250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Sunny
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
