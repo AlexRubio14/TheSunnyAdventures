@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
     enum MovementState { WALKING, INTERACTING, FALLING, DASHING, DEAD }
     MovementState currentMovementState = MovementState.WALKING;
+
     // Animation
     private Animator anim;
 
     //Trail Renderer
     private TrailRenderer tr;
+
+    //Input
+    InputController inputSystem;
 
     //Movement
     [SerializeField]
@@ -22,11 +27,7 @@ public class playerController : MonoBehaviour
     private float movementDirection;
 
     //Raycast
-    private float rightRaycast;
-    private float leftRaycast;
     private float distanceRayCast;
-    private float rightRaycastLenght;
-    private float leftRaycastLenght;
 
     //Rotation
     public bool fliped = false;
@@ -40,8 +41,8 @@ public class playerController : MonoBehaviour
     [SerializeField]
     private LayerMask floorLayer;
 
-    private Collider2D boxCollider;
-    private Collider2D capsuleCollider;
+    private BoxCollider2D boxCollider;
+    private CapsuleCollider2D capsuleCollider;
 
     private float boxColliderX;
     private float capsuleColliderX;
@@ -63,11 +64,10 @@ public class playerController : MonoBehaviour
     private int maxJumps = 1;
     private int currentJumps = 0;
     private bool isGrounded;
-    bool wantsToJump = false;
+    bool isJumping = false;
 
     [Header("Dash")]
     private Rigidbody2D rb2d;
-    bool wantsToDash = false;
     [SerializeField]
     private float maxDrag;
     [SerializeField]
@@ -84,15 +84,14 @@ public class playerController : MonoBehaviour
         rb2d.gravityScale = maxGravity;
         sp = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        distanceRayCast = 0.6f;
-        rightRaycastLenght = 0.12f;
-        leftRaycastLenght = 0.25f;
+        distanceRayCast = 0.1f;
         score = 0;
         boxCollider.enabled = false;
         boxColliderX = boxCollider.offset.x;
         capsuleColliderX = capsuleCollider.offset.x;
         tr = GetComponent<TrailRenderer>();
         tr.enabled = false;
+        inputSystem = GetComponent<InputController>();
     }
 
     private void Update()
@@ -100,20 +99,12 @@ public class playerController : MonoBehaviour
         switch (currentMovementState)
         {
             case MovementState.WALKING:
-                CheckJump();
-                CheckDash();
-                CheckInteract();
                 tr.enabled = false;
                 break;
             case MovementState.INTERACTING:
-                CheckJump();
-                CheckDash();
-                CheckInteract();
                 break;
             case MovementState.FALLING:
                 CheckJump();
-                CheckDash();
-                CheckInteract();
                 tr.enabled = false;
                 break;
             case MovementState.DASHING:
@@ -130,10 +121,6 @@ public class playerController : MonoBehaviour
             anim.SetBool("Run", true);
         else
             anim.SetBool("Run", false);
-
-        Debug.DrawLine(transform.position + (Vector3.right * rightRaycast), transform.position + (Vector3.right * rightRaycast) + (Vector3.down * distanceRayCast), Color.red);
-        Debug.DrawLine(transform.position + (Vector3.left * leftRaycast), transform.position + (Vector3.left * leftRaycast) + (Vector3.down * distanceRayCast), Color.red);
-
 
         flip();
     }
@@ -152,23 +139,7 @@ public class playerController : MonoBehaviour
         }
 
         flipColliders();
-        flipRayCast();
     }
-
-    private void flipRayCast()
-    {
-        if (!fliped)
-        {
-            leftRaycast = leftRaycastLenght;
-            rightRaycast = rightRaycastLenght;
-        }
-        else
-        {
-            leftRaycast = rightRaycastLenght;
-            rightRaycast = leftRaycastLenght;
-        }
-    }
-
 
     private void flipColliders()
     {
@@ -185,33 +156,20 @@ public class playerController : MonoBehaviour
     }
 
 
-
     private void FixedUpdate()
     {
-        CheckRaycast();
         switch (currentMovementState)
         {
             case MovementState.WALKING:
                 speed = maxSpeed;
                 Move();
-                if (wantsToJump)
-                    Jump();
-                if (wantsToDash)
-                    Dash();
                 break;
             case MovementState.INTERACTING:
                 Move();
-                if (wantsToInteract)
-                    Attack();
                 break;
             case MovementState.FALLING:
                 speed = minSpeed;
                 Move();
-                if (wantsToJump)
-                    Jump();
-                UpdateJump();
-                if (wantsToDash && !hasDashed)
-                    Dash();
                 break;
             case MovementState.DASHING:
                 break;
@@ -220,20 +178,21 @@ public class playerController : MonoBehaviour
             default:
                 break;
         }
+        CheckRaycast();
     }
     private void Move()
     {
         //MOVEMENT ANIMATION
-        movementDirection = Input.GetAxisRaw("Horizontal");
+        movementDirection = inputSystem.movementInput;
         rb2d.AddForce(new Vector2(speed * movementDirection, 0f), ForceMode2D.Force);
     }
 
 
     private void CheckRaycast()
     {
-        if ((Physics2D.Raycast(transform.position + (Vector3.right * rightRaycast), Vector2.down, distanceRayCast, floorLayer) ||
-            Physics2D.Raycast(transform.position + (Vector3.left * leftRaycast), Vector2.down, distanceRayCast, floorLayer))
-            )//&& rb2d.velocity.y < 0.01f)
+        if ((Physics2D.Raycast(transform.position + new Vector3(capsuleCollider.size.x/2, -capsuleCollider.size.y / 2), Vector2.down, distanceRayCast, floorLayer) ||
+            Physics2D.Raycast(transform.position + new Vector3(-capsuleCollider.size.x / 2, -capsuleCollider.size.y / 2), Vector2.down, distanceRayCast, floorLayer))
+            && !isJumping)
         {
             isGrounded = true;
             currentJumps = 0;
@@ -250,54 +209,44 @@ public class playerController : MonoBehaviour
         }
 
     }
-    void CheckJump()
+
+    private void CheckJump()
     {
-        if(Input.GetKey(KeyCode.Space) && (currentJumps < maxJumps) && !wantsToJump)
+        if (rb2d.velocity.y < -0.5f)
         {
-            wantsToJump = true;
+            EndJump();
+        }
+    }
+
+    public void Jump()
+    {
+        if (currentJumps < maxJumps)
+        {
             currentJumps++;
-        }
-    }
-
-    void CheckDash()
-    {
-        wantsToDash |= Input.GetKeyDown(KeyCode.LeftShift);
-    }
-
-    void CheckInteract()
-    {
-        wantsToInteract = Input.GetKeyDown(KeyCode.K);
-        if(wantsToInteract)
-        {
-            anim.SetBool("Attack", true);
-        }
-    }
-
-    void UpdateJump()
-    {
-        if (rb2d.velocity.y > 0 && Input.GetKey(KeyCode.Space))
+            currentMovementState = MovementState.FALLING;
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
             rb2d.gravityScale = minGravity;
-        else
-            rb2d.gravityScale = maxGravity;
+            isJumping = true;
+        }
     }
-    void Jump()
+    public void EndJump()
     {
-        //Apply JumpForce
-        wantsToJump = false;
-        currentMovementState = MovementState.FALLING;
-        rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+        isJumping = false;
+        rb2d.gravityScale = maxGravity;
     }
-    void Dash()
+
+    public void Dash()
     {
-        wantsToDash = false;
-        hasDashed = true;
-        currentMovementState = MovementState.DASHING;
-        Vector2 dashDirection = new Vector2(fliped ? -1f : 1f, 0f);
-        rb2d.velocity = dashDirection * dashForce;
-        rb2d.drag = 0f;
-        rb2d.gravityScale = 0f;
-        Invoke("EndDash", dashTime);
-        
+        if (!hasDashed)
+        {
+            hasDashed = true;
+            currentMovementState = MovementState.DASHING;
+            Vector2 dashDirection = new Vector2(fliped ? -1f : 1f, 0f);
+            rb2d.velocity = dashDirection * dashForce;
+            rb2d.drag = 0f;
+            rb2d.gravityScale = 0f;
+            Invoke("EndDash", dashTime);
+        }
     }
 
     void EndDash()
@@ -307,9 +256,9 @@ public class playerController : MonoBehaviour
         rb2d.drag = maxDrag;
     }
 
-    void Attack()
+    public void Attack()
     {
-        wantsToInteract = false;
+        anim.SetBool("Attack", true);
         boxCollider.enabled = true;
         Invoke("endAttack", interactTime);
     }
@@ -371,5 +320,13 @@ public class playerController : MonoBehaviour
         }
     }
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        if(capsuleCollider != null)
+        {
+            Gizmos.DrawLine(transform.position + new Vector3(capsuleCollider.size.x / 2, -capsuleCollider.size.y / 2), transform.position + new Vector3(capsuleCollider.size.x / 2, -capsuleCollider.size.y / 2) + Vector3.down*distanceRayCast);
+            Gizmos.DrawLine(transform.position + new Vector3(-capsuleCollider.size.x / 2, -capsuleCollider.size.y / 2), transform.position + new Vector3(-capsuleCollider.size.x / 2, -capsuleCollider.size.y / 2) + Vector3.down*distanceRayCast);
+        }
+    }
 }
