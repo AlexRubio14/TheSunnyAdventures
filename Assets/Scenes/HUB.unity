@@ -1592,18 +1592,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2256513172510716422, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
-      propertyPath: dashAction
-      value: 
-      objectReference: {fileID: -1044372115534235101, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
-    - target: {fileID: 2256513172510716422, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
-      propertyPath: shootAction
-      value: 
-      objectReference: {fileID: 5144826478138649505, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
-    - target: {fileID: 2256513172510716422, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
-      propertyPath: interactAction
-      value: 
-      objectReference: {fileID: 8821371563542069284, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
     - target: {fileID: 9152766392956456250, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_Name
       value: Sunny
@@ -4430,7 +4418,7 @@ RectTransform:
   m_Children:
   - {fileID: 1727064384}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4471,7 +4459,7 @@ RectTransform:
   - {fileID: 1955282265}
   - {fileID: 23675075}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6520,7 +6508,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6713,7 +6701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8233663866779776869, guid: 5ad4879d995280c4fbc945d44a512a79, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8233663866779776869, guid: 5ad4879d995280c4fbc945d44a512a79, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11831,7 +11819,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1637476476
 GameObject:

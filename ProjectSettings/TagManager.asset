@@ -25,6 +25,7 @@ TagManager:
   - BackgroundMusic
   - back
   - Rock
+  - OneWay
   layers:
   - Default
   - TransparentFX
