@@ -45,4 +45,9 @@ public class BulletsController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void Restart()
+    {
+        gameObject.SetActive(false);
+    }
 }

@@ -20,6 +20,7 @@ public class EnemiesManager : MonoBehaviour
     verticalPlatform[] verticalPlatforms;
     Water[] water;
     CandelabroController[] candelabroControllers;
+    BulletsController[] bulletsControllers;
     public static EnemiesManager Instance;
 
     private void Awake()
@@ -78,6 +79,10 @@ public class EnemiesManager : MonoBehaviour
         foreach(CandelabroController item in candelabroControllers)
         {
             item.CandelabroRestart();
+        }
+        foreach (BulletsController item in bulletsControllers)
+        {
+            item.Restart();
         }
     } 
     
