@@ -108,6 +108,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveAction: {fileID: 2098664317877016543, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
   jumpAction: {fileID: 5260099926027870394, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
+  dashAction: {fileID: -1044372115534235101, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
+  interactAction: {fileID: 8821371563542069284, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
+  shootAction: {fileID: 5260099926027870394, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
 --- !u!114 &9152766392956456391
 MonoBehaviour:
   m_ObjectHideFlags: 0
