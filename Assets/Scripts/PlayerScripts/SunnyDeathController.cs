@@ -49,6 +49,7 @@ public class SunnyDeathController : MonoBehaviour
             fireBallThrowController.enabled = false;
             transform.position = playerController.m_respawnPoint.position;
             EnemiesManager.Instance.DisableEenemies();
+            AudioManager.instance.Play("DeathSound");
         }
     }
 
@@ -69,6 +70,7 @@ public class SunnyDeathController : MonoBehaviour
             fireBallThrowController.enabled = false;
             transform.position = playerController.m_respawnPoint.position;
             EnemiesManager.Instance.DisableEenemies();
+            AudioManager.instance.Play("DeathSound");
         }
     }
 

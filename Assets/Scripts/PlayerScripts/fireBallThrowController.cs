@@ -26,14 +26,12 @@ public class fireBallThrowController : MonoBehaviour
         balls = new List<GameObject>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         timeWaited += Time.deltaTime;
         if (timeWaited >= timeToThrow)
         {
             ThrowFireball();
-            
         }
     }
    
@@ -41,6 +39,7 @@ public class fireBallThrowController : MonoBehaviour
     {
         if(shooting)
         {
+            AudioManager.instance.Play("ShootSound");
             fireBallController currentFireBall;
             Vector3 posToSpawn = transform.position - transform.position;
             posToSpawn = posToSpawn.normalized * offset + transform.position;
