@@ -3782,16 +3782,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: TitleScreenMusic
-    clip: {fileID: 8300000, guid: 779ffac2a43b9154e8081912ecdf2e69, type: 3}
-    volume: 0
+  - name: JumpSound
+    clip: {fileID: 8300000, guid: 3ed45c00d72e25d4882bfe8de9d8556a, type: 3}
+    volume: 1
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - name: WalkSound
+    clip: {fileID: 8300000, guid: 54b13f774669453468a66a0d0ab36e84, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ShootSound
+    clip: {fileID: 8300000, guid: 3ed45c00d72e25d4882bfe8de9d8556a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: StarSound
+    clip: {fileID: 8300000, guid: 3ed45c00d72e25d4882bfe8de9d8556a, type: 3}
+    volume: 1
     pitch: 0
     loop: 0
     source: {fileID: 0}
-  - name: BackgroundMusic
-    clip: {fileID: 8300000, guid: 82b35c6575b2a294ca1e5cd5b2c8607f, type: 3}
-    volume: 0
+  - name: DeathSound
+    clip: {fileID: 8300000, guid: 3ed45c00d72e25d4882bfe8de9d8556a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: InteractSound
+    clip: {fileID: 8300000, guid: 3ed45c00d72e25d4882bfe8de9d8556a, type: 3}
+    volume: 1
     pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: DashSound
+    clip: {fileID: 8300000, guid: 3ed45c00d72e25d4882bfe8de9d8556a, type: 3}
+    volume: 1
+    pitch: 1
     loop: 0
     source: {fileID: 0}
 --- !u!4 &1677832489

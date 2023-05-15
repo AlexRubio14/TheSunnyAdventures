@@ -19,6 +19,7 @@ public class StarController : MonoBehaviour
             player.AddScore();
             time.StarTimer(20);
             Destroy(gameObject);
+            AudioManager.instance.Play("StarSound");
         }
     }
 }

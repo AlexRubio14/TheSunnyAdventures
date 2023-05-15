@@ -10,13 +10,10 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance = null)
+        if (instance == null)
             instance = this;
         else
-        {
             Destroy(gameObject);
-            return;
-        }
 
         DontDestroyOnLoad(gameObject);
 
@@ -31,13 +28,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void Play (string name)
+    public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s != null)
-            return;
+        Debug.Log(s);
         s.source.Play();
-
     }
 
     public void StopPlaying(string sound)

@@ -23,6 +23,7 @@ public class InputController : MonoBehaviour
 
     private void Awake()
     {
+
         controller = GetComponent<playerController>();
         shootController = GetComponent<fireBallThrowController>();
 
@@ -39,6 +40,23 @@ public class InputController : MonoBehaviour
 
         shootAction.action.started += ShootAction;
         shootAction.action.canceled += ShootAction;
+    }
+
+    private void OnDestroy()
+    {
+        moveAction.action.started -= MoveAction;
+        moveAction.action.performed -= MoveAction;
+        moveAction.action.canceled -= MoveAction;
+
+        jumpAction.action.started -= JumpAction;
+        jumpAction.action.canceled -= EndJumpAction;
+
+        dashAction.action.started -= DashAction;
+
+        interactAction.action.started -= InteractAction;
+
+        shootAction.action.started -= ShootAction;
+        shootAction.action.canceled -= ShootAction;
     }
 
     private void ShootAction(InputAction.CallbackContext obj)
@@ -70,5 +88,4 @@ public class InputController : MonoBehaviour
     {
         movementInput = moveAction.action.ReadValue<float>();
     }
-
 }

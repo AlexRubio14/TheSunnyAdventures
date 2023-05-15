@@ -190,8 +190,8 @@ public class playerController : MonoBehaviour
 
     private void CheckRaycast()
     {
-        if ((Physics2D.Raycast(transform.position + new Vector3(capsuleCollider.size.x/2, -capsuleCollider.size.y / 2), Vector2.down, distanceRayCast, floorLayer) ||
-            Physics2D.Raycast(transform.position + new Vector3(-capsuleCollider.size.x / 2, -capsuleCollider.size.y / 2), Vector2.down, distanceRayCast, floorLayer))
+        if ((Physics2D.Raycast(transform.position + new Vector3(capsuleCollider.size.x/2 + capsuleCollider.offset.x - 0.1f, -capsuleCollider.size.y / 2), Vector2.down, distanceRayCast, floorLayer) ||
+            Physics2D.Raycast(transform.position + new Vector3(-capsuleCollider.size.x/ 2 + capsuleCollider.offset.x + 0.1f, -capsuleCollider.size.y / 2), Vector2.down, distanceRayCast, floorLayer))
             && !isJumping)
         {
             isGrounded = true;
@@ -205,14 +205,18 @@ public class playerController : MonoBehaviour
         {
             isGrounded = false;
             if (currentMovementState != MovementState.DASHING)
+            {
+                Debug.Log("TetasGordasAceiteDeMotor");
                 currentMovementState = MovementState.FALLING;
+            }
+                
         }
 
     }
 
     private void CheckJump()
     {
-        if (rb2d.velocity.y < -0.5f)
+        if (rb2d.velocity.y < -0.01f)
         {
             EndJump();
         }
@@ -227,6 +231,7 @@ public class playerController : MonoBehaviour
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
             rb2d.gravityScale = minGravity;
             isJumping = true;
+            AudioManager.instance.Play("JumpSound");
         }
     }
     public void EndJump()
@@ -246,6 +251,7 @@ public class playerController : MonoBehaviour
             rb2d.drag = 0f;
             rb2d.gravityScale = 0f;
             Invoke("EndDash", dashTime);
+            AudioManager.instance.Play("DashSound");
         }
     }
 
@@ -254,6 +260,7 @@ public class playerController : MonoBehaviour
         currentMovementState = isGrounded ? MovementState.WALKING : MovementState.FALLING;
         rb2d.gravityScale = maxGravity;
         rb2d.drag = maxDrag;
+        AudioManager.instance.StopPlaying("DashSound");
     }
 
     public void Attack()
@@ -261,12 +268,14 @@ public class playerController : MonoBehaviour
         anim.SetBool("Attack", true);
         boxCollider.enabled = true;
         Invoke("endAttack", interactTime);
+        AudioManager.instance.Play("InteractSound");
     }
     public void endAttack() 
     {
         currentMovementState = isGrounded ? MovementState.WALKING : MovementState.FALLING;
         boxCollider.enabled = false;
         anim.SetBool("Attack", false);
+        AudioManager.instance.StopPlaying("InteractSound");
     }
 
     public void SetRespawnPoint(Transform respawnPoint)
@@ -320,13 +329,22 @@ public class playerController : MonoBehaviour
         }
     }
 
+    public void FootStep()
+    {
+        if(currentMovementState == MovementState.WALKING)
+        {
+            AudioManager.instance.Play("WalkSound");
+            //Particulas pasos marcos marikon hazlas ya
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         if(capsuleCollider != null)
         {
-            Gizmos.DrawLine(transform.position + new Vector3(capsuleCollider.size.x / 2, -capsuleCollider.size.y / 2), transform.position + new Vector3(capsuleCollider.size.x / 2, -capsuleCollider.size.y / 2) + Vector3.down*distanceRayCast);
-            Gizmos.DrawLine(transform.position + new Vector3(-capsuleCollider.size.x / 2, -capsuleCollider.size.y / 2), transform.position + new Vector3(-capsuleCollider.size.x / 2, -capsuleCollider.size.y / 2) + Vector3.down*distanceRayCast);
+            Gizmos.DrawLine(transform.position + new Vector3(capsuleCollider.size.x / 2 + capsuleCollider.offset.x - 0.1f, -capsuleCollider.size.y / 2), transform.position + new Vector3(capsuleCollider.size.x / 2 + capsuleCollider.offset.x - 0.1f, -capsuleCollider.size.y / 2) + Vector3.down*distanceRayCast);
+            Gizmos.DrawLine(transform.position + new Vector3(-capsuleCollider.size.x / 2 + capsuleCollider.offset.x + 0.1f, -capsuleCollider.size.y / 2), transform.position + new Vector3(-capsuleCollider.size.x / 2 + capsuleCollider.offset.x + 0.1f, -capsuleCollider.size.y / 2) + Vector3.down*distanceRayCast);
         }
     }
 }
