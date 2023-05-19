@@ -172,6 +172,7 @@ public class playerController : MonoBehaviour
                 Move();
                 break;
             case MovementState.DASHING:
+            rb2d.gravityScale = 0f;
                 break;
             case MovementState.DEAD:
                 break;
@@ -224,12 +225,13 @@ public class playerController : MonoBehaviour
 
     public void Jump()
     {
-        if (currentJumps < maxJumps)
+        if (currentJumps < maxJumps && currentMovementState != MovementState.DASHING)
         {
             currentJumps++;
             currentMovementState = MovementState.FALLING;
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
             rb2d.gravityScale = minGravity;
+            rb2d.drag = maxDrag;
             isJumping = true;
             AudioManager.instance.Play("JumpSound");
         }
@@ -242,7 +244,7 @@ public class playerController : MonoBehaviour
 
     public void Dash()
     {
-        if (!hasDashed)
+        if (!hasDashed && currentMovementState != MovementState.DASHING)
         {
             hasDashed = true;
             currentMovementState = MovementState.DASHING;
