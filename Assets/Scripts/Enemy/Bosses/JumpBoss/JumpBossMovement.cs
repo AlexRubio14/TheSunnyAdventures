@@ -40,7 +40,6 @@ public class JumpBossMovement : MonoBehaviour
     SunnyDeathController sunnyDeathController;
     SpriteRenderer sp;
     BoxCollider2D bx2d;
-    timer timers;
     [SerializeField]
     GameObject canva;
     bool level1Win;
@@ -64,7 +63,6 @@ public class JumpBossMovement : MonoBehaviour
         sp = GetComponent<SpriteRenderer>();
         timeClass = FindObjectOfType<timer>();
         bx2d= GetComponent<BoxCollider2D>();
-        timers = FindObjectOfType<timer>();
         rotate = false;
         isGrounded = true;
         isAlive = true;
@@ -95,7 +93,6 @@ public class JumpBossMovement : MonoBehaviour
         }
         if (healt <= 0)
         {
-            timers.StopTime();
             Die(); 
             time += Time.deltaTime;
             if(time >= changeSceneTime)
@@ -106,7 +103,6 @@ public class JumpBossMovement : MonoBehaviour
                 SceneManager.LoadScene("HUB");
                 Destroy(gameObject);
                 time = 0;
-                timers.ResumeTime();
             }
         }
     }

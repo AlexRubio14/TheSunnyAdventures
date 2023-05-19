@@ -323,7 +323,7 @@ public class playerController : MonoBehaviour
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.collider.CompareTag("Wall"))
+        if (collision.collider.CompareTag("Wall") && currentMovementState == MovementState.DASHING)
         {
             EndDash();
         }
