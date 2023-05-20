@@ -60757,7 +60757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 60, y: -13}
+  m_AnchoredPosition: {x: 60.00003, y: -13}
   m_SizeDelta: {x: 361.99, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!1001 &1929113430
@@ -62274,6 +62274,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3443584166022005236, guid: 05533fd11b5b74e4e924e4c4cad45b05, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 126317232}
     - target: {fileID: 6066036984390984451, guid: 05533fd11b5b74e4e924e4c4cad45b05, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
