@@ -13954,6 +13954,10 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 2046135741}
+    - target: {fileID: 3907576769647749343, guid: f19f63c3b19489b4782ee458aa71d0c8, type: 3}
+      propertyPath: slider_2
+      value: 
+      objectReference: {fileID: 69820950}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f19f63c3b19489b4782ee458aa71d0c8, type: 3}
 --- !u!114 &2079492808 stripped

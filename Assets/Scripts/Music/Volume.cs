@@ -13,7 +13,6 @@ public class Volume : MonoBehaviour
 
     public Slider slider_2;
 
-    public AudioMixer sound;
 
     private void Start()
     {
@@ -21,7 +20,11 @@ public class Volume : MonoBehaviour
         {
             GetAudio();
         }
-        else if (PlayerPrefs.HasKey("Sound"))
+        else
+        {
+            FixAudio();
+        }
+        if (PlayerPrefs.HasKey("Sound"))
         {
             GetSound();
         }
@@ -35,7 +38,7 @@ public class Volume : MonoBehaviour
         float audio = slider.value;
         float sounds = slider_2.value;
         music.SetFloat("Music", Mathf.Log10(audio) * 30);
-        sound.SetFloat("Sound", Mathf.Log10(audio) * 30);
+        music.SetFloat("Music", Mathf.Log10(sounds) * 30);
         PlayerPrefs.SetFloat("Music", audio);
         PlayerPrefs.SetFloat("Sound", audio);
     }

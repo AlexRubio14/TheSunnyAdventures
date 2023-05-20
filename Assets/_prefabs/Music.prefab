@@ -47,4 +47,3 @@ MonoBehaviour:
   slider: {fileID: 0}
   music: {fileID: 24100000, guid: 4238383f2b6ea97488df7dd948c90d22, type: 2}
   slider_2: {fileID: 0}
-  sound: {fileID: 24100000, guid: 2e2ed6002d26d3345b4b8912d8309420, type: 2}
