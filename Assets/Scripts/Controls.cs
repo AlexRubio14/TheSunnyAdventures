@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Controls : MonoBehaviour
 {
+    private Animator sunnyControls;
 
     [SerializeField]
-    private Animator sunnyControls;
+    private string typeAnimation; 
     void Start()
     {
         sunnyControls = GetComponent<Animator>();
@@ -14,6 +15,6 @@ public class Controls : MonoBehaviour
 
     void Update()
     {
-        sunnyControls.SetBool("jump", true);
+        sunnyControls.SetBool(typeAnimation, true);
     }
 }
