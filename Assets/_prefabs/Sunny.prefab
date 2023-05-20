@@ -127,6 +127,7 @@ MonoBehaviour:
   maxSpeed: 160
   minSpeed: 100
   fliped: 0
+  walkParticle: {fileID: 8612231284209876734, guid: eedcfdf6b8f11af4287ae3cee732eb08, type: 3}
   spikesLayer:
     serializedVersion: 2
     m_Bits: 256

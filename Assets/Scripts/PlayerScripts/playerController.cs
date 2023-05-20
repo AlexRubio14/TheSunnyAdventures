@@ -32,6 +32,8 @@ public class playerController : MonoBehaviour
     //Rotation
     public bool fliped = false;
     private SpriteRenderer sp;
+    [SerializeField]
+    private GameObject walkParticle;
     
     //Death
     [SerializeField]
@@ -135,7 +137,7 @@ public class playerController : MonoBehaviour
         else if(fliped && movementDirection > 0)
         {
             fliped = false;
-            sp.flipX = false;
+            sp.flipX = false;  
         }
 
         flipColliders();
@@ -335,7 +337,8 @@ public class playerController : MonoBehaviour
     {
         if(currentMovementState == MovementState.WALKING)
         {
-            AudioManager.instance.Play("WalkSound");
+            Instantiate(walkParticle, transform.position-new Vector3(0,0.3f,0), Quaternion.Euler(0,180*movementDirection, 0));
+            //AudioManager.instance.Play("WalkSound");
             //Particulas pasos marcos marikon hazlas ya
         }
     }
