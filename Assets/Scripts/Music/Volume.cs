@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class Volume : MonoBehaviour
@@ -16,7 +18,7 @@ public class Volume : MonoBehaviour
 
     private void Start()
     {
-        if(PlayerPrefs.HasKey("Music") )
+        if(PlayerPrefs.HasKey("Music"))
         {
             GetAudio();
         }
@@ -30,17 +32,23 @@ public class Volume : MonoBehaviour
         }
         else
         {
-            FixAudio();
+            FixSound();
         }
     }
     public void FixAudio()
     {
         float audio = slider.value;
-        float sounds = slider_2.value;
         music.SetFloat("Music", Mathf.Log10(audio) * 30);
-        music.SetFloat("Music", Mathf.Log10(sounds) * 30);
         PlayerPrefs.SetFloat("Music", audio);
-        PlayerPrefs.SetFloat("Sound", audio);
+        PlayerPrefs.Save();
+
+    }
+    public void FixSound()
+    {
+        float sounds = slider_2.value;
+        music.SetFloat("Sound", Mathf.Log10(sounds) * 30);
+        PlayerPrefs.SetFloat("Sound", sounds);
+        PlayerPrefs.Save();
     }
     public void GetAudio()
     {
@@ -49,7 +57,7 @@ public class Volume : MonoBehaviour
     }
     public void GetSound()
     {
-        slider_2.value = PlayerPrefs.GetFloat("Sound");
-        FixAudio();
+        slider_2.value = PlayerPrefs.GetFloat("Sound"); 
+        FixSound();
     }
 }

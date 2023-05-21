@@ -3355,7 +3355,7 @@ GameObject:
   - component: {fileID: 1076480444}
   - component: {fileID: 1076480445}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Slider Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5284,6 +5284,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  mixer: {fileID: 24100000, guid: 4238383f2b6ea97488df7dd948c90d22, type: 2}
 --- !u!4 &1677832489
 Transform:
   m_ObjectHideFlags: 0
@@ -5849,7 +5850,7 @@ GameObject:
   - component: {fileID: 2047449949}
   - component: {fileID: 2047449950}
   m_Layer: 5
-  m_Name: Slider (1)
+  m_Name: Slider Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5931,7 +5932,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1274986039}
         m_TargetAssemblyTypeName: Volume, Assembly-CSharp
-        m_MethodName: FixAudio
+        m_MethodName: FixSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
