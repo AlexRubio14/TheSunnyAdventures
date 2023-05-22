@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
   music: {fileID: 24100000, guid: 4238383f2b6ea97488df7dd948c90d22, type: 2}
+  slider_2: {fileID: 0}

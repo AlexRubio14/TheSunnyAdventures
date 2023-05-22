@@ -8,6 +8,10 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+    [SerializeField]
+    private AudioMixer mixer;
+
+
     void Awake()
     {
         if (instance == null)
@@ -20,6 +24,7 @@ public class AudioManager : MonoBehaviour
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
+            s.source.outputAudioMixerGroup = mixer.FindMatchingGroups("Sound")[0];
             s.source.clip = s.clip;
 
             s.source.volume = s.volume;
