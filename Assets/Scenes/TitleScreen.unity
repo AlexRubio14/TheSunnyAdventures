@@ -5245,7 +5245,7 @@ MonoBehaviour:
   - name: JumpSound
     clip: {fileID: 8300000, guid: 3ed45c00d72e25d4882bfe8de9d8556a, type: 3}
     volume: 1
-    pitch: 0.8
+    pitch: 0.7
     loop: 0
     source: {fileID: 0}
   - name: WalkSound
@@ -5255,7 +5255,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: ShootSound
-    clip: {fileID: 8300000, guid: 3ed45c00d72e25d4882bfe8de9d8556a, type: 3}
+    clip: {fileID: 8300000, guid: ec6b66b2d50efa744b0ef8ad41c8fb81, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -5267,19 +5267,19 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: DeathSound
-    clip: {fileID: 8300000, guid: 3ed45c00d72e25d4882bfe8de9d8556a, type: 3}
+    clip: {fileID: 8300000, guid: dcaa9c346b5ff2d4fb0934c26e2d066b, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 0.77
     loop: 0
     source: {fileID: 0}
   - name: InteractSound
-    clip: {fileID: 8300000, guid: 3ed45c00d72e25d4882bfe8de9d8556a, type: 3}
+    clip: {fileID: 8300000, guid: 5d320015f841ccf428bc9dcccaf92c4a, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 0.9
     loop: 0
     source: {fileID: 0}
   - name: DashSound
-    clip: {fileID: 8300000, guid: 3ed45c00d72e25d4882bfe8de9d8556a, type: 3}
+    clip: {fileID: 8300000, guid: e052980189d041d4987cf43b4958189f, type: 3}
     volume: 1
     pitch: 1
     loop: 0

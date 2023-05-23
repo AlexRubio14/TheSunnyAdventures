@@ -96,26 +96,6 @@ public class playerController : MonoBehaviour
 
     private void Update()
     {
-        switch (currentMovementState)
-        {
-            case MovementState.WALKING:
-                tr.enabled = false;
-                break;
-            case MovementState.INTERACTING:
-                break;
-            case MovementState.FALLING:
-                CheckJump();
-                tr.enabled = false;
-                break;
-            case MovementState.DASHING:
-                tr.enabled = true;
-                break;
-            case MovementState.DEAD:
-                break;
-            default:
-                break;
-        }
-
         //MOVEMENT ANIMATION 
         if (movementDirection > .1f || movementDirection < -.1f)
             anim.SetBool("Run", true);
@@ -207,7 +187,6 @@ public class playerController : MonoBehaviour
             isGrounded = false;
             if (currentMovementState != MovementState.DASHING)
             {
-                Debug.Log("TetasGordasAceiteDeMotor");
                 currentMovementState = MovementState.FALLING;
             }
                 
@@ -252,6 +231,7 @@ public class playerController : MonoBehaviour
             rb2d.velocity = dashDirection * dashForce;
             rb2d.drag = 0f;
             rb2d.gravityScale = 0f;
+            tr.enabled = true;
             Invoke("EndDash", dashTime);
             AudioManager.instance.Play("DashSound");
         }
@@ -262,15 +242,19 @@ public class playerController : MonoBehaviour
         currentMovementState = isGrounded ? MovementState.WALKING : MovementState.FALLING;
         rb2d.gravityScale = maxGravity;
         rb2d.drag = maxDrag;
+        tr.enabled = false;
         AudioManager.instance.StopPlaying("DashSound");
     }
 
     public void Attack()
     {
-        anim.SetBool("Attack", true);
-        boxCollider.enabled = true;
-        Invoke("endAttack", interactTime);
-        AudioManager.instance.Play("InteractSound");
+        if (!GetAnimAttack())
+        {
+            anim.SetBool("Attack", true);
+            boxCollider.enabled = true;
+            Invoke("endAttack", interactTime);
+            AudioManager.instance.Play("InteractSound");
+        }
     }
     public void endAttack() 
     {
@@ -331,12 +315,16 @@ public class playerController : MonoBehaviour
         }
     }
 
+    public void SetTr(bool a)
+    {
+        tr.enabled = a;
+    }
+
     public void FootStep()
     {
         if(currentMovementState == MovementState.WALKING)
         {
             AudioManager.instance.Play("WalkSound");
-            //Particulas pasos marcos marikon hazlas ya
         }
     }
 
