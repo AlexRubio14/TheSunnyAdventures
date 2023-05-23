@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChooseLevel : MonoBehaviour
 {
+    playerController playerController;
 
     [SerializeField]
     private string scene;
@@ -37,6 +38,7 @@ public class ChooseLevel : MonoBehaviour
     {
         starterPos = tower.transform.position;
         enderPos = tower.transform.position - new Vector3(0, down);
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>();
     }
 
     private void Update()
@@ -54,21 +56,6 @@ public class ChooseLevel : MonoBehaviour
             }
             else
             {
-                if (Input.GetKeyUp(KeyCode.K))
-                { 
-                    if(scene == "Level 1")
-                    {
-                        LevelManager.instance.currentLevel = scene;
-                        FindObjectOfType<MusicController>().ChangeMusic(1);
-                        SceneManager.LoadScene(scene);
-                    }
-                    if (scene == "Level 2" && ChangeLevel.instance.canEnter)
-                    {
-                        LevelManager.instance.currentLevel = scene;
-                        FindObjectOfType<MusicController>().ChangeMusic(1);
-                        SceneManager.LoadScene(scene);
-                    }
-                }
                 proces += Time.deltaTime / velocity; // valor entre: 0 - 1
                 tower.transform.position = Vector2.Lerp(starterPos, enderPos, proces); // interpolar: passar de punto A a B 
             }
@@ -77,6 +64,7 @@ public class ChooseLevel : MonoBehaviour
         DoorOpen();
         KeyAndLock(); 
     }
+
 
     private void DoorOpen()
     {
@@ -102,6 +90,21 @@ public class ChooseLevel : MonoBehaviour
             move_title = true;
             directionUp = false;
 
+            if (playerController.GetAnimAttack())
+            {
+                if (scene == "Level 1")
+                {
+                    LevelManager.instance.currentLevel = scene;
+                    FindObjectOfType<MusicController>().ChangeMusic(1);
+                    SceneManager.LoadScene(scene);
+                }
+                if (scene == "Level 2" && ChangeLevel.instance.canEnter)
+                {
+                    LevelManager.instance.currentLevel = scene;
+                    FindObjectOfType<MusicController>().ChangeMusic(1);
+                    SceneManager.LoadScene(scene);
+                }
+            }
         }
     }
 

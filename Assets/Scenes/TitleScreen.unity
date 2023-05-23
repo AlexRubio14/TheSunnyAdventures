@@ -5256,7 +5256,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ShootSound
     clip: {fileID: 8300000, guid: ec6b66b2d50efa744b0ef8ad41c8fb81, type: 3}
-    volume: 1
+    volume: 0.889
     pitch: 1
     loop: 0
     source: {fileID: 0}

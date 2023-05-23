@@ -98,6 +98,9 @@ public class playerController : MonoBehaviour
 
     private void Update()
     {
+        if (currentMovementState == MovementState.FALLING)
+            CheckJump();
+
         //MOVEMENT ANIMATION 
         if (movementDirection > .1f || movementDirection < -.1f)
             anim.SetBool("Run", true);

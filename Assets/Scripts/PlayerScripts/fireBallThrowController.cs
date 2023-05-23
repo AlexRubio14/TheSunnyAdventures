@@ -39,7 +39,7 @@ public class fireBallThrowController : MonoBehaviour
     {
         if(shooting)
         {
-            //AudioManager.instance.Play("ShootSound");
+            AudioManager.instance.Play("ShootSound");
             fireBallController currentFireBall;
             Vector3 posToSpawn = transform.position - transform.position;
             posToSpawn = posToSpawn.normalized * offset + transform.position;
