@@ -7,52 +7,18 @@ public class TextControlsLevel2 : MonoBehaviour
 {
 
     [SerializeField]
-    GameObject ligthItUp;
+    GameObject waterFire;
+
 
     [SerializeField]
-    GameObject turnItOff;
-    
-    [SerializeField]
-    GameObject dontLikeWater;
-    
-    [SerializeField]
-    GameObject waterAndFire; 
+    playerController playeController;
 
-    CandelabroController candelabroController;
 
-    private int counter = 0; 
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
-    }
-
-    private void Awake()
-    {
-        candelabroController = FindObjectOfType<CandelabroController>();
-
-        ligthItUp.SetActive(true);
-        turnItOff.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (candelabroController.GetLighten())
+        if (collision.CompareTag("FireBall") && !waterFire.gameObject.IsDestroyed())
         {
-            Debug.Log("LightenTrue"); 
-            ligthItUp.SetActive(false);
-            if (counter == 0)
-            {
-                turnItOff.SetActive(true);
-            }
-            counter = 1; 
-        }
-
-        if (!candelabroController.GetLighten() && turnItOff.gameObject.active)
-        {
-            turnItOff.SetActive(false);
+            Destroy(waterFire);
         }
     }
 }
