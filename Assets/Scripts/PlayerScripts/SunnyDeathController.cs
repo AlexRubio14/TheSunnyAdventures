@@ -41,15 +41,7 @@ public class SunnyDeathController : MonoBehaviour
             {
                 item.DestroyFireBalls();
             }
-            deathCounter.AddDeath();
-            rb2d.velocity = new Vector2(0, 0);
-            StartCoroutine(TimeToRespawn(false));
-            sp.enabled = false;
-            playerController.enabled = false;
-            fireBallThrowController.enabled = false;
-            transform.position = playerController.m_respawnPoint.position;
-            EnemiesManager.Instance.DisableEenemies();
-            AudioManager.instance.Play("DeathSound");
+            PlayerDie();
         }
     }
 
@@ -63,15 +55,22 @@ public class SunnyDeathController : MonoBehaviour
             {
                 item.DestroyFireBalls();
             }
-            deathCounter.AddDeath();
-            StartCoroutine(TimeToRespawn(false));
-            sp.enabled = false;
-            playerController.enabled = false;
-            fireBallThrowController.enabled = false;
-            transform.position = playerController.m_respawnPoint.position;
-            EnemiesManager.Instance.DisableEenemies();
-            AudioManager.instance.Play("DeathSound");
+            PlayerDie();
         }
+    }
+
+    private void PlayerDie()
+    {
+        deathCounter.AddDeath();
+        rb2d.velocity = new Vector2(0, 0);
+        StartCoroutine(TimeToRespawn(false));
+        sp.enabled = false;
+        playerController.SetTr(false);
+        playerController.enabled = false;
+        fireBallThrowController.enabled = false;
+        transform.position = playerController.m_respawnPoint.position;
+        EnemiesManager.Instance.DisableEenemies();
+        AudioManager.instance.Play("DeathSound");
     }
 
     IEnumerator TimeToRespawn(bool alive) 
