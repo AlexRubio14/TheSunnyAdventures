@@ -4858,6 +4858,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 154196215}
     m_Modifications:
+    - target: {fileID: 3918074113121078905, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442234396550440043, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442234396550440043, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442234396550440043, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 4462754181202319616, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5166,9 +5182,25 @@ PrefabInstance:
       propertyPath: checkPointLeft
       value: 
       objectReference: {fileID: 43706743}
-    - target: {fileID: -3540917643391987682, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
-      propertyPath: fireBalls.Array.size
+    - target: {fileID: 970463924, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: moveWithTransform
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 970463924, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: VelocityModule.x.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 970463924, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: VelocityModule.y.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970463924, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: VelocityModule.z.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 970463924, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: VelocityModule.inWorldSpace
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456250, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_Name
@@ -5180,11 +5212,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.57
+      value: 14.96
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.49
+      value: -3.39
       objectReference: {fileID: 0}
     - target: {fileID: 9152766392956456388, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5218,10 +5250,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9152766392956456389, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
-      propertyPath: m_Material
+    - target: {fileID: 9152766392956456391, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: jumpParticle
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3337902592141199379, guid: b05f4a3087523464386d48c9c460b6f5, type: 3}
+    - target: {fileID: 9152766392956456391, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
+      propertyPath: walkParticle
+      value: 
+      objectReference: {fileID: 8612231284209876734, guid: eedcfdf6b8f11af4287ae3cee732eb08, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b9ca85a66548c8438d64a05d4944ae0, type: 3}
 --- !u!1 &594343222
@@ -37729,6 +37765,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 154196215}
     m_Modifications:
+    - target: {fileID: 3918074113121078905, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442234396550440043, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442234396550440043, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442234396550440043, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 4462754181202319616, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -56636,6 +56688,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 154196215}
     m_Modifications:
+    - target: {fileID: 3918074113121078905, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442234396550440043, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442234396550440043, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442234396550440043, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4462754181202319616, guid: 149948d02bfdefa4b87e645e3a3540e8, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -61969,6 +62037,10 @@ PrefabInstance:
       propertyPath: winText
       value: 
       objectReference: {fileID: 1697339946}
+    - target: {fileID: 4851402217660482548, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
+      propertyPath: bossParticle
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4851402217660482548, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
       propertyPath: changeSceneTime
       value: 5

@@ -711,13 +711,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/_prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/_prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Sunny\TheSunnyAdventures
   m_LockTracker:
@@ -740,7 +740,7 @@ MonoBehaviour:
       m_UserData: 31710
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 7}
     m_SearchString: 
@@ -887,18 +887,18 @@ MonoBehaviour:
       m_ExpandedIDs: 868cffffe28fffffea8fffff7690ffff7e90ffff8c90ffff4693ffff9494ffff18a2ffffb0a3ffff8ea4ffffe4a5ffff50c3ffff2ac8ffff5ec9ffff5ef4ffff06f5ffff8efaffffb47e0000ae7f0000b67f0000703901006a3a0100723a0100324a0100824a01004a4b0100c24b0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Jump
+        m_OriginalName: Jump
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -18200
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 6}
       m_SearchString: 
@@ -1296,7 +1296,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1

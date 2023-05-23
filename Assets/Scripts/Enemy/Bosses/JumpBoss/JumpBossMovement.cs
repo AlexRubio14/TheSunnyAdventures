@@ -164,6 +164,7 @@ public class JumpBossMovement : MonoBehaviour
         else if (Physics2D.Raycast(transform.position, Vector2.down, 2.2f, floorLayer))
         {
             isGrounded = true;
+           
         }
 
 
