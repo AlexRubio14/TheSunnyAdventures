@@ -19,6 +19,7 @@ public class CandelabroController : MonoBehaviour
     [SerializeField]
     private ParticleSystem particle;
 
+
     bool lightPlatforms;
     bool light;
 
@@ -40,6 +41,7 @@ public class CandelabroController : MonoBehaviour
             {
                 elem.gameObject.SetActive(true);
                 light = true;
+                particle.Play();
             }
         }
         else
@@ -48,6 +50,7 @@ public class CandelabroController : MonoBehaviour
             {
                 elem.gameObject.SetActive(false);
                 light = false;
+                particle.Stop();
             }
         }
     }
@@ -55,20 +58,13 @@ public class CandelabroController : MonoBehaviour
     private void Update()
     {
         animatorCandelabro.SetBool("switched_on", lighten);
-        if (lighten)
-        {
-            particle.Play();
-        }
-        else
-        {
-            particle.Stop();
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (lighten)
         {
+            particle.Stop();
             if (collision.gameObject.CompareTag("Player") && playerController.GetAnimAttack())
             {
                 lighten = false;
@@ -80,6 +76,7 @@ public class CandelabroController : MonoBehaviour
         }
         else
         {
+            particle.Play();
             if (collision.gameObject.CompareTag("FireBall"))
             {
                 Destroy(collision.gameObject);
