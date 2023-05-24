@@ -914,6 +914,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: platform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 1940186107}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[1]
+      value: 
+      objectReference: {fileID: 300902630}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.data[0]
       value: 
       objectReference: {fileID: 1940186107}
@@ -927,7 +939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8415657230002212079, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.924
+      value: -15.88
       objectReference: {fileID: 0}
     - target: {fileID: 8415657230002212079, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1854,9 +1866,17 @@ PrefabInstance:
       value: Candelabro secret1
       objectReference: {fileID: 0}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 1879621553}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.data[0]
       value: 
@@ -3141,6 +3161,18 @@ PrefabInstance:
       propertyPath: lighten
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: platform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 989592750}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[1]
+      value: 
+      objectReference: {fileID: 819994866}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.data[0]
       value: 
@@ -54694,6 +54726,22 @@ PrefabInstance:
       value: Candelabro 1
       objectReference: {fileID: 0}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 378296339}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[1]
+      value: 
+      objectReference: {fileID: 94977979}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[2]
+      value: 
+      objectReference: {fileID: 85140334}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.data[0]
       value: 
       objectReference: {fileID: 378296339}
@@ -76598,9 +76646,25 @@ PrefabInstance:
       value: Candelabro 4
       objectReference: {fileID: 0}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 2047805494}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[1]
+      value: 
+      objectReference: {fileID: 1541600740}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[2]
+      value: 
+      objectReference: {fileID: 1204691633}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.data[0]
       value: 
@@ -76678,6 +76742,18 @@ PrefabInstance:
       propertyPath: platform.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 1426675221}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[1]
+      value: 
+      objectReference: {fileID: 812831289}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[2]
+      value: 
+      objectReference: {fileID: 926612187}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.data[0]
       value: 
@@ -81440,6 +81516,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candelabro 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: platform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 1672806648}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[1]
+      value: 
+      objectReference: {fileID: 1643768393}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.data[0]
       value: 
