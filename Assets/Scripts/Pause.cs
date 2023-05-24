@@ -58,6 +58,8 @@ public class Pause : MonoBehaviour
             {
                 Pauses();
                 settingBoton.SetActive(false);
+                ControlBoton.SetActive(false);
+                Boton5.SetActive(true);
             }
         }
     }
