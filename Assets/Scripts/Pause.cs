@@ -18,6 +18,9 @@ public class Pause : MonoBehaviour
     private GameObject QuitBoton;
 
     [SerializeField]
+    private GameObject ControlBoton;
+
+    [SerializeField]
     private GameObject Boton1;
     [SerializeField]
     private GameObject Boton2;
@@ -25,6 +28,8 @@ public class Pause : MonoBehaviour
     private GameObject Boton3;
     [SerializeField]
     private GameObject Boton4;
+    [SerializeField]
+    private GameObject Boton5;
 
     public Slider slider;
 
@@ -53,6 +58,8 @@ public class Pause : MonoBehaviour
             {
                 Pauses();
                 settingBoton.SetActive(false);
+                ControlBoton.SetActive(false);
+                Boton5.SetActive(true);
             }
         }
     }
@@ -125,6 +132,21 @@ public class Pause : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void Controls()
+    {
+        Time.timeScale = 1.0f;
+        ControlBoton.SetActive(true);
+        settingBoton.SetActive(false);
+        Boton5.SetActive(false);
+    }
+    public void ReturnControls()
+    {
+        Time.timeScale = 0.0f;
+        ControlBoton.SetActive(false);
+        settingBoton.SetActive(true);
+        Boton5.SetActive(true);
     }
 
 }

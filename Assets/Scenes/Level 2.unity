@@ -914,6 +914,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: platform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 1940186107}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[1]
+      value: 
+      objectReference: {fileID: 300902630}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.data[0]
       value: 
       objectReference: {fileID: 1940186107}
@@ -927,7 +939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8415657230002212079, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.924
+      value: -15.88
       objectReference: {fileID: 0}
     - target: {fileID: 8415657230002212079, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1854,9 +1866,17 @@ PrefabInstance:
       value: Candelabro secret1
       objectReference: {fileID: 0}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 1879621553}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.data[0]
       value: 
@@ -2115,7 +2135,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: dash 'leftshift, fireJall 'j', interaCt 'K'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6abab6dfcbc7b47479d83c2f56b0269b, type: 2}
   m_sharedMaterial: {fileID: -3601895650900839023, guid: 6abab6dfcbc7b47479d83c2f56b0269b, type: 2}
@@ -3141,6 +3161,18 @@ PrefabInstance:
       propertyPath: lighten
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: platform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 989592750}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[1]
+      value: 
+      objectReference: {fileID: 819994866}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.data[0]
       value: 
@@ -54694,6 +54726,22 @@ PrefabInstance:
       value: Candelabro 1
       objectReference: {fileID: 0}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 378296339}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[1]
+      value: 
+      objectReference: {fileID: 94977979}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[2]
+      value: 
+      objectReference: {fileID: 85140334}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.data[0]
       value: 
       objectReference: {fileID: 378296339}
@@ -56988,14 +57036,28 @@ CompositeCollider2D:
         Y: 130000000
       - X: 210000000
         Y: 130000000
-    - - X: 760000000
-        Y: 140000000
-      - X: 600000000
-        Y: 140000000
-      - X: 600000000
-        Y: 130000000
+    - - X: 770000100
+        Y: 119999959
+      - X: 770000100
+        Y: 130000041
+      - X: 770000041
+        Y: 130000100
       - X: 760000000
+        Y: 130000100
+      - X: 760000000
+        Y: 140000000
+      - X: 600000000
+        Y: 140000000
+      - X: 600000000
         Y: 130000000
+      - X: 749999900
+        Y: 130000000
+      - X: 749999900
+        Y: 119999959
+      - X: 749999959
+        Y: 119999900
+      - X: 770000041
+        Y: 119999900
     - - X: 270000000
         Y: 140000000
       - X: 250000000
@@ -57308,10 +57370,14 @@ CompositeCollider2D:
       - {x: 80.99998, y: 14.00001}
       - {x: 79.999985, y: 13.999974}
       - {x: 80.00002, y: 12.99999}
-    - - {x: 75.99997, y: 13}
+    - - {x: 76.99998, y: 11.99999}
+      - {x: 76.99998, y: 13.00001}
+      - {x: 76, y: 13.000039}
       - {x: 75.99997, y: 14}
       - {x: 60, y: 13.999971}
       - {x: 60.000034, y: 13}
+      - {x: 74.999985, y: 12.99997}
+      - {x: 75.00002, y: 11.99999}
     - - {x: 47.999973, y: 13}
       - {x: 47.999973, y: 14}
       - {x: 39, y: 13.999971}
@@ -58236,6 +58302,26 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: 25, y: 10, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 14
+      m_TileSpriteIndex: 7
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 75, y: 12, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 17
+      m_TileSpriteIndex: 10
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 76, y: 12, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 14
@@ -61125,13 +61211,13 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 14
+  - m_RefCount: 15
     m_Data: {fileID: 11400000, guid: 3065eb8292f06d54fa17ed7aa4b87551, type: 2}
   - m_RefCount: 67
     m_Data: {fileID: 11400000, guid: 697cb5158e37ec64bbada77f1609931f, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 15
+  - m_RefCount: 16
     m_Data: {fileID: 11400000, guid: 600510f84e9aa5b4ebe641245e748c14, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 2e3c0b08de37ca84086b9767ab7e7977, type: 2}
@@ -61186,13 +61272,13 @@ Tilemap:
     m_Data: {fileID: -1443968452, guid: 1908babae293790428567cf3d4663c75, type: 3}
   - m_RefCount: 9
     m_Data: {fileID: 1108752329, guid: 1908babae293790428567cf3d4663c75, type: 3}
-  - m_RefCount: 14
+  - m_RefCount: 15
     m_Data: {fileID: 963257509, guid: 1908babae293790428567cf3d4663c75, type: 3}
   - m_RefCount: 67
     m_Data: {fileID: -1286275802, guid: 1908babae293790428567cf3d4663c75, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 15
+  - m_RefCount: 16
     m_Data: {fileID: -1670401769, guid: 1908babae293790428567cf3d4663c75, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -61247,7 +61333,7 @@ Tilemap:
   - m_RefCount: 7
     m_Data: {fileID: -993394157, guid: 208d18311d391f44298640cfeaff1e2f, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 363
+  - m_RefCount: 365
     m_Data:
       e00: 1
       e01: 0
@@ -61266,7 +61352,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 363
+  - m_RefCount: 365
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: 1.74195e-40, g: 1.74195e-40, b: 1.74195e-40, a: 1.74195e-40}
@@ -76598,9 +76684,25 @@ PrefabInstance:
       value: Candelabro 4
       objectReference: {fileID: 0}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 2047805494}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[1]
+      value: 
+      objectReference: {fileID: 1541600740}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[2]
+      value: 
+      objectReference: {fileID: 1204691633}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.data[0]
       value: 
@@ -76678,6 +76780,18 @@ PrefabInstance:
       propertyPath: platform.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 1426675221}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[1]
+      value: 
+      objectReference: {fileID: 812831289}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[2]
+      value: 
+      objectReference: {fileID: 926612187}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.data[0]
       value: 
@@ -81440,6 +81554,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candelabro 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: platform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 1672806648}
+    - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
+      propertyPath: endDoor.Array.data[1]
+      value: 
+      objectReference: {fileID: 1643768393}
     - target: {fileID: 8415657230002212078, guid: 50a41e10fef2e7e4aa620c6454019a76, type: 3}
       propertyPath: platform.Array.data[0]
       value: 

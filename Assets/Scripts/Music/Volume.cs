@@ -15,7 +15,6 @@ public class Volume : MonoBehaviour
 
     public Slider slider_2;
 
-
     private void Start()
     {
         if(PlayerPrefs.HasKey("Music"))

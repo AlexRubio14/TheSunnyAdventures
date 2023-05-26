@@ -13,11 +13,8 @@ public class CandelabroController : MonoBehaviour
     [SerializeField]
     private bool lighten;
 
-    [SerializeField]
-    GameObject[] endDoor;
-
-    [SerializeField]
-    private ParticleSystem particle;
+    //[SerializeField]
+    //GameObject[] endDoor;
 
     bool lightPlatforms;
     bool light;
@@ -55,14 +52,6 @@ public class CandelabroController : MonoBehaviour
     private void Update()
     {
         animatorCandelabro.SetBool("switched_on", lighten);
-        if (lighten)
-        {
-            particle.Play();
-        }
-        else
-        {
-            particle.Stop();
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

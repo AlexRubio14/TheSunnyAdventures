@@ -72,6 +72,7 @@ public class TitlesScreen : MonoBehaviour
     }
     public void Exit()
     {
+        PlayerPrefs.SetInt("TutorialPassed", 0);
         Application.Quit();
     }
 
