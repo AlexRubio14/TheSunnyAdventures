@@ -632,6 +632,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 667454152}
+        m_TargetAssemblyTypeName: TitlesScreen, Assembly-CSharp
+        m_MethodName: SetSlider
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &205625232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,6 +845,18 @@ MonoBehaviour:
       - m_Target: {fileID: 667454152}
         m_TargetAssemblyTypeName: TitlesScreen, Assembly-CSharp
         m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 667454152}
+        m_TargetAssemblyTypeName: TitlesScreen, Assembly-CSharp
+        m_MethodName: SetQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1501,6 +1525,10 @@ MonoBehaviour:
   QuitButton: {fileID: 224487757}
   controlsButton: {fileID: 1347482194}
   Button: {fileID: 1401016851}
+  firstControlsButon: {fileID: 1047667223}
+  firstSettingButon: {fileID: 1076480443}
+  firstQuitButon: {fileID: 2052208328}
+  firstTittleButon: {fileID: 2070587588}
 --- !u!1 &671914988
 GameObject:
   m_ObjectHideFlags: 0
@@ -2137,6 +2165,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 667454152}
+        m_TargetAssemblyTypeName: TitlesScreen, Assembly-CSharp
+        m_MethodName: SetTittle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &962448340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2212,6 +2252,11 @@ RectTransform:
   m_AnchoredPosition: {x: -5.000023, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1047667223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 191407864, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+  m_PrefabInstance: {fileID: 4562221257865708768}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1076480443
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,6 +3209,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 667454152}
+        m_TargetAssemblyTypeName: TitlesScreen, Assembly-CSharp
+        m_MethodName: SetControls
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1401016853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3395,6 +3452,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 667454152}
+        m_TargetAssemblyTypeName: TitlesScreen, Assembly-CSharp
+        m_MethodName: SetTittle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1638771390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3482,7 +3551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 2070587588}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1640156226
@@ -4579,9 +4648,37 @@ PrefabInstance:
     m_TransformParent: {fileID: 667454151}
     m_Modifications:
     - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 667454152}
+    - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 667454152}
+    - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetSlider
+      objectReference: {fileID: 0}
+    - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TitlesScreen, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4562221256518317746, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
       propertyPath: m_Name
       value: Controls

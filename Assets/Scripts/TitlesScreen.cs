@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; //Agregada
+using UnityEngine.EventSystems;
 
 public class TitlesScreen : MonoBehaviour
 {
@@ -13,6 +14,14 @@ public class TitlesScreen : MonoBehaviour
     private GameObject controlsButton;
     [SerializeField]
     private GameObject Button;
+    [SerializeField]
+    private GameObject firstControlsButon;
+    [SerializeField]
+    private GameObject firstSettingButon;
+    [SerializeField]
+    private GameObject firstQuitButon;
+    [SerializeField]
+    private GameObject firstTittleButon;
     private bool canPress = true;
 
     public void PlayGame()
@@ -38,10 +47,10 @@ public class TitlesScreen : MonoBehaviour
     }
     public void Controls()
     {
-            controlsButton.SetActive(true);
-            settingButton.SetActive(false);
-            Button.SetActive(false);
-            canPress = false; 
+        controlsButton.SetActive(true);
+        settingButton.SetActive(false);
+        Button.SetActive(false);
+        canPress = false;
     }
     public void returnControls()
     {
@@ -74,6 +83,25 @@ public class TitlesScreen : MonoBehaviour
     {
         PlayerPrefs.SetInt("TutorialPassed", 0);
         Application.Quit();
+    }
+    
+    public void SetSlider()
+    {
+        EventSystem.current.SetSelectedGameObject(firstSettingButon);
+    }
+
+    public void SetControls()
+    {
+        EventSystem.current.SetSelectedGameObject(firstControlsButon);
+    }
+    public void SetQuit()
+    {
+        EventSystem.current.SetSelectedGameObject(firstQuitButon);
+    }
+
+    public void SetTittle()
+    {
+        EventSystem.current.SetSelectedGameObject(firstTittleButon);
     }
 
 }
