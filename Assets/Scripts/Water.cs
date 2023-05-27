@@ -9,6 +9,9 @@ public class Water : MonoBehaviour
     [SerializeField]
     private Animator animatorWater;
 
+    [SerializeField]
+    private GameObject rainParticle;
+
     private void Start()
     {
         animatorWater = GetComponent<Animator>(); 
@@ -20,6 +23,7 @@ public class Water : MonoBehaviour
         {
             gameObject.tag = "Rock";
             animatorWater.SetBool("turnStone", true);
+            rainParticle.SetActive(false);
             Rain.SetActive(false);
             Destroy(collision.gameObject);
         }
@@ -30,5 +34,6 @@ public class Water : MonoBehaviour
         gameObject.tag = "Water";
         animatorWater.SetBool("turnStone", false);
         Rain.SetActive(true);
+        rainParticle.SetActive(true);
     }
 }

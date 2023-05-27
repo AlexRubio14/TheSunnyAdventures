@@ -62135,13 +62135,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 2387345348693608501, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2860778806393175350, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4851402217660482443, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4851402217660482548, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
       propertyPath: canva
@@ -62167,6 +62171,10 @@ PrefabInstance:
       propertyPath: bossParticle
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4851402217660482548, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
+      propertyPath: jumpParticle
+      value: 
+      objectReference: {fileID: 5289174288980995418, guid: 6b2ea35ce287aed478d33c6063699e84, type: 3}
     - target: {fileID: 4851402217660482548, guid: 774073321d18b0b489ee4f060b27ec4a, type: 3}
       propertyPath: changeSceneTime
       value: 5
