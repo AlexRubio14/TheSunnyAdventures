@@ -1066,6 +1066,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 656164443}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: SetControls
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &144148173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5541,6 +5553,10 @@ MonoBehaviour:
   Boton3: {fileID: 1406149773}
   Boton4: {fileID: 1870323107}
   Boton5: {fileID: 144148170}
+  firstControlsButon: {fileID: 758383418}
+  firstSettingButon: {fileID: 2046135740}
+  firstQuitButon: {fileID: 564508249}
+  firstTittleButon: {fileID: 1825473966}
   slider: {fileID: 2046135741}
   m_value: 0
   actualVolume: 
@@ -5893,6 +5909,11 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 3
   m_ColliderType: 1
+--- !u!1 &758383418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 191407864, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+  m_PrefabInstance: {fileID: 1069054838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &774700376
 GameObject:
   m_ObjectHideFlags: 0
@@ -6645,7 +6666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1825473966}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &858785245
@@ -9337,16 +9358,44 @@ PrefabInstance:
     m_TransformParent: {fileID: 2049468262}
     m_Modifications:
     - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 656164443}
+    - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 656164443}
+    - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ReturnControls
       objectReference: {fileID: 0}
     - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetSlider
+      objectReference: {fileID: 0}
+    - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Pause, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Pause, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 191407866, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4562221256518317746, guid: 2ecd46e8a268ec54db18b288c2ea4745, type: 3}
       propertyPath: m_Name
@@ -9930,6 +9979,18 @@ MonoBehaviour:
       - m_Target: {fileID: 656164443}
         m_TargetAssemblyTypeName: Pause, Assembly-CSharp
         m_MethodName: returnMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 656164443}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: SetTittle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27498,6 +27559,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 656164443}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: SetSlider
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1555462474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28807,7 +28880,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 656164443}
         m_TargetAssemblyTypeName: Pause, Assembly-CSharp
-        m_MethodName: TitleGame
+        m_MethodName: SetQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29125,6 +29198,18 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Pause, Assembly-CSharp
         m_MethodName: DenyQuit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 656164443}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: SetTittle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
