@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
+using UnityEngine.EventSystems;
 
 public class Pause : MonoBehaviour
 {
@@ -30,6 +31,14 @@ public class Pause : MonoBehaviour
     private GameObject Boton4;
     [SerializeField]
     private GameObject Boton5;
+    [SerializeField]
+    private GameObject firstControlsButon;
+    [SerializeField]
+    private GameObject firstSettingButon;
+    [SerializeField]
+    private GameObject firstQuitButon;
+    [SerializeField]
+    private GameObject firstTittleButon;
 
     public Slider slider;
 
@@ -147,6 +156,25 @@ public class Pause : MonoBehaviour
         ControlBoton.SetActive(false);
         settingBoton.SetActive(true);
         Boton5.SetActive(true);
+    }
+
+    public void SetSlider()
+    {
+        EventSystem.current.SetSelectedGameObject(firstSettingButon);
+    }
+
+    public void SetControls()
+    {
+        EventSystem.current.SetSelectedGameObject(firstControlsButon);
+    }
+    public void SetQuit()
+    {
+        EventSystem.current.SetSelectedGameObject(firstQuitButon);
+    }
+
+    public void SetTittle()
+    {
+        EventSystem.current.SetSelectedGameObject(firstTittleButon);
     }
 
 }

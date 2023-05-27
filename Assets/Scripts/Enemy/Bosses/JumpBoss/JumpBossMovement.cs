@@ -19,6 +19,9 @@ public class JumpBossMovement : MonoBehaviour
     private float enemyMovement;
 
     [SerializeField]
+    private GameObject jumpParticle;
+
+    [SerializeField]
     private LayerMask floorLayer;
 
     [SerializeField]
@@ -145,6 +148,7 @@ public class JumpBossMovement : MonoBehaviour
         sp.enabled= false;
         level1Win = true;
         winText.SetActive(true);
+        jumpParticle.SetActive(false);
     }
 
     public void Restart()
@@ -160,6 +164,7 @@ public class JumpBossMovement : MonoBehaviour
         if (isGrounded)
         {
             Jump();
+            Instantiate(jumpParticle, new Vector2(transform.position.x, transform.position.y - 2), Quaternion.identity);
         }
         else if (Physics2D.Raycast(transform.position, Vector2.down, 2.2f, floorLayer))
         {
