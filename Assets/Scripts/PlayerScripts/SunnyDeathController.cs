@@ -61,6 +61,7 @@ public class SunnyDeathController : MonoBehaviour
 
     private void PlayerDie()
     {
+        playerController.hasDashed = false;
         deathCounter.AddDeath();
         rb2d.velocity = new Vector2(0, 0);
         StartCoroutine(TimeToRespawn(false));
@@ -75,6 +76,7 @@ public class SunnyDeathController : MonoBehaviour
 
     IEnumerator TimeToRespawn(bool alive) 
     {
+        playerController.hasDashed = true;
         rb2d.gravityScale = playerController.maxGravity;
         isAlive = alive;
         yield return new WaitForSeconds(timeToRespawn);

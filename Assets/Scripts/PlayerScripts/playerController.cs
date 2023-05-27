@@ -76,7 +76,7 @@ public class playerController : MonoBehaviour
     public float dashForce;
     [SerializeField]
     public float dashTime;
-    bool hasDashed = false;
+     public bool hasDashed = false;
 
     private void Awake()
     {
