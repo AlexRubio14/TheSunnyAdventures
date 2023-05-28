@@ -48,30 +48,8 @@ public class Pause : MonoBehaviour
     private bool pauseGame = false;
 
     public string actualVolume;
-  
+    
 
-
-    private void Update()
-    {
-      if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(pauseGame)
-            {
-                Resume();
-                Boton1.SetActive(true);
-                Boton2.SetActive(true);
-                Boton3.SetActive(true);
-                Boton4.SetActive(true);
-            }
-            else
-            {
-                Pauses();
-                settingBoton.SetActive(false);
-                ControlBoton.SetActive(false);
-                Boton5.SetActive(true);
-            }
-        }
-    }
     public void Pauses()
     {
         pauseGame = true;
@@ -177,4 +155,22 @@ public class Pause : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(firstTittleButon);
     }
 
+    public void pauseCanvas()
+    {
+        if (pauseGame)
+        {
+            Resume();
+            Boton1.SetActive(true);
+            Boton2.SetActive(true);
+            Boton3.SetActive(true);
+            Boton4.SetActive(true);
+        }
+        else
+        {
+            Pauses();
+            settingBoton.SetActive(false);
+            ControlBoton.SetActive(false);
+            Boton5.SetActive(true);
+        }
+    }
 }

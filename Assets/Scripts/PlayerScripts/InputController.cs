@@ -15,9 +15,12 @@ public class InputController : MonoBehaviour
     InputActionReference interactAction;
     [SerializeField]
     InputActionReference shootAction;
+    [SerializeField]
+    InputActionReference pauseAction;
 
     playerController controller;
     fireBallThrowController shootController;
+    Pause pause;
     public float movementInput { get; private set; }
 
 
@@ -26,6 +29,7 @@ public class InputController : MonoBehaviour
 
         controller = GetComponent<playerController>();
         shootController = GetComponent<fireBallThrowController>();
+        pause = FindObjectOfType<Pause>();
 
         moveAction.action.started += MoveAction;
         moveAction.action.performed += MoveAction;
@@ -40,6 +44,13 @@ public class InputController : MonoBehaviour
 
         shootAction.action.started += ShootAction;
         shootAction.action.canceled += ShootAction;
+
+        pauseAction.action.started += PauseAction;
+    }
+    
+    private void PauseAction(InputAction.CallbackContext obj)
+    {
+        pause.pauseCanvas();
     }
 
     private void OnDestroy()
@@ -57,6 +68,8 @@ public class InputController : MonoBehaviour
 
         shootAction.action.started -= ShootAction;
         shootAction.action.canceled -= ShootAction;
+
+        pauseAction.action.started -= PauseAction;
     }
 
     private void ShootAction(InputAction.CallbackContext obj)

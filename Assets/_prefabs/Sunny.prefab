@@ -111,6 +111,7 @@ MonoBehaviour:
   dashAction: {fileID: -1044372115534235101, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
   interactAction: {fileID: 8821371563542069284, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
   shootAction: {fileID: 5144826478138649505, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
+  pauseAction: {fileID: 29112300905310525, guid: fdfd93d7c786c384785010527a8c08f4, type: 3}
 --- !u!114 &9152766392956456391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +144,7 @@ MonoBehaviour:
   maxDrag: 8
   dashForce: 17.5
   dashTime: 0.2
+  hasDashed: 0
 --- !u!114 &9152766392956456384
 MonoBehaviour:
   m_ObjectHideFlags: 0
